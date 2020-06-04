@@ -140,7 +140,13 @@ class BaseRestController extends RestController {
         }
 
         //基本运行配置
-        $this->bootstrapConfigs = parse_yml(ENTRY_PATH.'/config.yaml');
+        $cachedBootstrapConfigs = F('configs/bootstrap_configs');
+        if (!APP_DEBUG && $cachedAppConfig) {
+            $this->bootstrapConfigs = $cachedBootstrapConfigs;
+        } else {
+            $this->bootstrapConfigs = parse_yml(ENTRY_PATH.'/config.yaml');
+            F('configs/bootstrap_configs', $this->bootstrapConfigs);
+        }
 
         //当前接口版本
         if(I('server.HTTP_API_VERSION')) {
