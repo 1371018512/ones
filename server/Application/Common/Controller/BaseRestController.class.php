@@ -116,6 +116,8 @@ class BaseRestController extends RestController {
         //启用应用
         AppService::active($this->activeApps, $this->baseApps);
 
+        define('CURRENT_LANGUAGE', $this->currentLanguage);
+
         //当前模块前端别名
         $this->module_alias = __(sprintf('%s.%s', lcfirst(MODULE_NAME), lcfirst(CONTROLLER_NAME)));
 
@@ -155,7 +157,6 @@ class BaseRestController extends RestController {
         if(I('get.lang')) {
             $this->currentLanguage = I('get.lang');
         }
-        define('CURRENT_LANGUAGE', $this->currentLanguage);
         
         /*
          * 解析应用配置
