@@ -13,7 +13,7 @@ function get_auth_nodes() {
 
     $cache_key = 'all_auth_node';
     $cached = F($cache_key);
-    if(!DEBUG && $cached) {
+    if(!APP_DEBUG && $cached) {
         return $cached;
     }
 

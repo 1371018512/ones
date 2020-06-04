@@ -82,7 +82,7 @@ class AuthorizeService extends CommonModel {
         $cache_key = get_company_cache_key('authed/nodes_user_'.$user_id);
         $cached = F($cache_key);
 
-        if(!DEBUG && $cached) {
+        if(!APP_DEBUG && $cached) {
             return $cached;
         }
 
@@ -114,7 +114,7 @@ class AuthorizeService extends CommonModel {
         $cache_key = get_company_cache_key('authed/nodes_role_'.$role_id);
         $cached = F($cache_key);
 
-        if(!DEBUG && $cached) {
+        if(!APP_DEBUG && $cached) {
             return $cached;
         }
 

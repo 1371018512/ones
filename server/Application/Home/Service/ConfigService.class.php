@@ -104,7 +104,7 @@ class ConfigService extends CommonModel {
 
         $cache_key = get_company_cache_key('kv_db_configs');
         $cached = F($cache_key);
-        if(DEBUG || !$cached) {
+        if(APP_DEBUG || !$cached) {
             $source = $this->where([])->select();
 
             $cached = array();

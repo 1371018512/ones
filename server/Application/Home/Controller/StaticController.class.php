@@ -41,7 +41,7 @@ class StaticController extends Controller
 
         $cache_key = "compiled/js";
         $content = F($cache_key);
-        if(DEBUG || !$content) {
+        if(APP_DEBUG || !$content) {
             $front_end_root = dirname(ENTRY_PATH).'/ones/';
             ob_start();
             foreach($files as $file) {

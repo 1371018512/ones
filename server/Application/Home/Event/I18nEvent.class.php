@@ -45,7 +45,7 @@ class I18nEvent extends BaseRestEvent {
 
         $cache_key = sprintf('i18n/%s/all', CURRENT_LANGUAGE);
         $langs = F($cache_key);
-        if(DEBUG || !$langs) {
+        if(APP_DEBUG || !$langs) {
             $langs = self::make_i18n_cache($cache_key);
         }
 

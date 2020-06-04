@@ -20,7 +20,7 @@ class SchemaService {
         $cache_key = "schema/".$app;
 
         $schemas = (array)F($cache_key);
-        if(DEBUG || !$schemas) {
+        if(APP_DEBUG || !$schemas) {
 
             $schemas = [];
 

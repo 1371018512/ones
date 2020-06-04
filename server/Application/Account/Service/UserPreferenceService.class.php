@@ -59,7 +59,7 @@ class UserPreferenceService extends CommonModel {
 
         $cache_key = get_company_cache_key('user_preference/'.get_current_user_id());
         $cached = F($cache_key);
-        if(DEBUG || !$cached) {
+        if(APP_DEBUG || !$cached) {
             $source = $this->where(array(
                 'user_info_id' => get_current_user_id()
             ))->select();

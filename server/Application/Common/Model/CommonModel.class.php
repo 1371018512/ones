@@ -93,7 +93,7 @@ class CommonModel extends Model {
 
         $obj = $model ? $model : $this;
 
-        if(DEBUG && $include_sql) {
+        if(APP_DEBUG && $include_sql) {
             $this->error .= ' SQL: '. $obj->getLastSql();
         }
     }

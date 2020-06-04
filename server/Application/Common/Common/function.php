@@ -63,7 +63,7 @@ function decimal_scale($value) {
 function DBC($alias = null) {
     $cache_key = get_company_cache_key('db_config');
     $cached = F($cache_key);
-    if(DEBUG || !$cached) {
+    if(APP_DEBUG || !$cached) {
         $cached = D('Home/Config', 'Service')->get_kv_config();
         $cached = get_array_to_kv($cached, 'val', 'alias');
         F($cache_key, $cached);
@@ -98,7 +98,7 @@ function __($msgid) {
 
     $msgIds = explode('.', $msgid);
     $last = end($msgIds);
-    if(DEBUG || !$lang) {
+    if(APP_DEBUG || !$lang) {
         $lang = Home\Event\I18nEvent::make_i18n_cache($cacheId);
     }
 

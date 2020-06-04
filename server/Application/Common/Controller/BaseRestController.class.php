@@ -161,14 +161,14 @@ class BaseRestController extends RestController {
          * 解析应用配置
          * * */
         $cachedAppConfig = F("configs/app_config_all");
-        if(DEBUG or !$cachedAppConfig) {
+        if(APP_DEBUG or !$cachedAppConfig) {
             foreach (new RecursiveFileFilterIterator(APP_PATH, "config.yml") as $item) {
                 $app = lcfirst(basename(dirname($item)));
                 $this->appConfigs[$app] = parse_yml($item);
             }
             
             F("configs/app_config_all", $this->appConfigs);
-        } else if(!DEBUG && $cachedAppConfig) {
+        } else if(!APP_DEBUG && $cachedAppConfig) {
             $this->appConfigs = $cachedAppConfig;
         }
         AppService::$allAppConfigs = $this->appConfigs;
@@ -187,7 +187,7 @@ class BaseRestController extends RestController {
 
         // 获得用户已授权节点
         $authed_nodes = session('authed_nodes');
-        if(APP_DEBUG || !$authed_nodes) {
+        if(APP_APP_DEBUG || !$authed_nodes) {
             $authed_nodes = D('Account/Authorize')->get_authed_nodes();
             session('authed_nodes', $authed_nodes);
         }
@@ -197,7 +197,7 @@ class BaseRestController extends RestController {
 
         //当前动作权限检测
         // @todo event, event_get
-        $current_node_auth_flag = DEBUG ? 1 : $this->check_permission();
+        $current_node_auth_flag = APP_DEBUG ? 1 : $this->check_permission();
         if(substr($this->_method, 0,5) !== 'event' && false === $current_node_auth_flag) {
             $node_lang = __(lcfirst(MODULE_NAME).'.METHODS.'.$this->_method).' '.__(lcfirst(MODULE_NAME).'.'.ucfirst(CONTROLLER_NAME));
             return $this->httpError(403, __("common.Permission Denied").": ".$node_lang. "({$this->current_action_all})");
@@ -1068,7 +1068,7 @@ class BaseRestController extends RestController {
      * 日志 附加在返回的数据中
      * */
     protected function append_log_to_data($data) {
-        if(true !== APP_DEBUG || !$data) {
+        if(true !== APP_APP_DEBUG || !$data) {
             return $data;
         }
 
