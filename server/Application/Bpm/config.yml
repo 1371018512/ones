@@ -17,7 +17,7 @@ include:
     js:
         - apps/bpm/main
         - apps/bpm/model
-        - apps/bpm/static/raphael-min
+        - apps/bpm/static/raphael.min
         - apps/bpm/static/flowchart
     css:
         - apps/bpm/static/style
