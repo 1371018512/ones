@@ -3,6 +3,7 @@ dist
 .tmp
 .sass-cache
 .idea
+.vscode
 bower_components
 ones/bower_components
 ones/runtime_compiled
