@@ -343,7 +343,10 @@ angular.module("ones.configModule", [
                 });
 
                 var resUri = sprintf("%s%s/:id", ones.remote_entry, opts.uri);
+<<<<<<< HEAD
 				console.log(resUri);
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                 return $resource(resUri, opts.opts||{}, extra_methods||{});
             };
             
@@ -361,7 +364,10 @@ angular.module("ones.configModule", [
                     ones.DEBUG && console.debug("Load defined data api failed: "+ apiName, e);
                     try {
                         var uri = sprintf("%s%s/%s/:id", ones.remote_entry, group, module);
+<<<<<<< HEAD
 						
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         //尝试使用动态定义资源
                         this.resource = $resource(uri, null, {
                             update: {method: "PUT"}, api_query: {method: 'EVENT'}, api_get: {method: 'EVENT_GET'}

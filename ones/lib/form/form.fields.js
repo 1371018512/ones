@@ -342,14 +342,21 @@
 
                     // select3
                     select3: function(config) {
+<<<<<<< HEAD
 						
                         var model = config['ng-model'];
 						
+=======
+                        var model = config['ng-model'];
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         var label_model = model + '__label__';
                         var items_model = model + '__select3_items__';
                         var selected_item_model = model+'__select3_selected__';
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         var label_getter = $parse(label_model);
                         var model_getter = $parse(model);
                         var items_getter = $parse(items_model);
@@ -365,9 +372,14 @@
 
                         // ui 事件
                         config['ng-keydown'] = 'do_select3_keydown($event)';
+<<<<<<< HEAD
                         // debounce:防抖:当防止一个行为频繁被触发 0.3不被执行
                         config['ng-model-options'] = '{debounce: 300}';
 						
+=======
+                        // debounce
+                        config['ng-model-options'] = '{debounce: 300}';
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         this.html = sprintf(FORM_FIELDS_TPL.select3, {
                             attr: self.make_field_attr(config)
                             , model: model
@@ -419,8 +431,13 @@
                             var ele = $(this);
                             $timeout(function() {
                                 ele.parent().removeClass('active');
+<<<<<<< HEAD
                                 //ele.parent().find('ul.items').addClass('hide');
                             }, 1000);
+=======
+                                ele.parent().find('ul.items').addClass('hide');
+                            }, 300);
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         });
                         $('body').delegate('#'+config.id, 'focus', function() {
                             var ele = $(this);
@@ -777,6 +794,10 @@
                     // 默认值
                     self.set_default_value(config);
 
+<<<<<<< HEAD
+=======
+                    //console.log(config, opts.columns);
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
 
                     var column_width = 12/opts.columns;
 

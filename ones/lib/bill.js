@@ -16,6 +16,10 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
             '$parse',
             '$compile',
             '$aside',
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
             'PageSelectedActions',
             'RootFrameService',
             'ones.form_fields_factory',
@@ -43,9 +47,15 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 
                     // 基本信息
                     this.parentScope.bill_meta_data = this.parentScope.bill_meta_data || {};
+<<<<<<< HEAD
 					
                     angular.deep_extend(this.opts, opts);
 					
+=======
+
+                    angular.deep_extend(this.opts, opts);
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                     if(!opts.model || !opts.model.config.bill_row_model) {
                         RootFrameService.alert(_('common.Can not found bill row model'));
                         return false;
@@ -53,8 +63,11 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 
                     // 行model
                     this.row_model = $injector.get(opts.model.config.bill_row_model);
+<<<<<<< HEAD
 					
 					
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                     this.total_able_fields = [];
                     angular.forEach(this.row_model.config.fields, function(config, field) {
                         if(config.total_able) {
@@ -62,18 +75,27 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         }
                     });
 
+<<<<<<< HEAD
 					
 					
 					
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                     this.scope.bill_rows = [];
                     this.scope.row_fields = [];
 
                     this.parentScope.system_preference = ones.system_preference;
                     this.parentScope.company_profile = ones.company_profile;
+<<<<<<< HEAD
 					 
                     this.opts.model.config.bill_meta_required = this.opts.model.config.bill_meta_required || [];
                     
 					
+=======
+
+                    this.opts.model.config.bill_meta_required = this.opts.model.config.bill_meta_required || [];
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                     this.run();
                 };
 
@@ -173,11 +195,17 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         });
 
                         self.scope.$root.current_item = self.parentScope.bill_meta_data;
+<<<<<<< HEAD
                        
                         self.scope.bill_rows = rows;
                         
 
 						
+=======
+
+                        self.scope.bill_rows = rows;
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         var workflow_api = $injector.get('Bpm.WorkflowAPI');
                         // 获取工作流按钮
                         if(self.opts.model.config.workflow) {
@@ -207,6 +235,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                 };
 
                 this.run = function() {
+<<<<<<< HEAD
                      
                     this.scope.$watch('column_defs', function(updated_column_defs) {
                         self.scope.column_defs = updated_column_defs;
@@ -216,6 +245,18 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     // 编辑模式
                     if($routeParams.id) {
                         this.opts.isEdit = true;
+=======
+
+
+                    this.scope.$watch('column_defs', function(updated_column_defs) {
+                        self.scope.column_defs = updated_column_defs;
+                    });
+
+                    // 编辑模式
+                    if($routeParams.id) {
+                        this.opts.isEdit = true;
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         // 修改/删除等按钮
                         self.scope.$root.display_selected_actions_directly = true;
                         self.scope.$root.selectedActions = PageSelectedActions.generate(self.opts.model, self.parentScope);
@@ -227,9 +268,14 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                                 tr_id: i
                             });
                         }
+<<<<<<< HEAD
                         
 						this.max_tr_id = this.opts.init_rows;
                        				    
+=======
+                        this.max_tr_id = this.opts.init_rows;
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         // 标题
                         this.parentScope.bill_meta_data.subject = this.opts.subject;
 
@@ -250,7 +296,10 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                             }
 
                             var api = $injector.get('Product.ProductCompanyMapAPI');
+<<<<<<< HEAD
 							
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                             api.resource.api_query({_m: 'fetch_by_unique_number', keyword: keyword, app: ones.app_info.app}).$promise.then(function(response_data) {
                                 self.scope.$parent.current_quick_search_index = 0;
                                 if(response_data) {
@@ -259,12 +308,20 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                             });
                         };
 
+<<<<<<< HEAD
                         //self.scope.$parent.$watch(function() {
                         //    return self.scope.$parent.bill_meta_data.quick_search_keyword;
 							
                         //}, function(keyword) {
                          //   do_quick_search_query();
                         //});
+=======
+                        self.scope.$parent.$watch(function() {
+                            return self.scope.$parent.bill_meta_data.quick_search_keyword;
+                        }, function(keyword) {
+                            do_quick_search_query();
+                        });
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
 
                         self.scope.$parent.do_quick_search_focus = function() {
                             do_quick_search_query();
@@ -272,7 +329,10 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 
                         var do_select = function(index) {
                             var latest_cleared_row = self.scope.bill_rows.length;
+<<<<<<< HEAD
 							console.log("de_select");
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                             for(var i=0;i<self.scope.bill_rows.length;i++) {
                                 if(!self.scope.bill_rows[i].product_id) {
                                     latest_cleared_row = i;
@@ -295,7 +355,10 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         };
 
                         this.scope.$parent.do_quick_search_blur = function() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                             $timeout(function() {
                                 self.scope.$parent.current_quick_search_index = 0;
                                 self.scope.$parent.quick_search_result = [];
@@ -304,7 +367,10 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         };
 
                         this.scope.$parent.do_quick_search = function($event, index) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                             if(undefined !== index) {
                                 do_select(index);
                                 return;
@@ -341,13 +407,18 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     this.scope.row_fields = this.row_model.config.bill_fields;
                     this.scope.column_defs = this.row_model.config.fields;
                     this.scope.batch_select = {};
+<<<<<<< HEAD
                     
 					
 					 
+=======
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                     angular.forEach(this.scope.column_defs, function(config, field) {
 
                         config.field = config.field || field;
 
+<<<<<<< HEAD
 						
                         if(!config.field_model) {
 							//如果config.field_model不存在
@@ -364,15 +435,31 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         if(!config['ng-model']) {
 							//如果config['ng-model']不存在
 
+=======
+                        if(!config.field_model) {
+                            self.scope.column_defs[field].field_model = field;
+                        }
+
+                        if(!config.field_label_model) {
+                            self.scope.column_defs[field].field_label_model = field+'__label__';
+                        }
+
+                        if(!config['ng-model']) {
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                             self.scope.column_defs[field]['ng-model'] = 'bill_rows[$parent.$index].' + field;
                         }
 
                         // 批量选择
                         if(config.batch_select) {
+<<<<<<< HEAD
 							
                             var batch_data_source = $injector.get(config.data_source);
                             batch_data_source.resource.api_query().$promise.then(function(data) {
 
+=======
+                            var batch_data_source = $injector.get(config.data_source);
+                            batch_data_source.resource.api_query().$promise.then(function(data) {
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                                 self.scope.batch_select[field] = [];
                                 var valueField = batch_data_source.config.value_field||'id';
                                 angular.forEach(data, function(item) {
@@ -383,7 +470,10 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                                             item[batch_data_source.config.label_field||'name']
                                     });
                                 });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                             });
                         }
                     });
@@ -413,10 +503,16 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 
                     // 单元格初始化
                     this.scope.cell_init = function(column_def, td, form_name, td_scope) {
+<<<<<<< HEAD
                         
 						
                         var tr_id = td.data('row-index'); //tr_id是行数
                         
+=======
+
+                        var tr_id = td.data('row-index');
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         column_def['ng-model'] = form_name + '.' + column_def.field;
                         column_def['label-model'] = form_name + '.' + column_def.field + '__label__';
                         column_def.id = randomString('6')+'_'+column_def.field;
@@ -510,9 +606,13 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     * 单据提交方法
                     * */
                     this.parentScope.do_bill_submit = function() {
+<<<<<<< HEAD
 
                         var post_data = self.format_bill_data();
 
+=======
+                        var post_data = self.format_bill_data();
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         if(false === post_data) {
                             return false;
                         }
@@ -536,11 +636,16 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         // 提交
                         if(self.opts.isEdit) {
                             self.opts.model.resource.update({id: $routeParams.id}, post_data).$promise.then(callback);
+<<<<<<< HEAD
 
 							
                         } else {
                             self.opts.model.resource.save(post_data).$promise.then(callback);
 
+=======
+                        } else {
+                            self.opts.model.resource.save(post_data).$promise.then(callback);
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         }
 
                     };
@@ -622,7 +727,11 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         var event_binded = [];
 
                         var bind_element_event = function(column_def, element, is_td) {
+<<<<<<< HEAD
 						
+=======
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
 
 
                             if(is_td) {
@@ -842,7 +951,11 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                             ele.bind('click', function() {
                                 bind_element_event(column_def, ele, true);
                             });
+<<<<<<< HEAD
                         }, 50);
+=======
+                        }, 5000);
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
 
                     }
                 };

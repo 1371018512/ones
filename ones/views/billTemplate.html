@@ -5,8 +5,13 @@
                 <th width="60">&nbsp;</th>
                 <th width="50" class="text-center">#</th>
                 <th ng-repeat="field in row_fields track by $index"
+<<<<<<< HEAD
                     width="{{column_defs[field].width}}"  <!--row_fields里面是每一列的标题-->
 						
+=======
+                    width="{{column_defs[field].width}}"
+                        >
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                     <label ng-bind="column_defs[field].label"></label>
                     <div class="dropdown pull-right" ng-show="column_defs[field].batch_select && (column_defs[field].force_editable || (!$parent.bill_meta_data.locked && !$parent.$parent.is_view)) ">
                         <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">

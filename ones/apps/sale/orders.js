@@ -147,8 +147,11 @@
 
                 };
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                 // 日期输入
                 $scope.date_config = {
                     field: 'created',
@@ -197,12 +200,20 @@
             }
         ])
     ;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
 ones.global_module
     .service('Sale.OrdersAPI', [
         'ones.dataApiFactory',
         '$injector',
         function(dataAPI, $injector) {
+<<<<<<< HEAD
             console.log("saleorderAPI");
+=======
+
+>>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
             this.resource = dataAPI.getResourceInstance({
                 uri: 'sale/orders'
             });
