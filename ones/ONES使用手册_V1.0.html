@@ -1,0 +1,1008 @@
+			<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<title>ONES使用手册_V1.0</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<style>
+		        body {
+            color: #666666;
+            font-family: 微软雅黑,Verdana,sans-serif,宋体;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: #999999;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #16B28F;
+        }
+        .sin_navi ul {
+            list-style: none outside none;
+            margin: 0;
+            padding: 0 0 0 10px;
+        }
+        .sin_navi ul li {
+            line-height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        li {
+            line-height: 24px;
+        }
+        table {
+            border-left: 1px solid #CCCCCC;
+            border-top: 1px solid #CCCCCC;
+            margin: 5px 10px;
+            text-align: left;
+            width: 678px;
+        }
+        table th {
+            background-color: #EEEEEE;
+            border-bottom: 1px solid #CCCCCC;
+            border-right: 1px solid #CCCCCC;
+            padding: 10px;
+        }
+        table td {
+            border-bottom: 1px solid #CCCCCC;
+            border-right: 1px solid #CCCCCC;
+        }
+        p {
+            line-height: 24px;
+            margin: 10px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #111111;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 26px;
+        }
+        h2 {
+            border-bottom: 1px dashed #CCCCCC;
+            font-size: 24px;
+            padding: 10px 0;
+        }
+        h3 {
+            font-size: 20px;
+            padding: 8px 0;
+        }
+        h4 {
+            font-size: 18px;
+            margin-left: 10px;
+            padding: 5px 0;
+        }
+        h5 {
+            font-size: 16px;
+            margin-left: 10px;
+            padding: 5px 0;
+        }
+        h6 {
+            font-size: 16px;
+            margin-left: 10px;
+            padding: 5px 0;
+        }
+        blockquote {
+            background: url("../../../img/blockquote.gif") no-repeat scroll left top #F4F5F7;
+            margin: 5px 10px;
+            padding: 10px 10px 10px 30px;
+        }
+        pre {
+            background: none repeat scroll 0 0 #EEEEEE;
+            margin: 5px 10px;
+            padding: 10px;
+        }
+        .sin_callout {
+            margin: 5px 10px;
+        }
+        .sin_header {
+            background-color: #F7F7F7;
+            border-bottom: 1px solid #CCCCCC;
+            height: 80px;
+            width: 100%;
+        }
+        .sin_title {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .sin_title_text {
+            color: #000000;
+            float: left;
+            line-height: 80px;
+        }
+        .sin_version {
+            color: #999999;
+            float: left;
+            font-size: 14px;
+            padding-top: 25px;
+            margin-left: 10px;
+        }
+        .sin_main {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .sin_navi {
+            float: left;
+            margin-bottom: 20px;
+            overflow-y: scroll;
+            padding: 0;
+            position: relative;
+            width: 279px;
+            z-index: 1;
+        }
+        .sin_navi_nomove {
+            position: fixed;
+            top: 0;
+        }
+        .sin_navi_ca a {
+            color: #333333;
+        }
+        .sin_navi_ca a:hover {
+            color: #16B28F;
+        }
+        .sin_navi_current {
+            border-right: 3px solid #16B28F;
+        }
+        .sin_navi_current a {
+            color: #16B28F;
+        }
+        .sin_content {
+            background-color: #FFFFFF;
+            border-left: 1px solid #CCCCCC;
+            float: left;
+            margin-left: -20px;
+            padding: 10px 20px;
+            position: relative;
+            width: 699px;
+            z-index: 2;
+        }
+        .sin_content_mar {
+            margin-left: 259px;
+        }
+        .sin_footer {
+            border-top: 1px solid #CCCCCC;
+            color: #999999;
+            height: 80px;
+            line-height: 80px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .sin_info {
+            background: none repeat scroll 0 0 #FFFFCC;
+            border: 1px solid #D5D4D4;
+            border-radius: 4px 4px 4px 4px;
+            color: #999999;
+            margin: 10px 0;
+            padding: 14px;
+        }
+        .sin_link_logo {
+            color: #16B28F;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .sin_text {
+            margin-bottom: 10px;
+        }
+        .d_callout {
+            margin-bottom: 10px;
+        }
+        .d_callout_info {
+            background: none repeat scroll 0 0 #F4F8FA;
+            border-left: 4px solid #5BC0DE;
+            padding: 10px;
+        }
+        .d_callout_warn {
+            background: none repeat scroll 0 0 #FCF8F2;
+            border-left: 4px solid #F0AD4E;
+            padding: 10px;
+        }
+        .d_callout_danger {
+            background: none repeat scroll 0 0 #FDF7F7;
+            border-left: 4px solid #D9534F;
+            padding: 10px;
+        }
+        .d_callout_success {
+            background: none repeat scroll 0 0 #F3F8F3;
+            border-left: 4px solid #50AF51;
+            padding: 10px;
+        }
+        .d_callout input {
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 15px;
+            margin-bottom: 5px;
+            padding: 10px 5px 0 10px;
+        }
+        .d_callout textarea {
+            background-color: rgba(0, 0, 0, 0);
+        }
+        .d_callout_icons a {
+            color: #AAAAAA;
+            margin-left: 10px;
+        }
+        a.d_callout_icon_info {
+            color: #5BC0DE;
+        }
+        a.d_callout_icon_warn {
+            color: #F0AD4E;
+        }
+        a.d_callout_icon_danger {
+            color: #D9534F;
+        }
+        a.d_callout_icon_success {
+            color: #50AF51;
+        }
+        .clear {
+            clear: both;
+        }
+
+	</style>
+</head>
+<body>
+	<div class="sin_header">
+		<div class="sin_title">
+			<h1 class="sin_title_text">ONES使用手册</h1>
+			<span class="sin_version">V1.0</span>
+			<div class="clear"></div>
+		</div>
+		<div id="top_end"></div>
+	</div>
+	<div class="sin_main">
+		<div class="sin_navi" id="sin_navi_id">
+			<ul style="margin: 20px 0;">
+				    																					<li class="sin_navi_ca" style="width: 246px;" id="navi_category_8578">
+								<a href="#category_8578">
+									序言
+								</a>
+							</li>
+										<ul>
+																								<li style="width:236px" id="navi_text_35313">
+						<a href="#text_35313">
+							概述
+						</a>	
+					</li>
+											</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_8579">
+								<a href="#category_8579">
+									开始使用
+								</a>
+							</li>
+										<ul>
+																			<li style="width:236px" id="navi_text_35315">
+						<a href="#text_35315">
+							安装
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_35317">
+						<a href="#text_35317">
+							初次使用配置
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_35316">
+						<a href="#text_35316">
+							界面介绍
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_35679">
+						<a href="#text_35679">
+							控制面板
+						</a>	
+					</li>
+											</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_8719">
+								<a href="#category_8719">
+									核心模块
+								</a>
+							</li>
+										<ul>
+									<li class="sin_navi_ca" style="width:236px" id="navi_category_8715">
+					<a href="#category_8715">
+						用户模块
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_35680">
+						<a href="#text_35680">
+							组织架构
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35681">
+						<a href="#text_35681">
+							权限控制
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35692">
+						<a href="#text_35692">
+							个人设置
+						</a>	
+					</li>
+											</ul>
+																							<li style="width:236px" id="navi_text_35693">
+						<a href="#text_35693">
+							数据模型 (自定义字段)
+						</a>	
+					</li>
+											</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_8720">
+								<a href="#category_8720">
+									应用模块
+								</a>
+							</li>
+										<ul>
+																			<li style="width:236px" id="navi_text_35698">
+						<a href="#text_35698">
+							工作流
+						</a>	
+					</li>
+																<li class="sin_navi_ca" style="width:236px" id="navi_category_8725">
+					<a href="#category_8725">
+						往来单位相关
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_35956">
+						<a href="#text_35956">
+							往来单位管理
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35696">
+						<a href="#text_35696">
+							客户关系管理
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35697">
+						<a href="#text_35697">
+							供应商管理
+						</a>	
+					</li>
+											</ul>
+													<li class="sin_navi_ca" style="width:236px" id="navi_category_8727">
+					<a href="#category_8727">
+						销售相关
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_35699">
+						<a href="#text_35699">
+							营销管理
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35700">
+						<a href="#text_35700">
+							销售管理
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35707">
+						<a href="#text_35707">
+							销售统计模块
+						</a>	
+					</li>
+											</ul>
+													<li class="sin_navi_ca" style="width:236px" id="navi_category_8726">
+					<a href="#category_8726">
+						仓储相关
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_35703">
+						<a href="#text_35703">
+							仓储管理
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35702">
+						<a href="#text_35702">
+							库存预警
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35790">
+						<a href="#text_35790">
+							出库单
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35791">
+						<a href="#text_35791">
+							入库单
+						</a>	
+					</li>
+											</ul>
+													<li class="sin_navi_ca" style="width:236px" id="navi_category_8728">
+					<a href="#category_8728">
+						采购相关
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_35701">
+						<a href="#text_35701">
+							采购管理
+						</a>	
+					</li>
+											</ul>
+													<li class="sin_navi_ca" style="width:236px" id="navi_category_8729">
+					<a href="#category_8729">
+						产品相关
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_35704">
+						<a href="#text_35704">
+							产品管理
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35705">
+						<a href="#text_35705">
+							产品属性管理
+						</a>	
+					</li>
+											</ul>
+													<li class="sin_navi_ca" style="width:236px" id="navi_category_8731">
+					<a href="#category_8731">
+						财会相关
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_35708">
+						<a href="#text_35708">
+							基本财务模块
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_35709">
+						<a href="#text_35709">
+							会计模块
+						</a>	
+					</li>
+											</ul>
+													<li class="sin_navi_ca" style="width:236px" id="navi_category_8732">
+					<a href="#category_8732">
+						办公相关
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_35710">
+						<a href="#text_35710">
+							日程模块
+						</a>	
+					</li>
+											</ul>
+													<li class="sin_navi_ca" style="width:236px" id="navi_category_8730">
+					<a href="#category_8730">
+						统计相关
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_35706">
+						<a href="#text_35706">
+							统计分析接口模块
+						</a>	
+					</li>
+											</ul>
+													<li class="sin_navi_ca" style="width:236px" id="navi_category_8733">
+					<a href="#category_8733">
+						其他
+					</a>
+				</li>
+												</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_8723">
+								<a href="#category_8723">
+									其他
+								</a>
+							</li>
+										<ul>
+																			<li style="width:236px" id="navi_text_35694">
+						<a href="#text_35694">
+							输入控件
+						</a>	
+					</li>
+											</ul>
+																			</ul>
+		</div>
+		<div class="sin_content" id="sin_content_id">
+																					<h2 id="category_8578">序言</h2>
+																								<h3 id="text_35313" class="sin_target">概述</h3>
+<div class="sin_text">
+    					<h3>关于</h3>
+<p>ONES是由诸城市特思维软件集成开发有限公司开发的企业管理软件，致力于为中小企业提供客户管理、仓储管理、财务管理等信息化服务。</p>
+<p>ONES是基于模块化的核心+扩展的架构，企业可以根据自身需要来安装不同的模块组合。目前最新版本为1.0版本，囊括了客户关系管理，进销存管理，供应商管理，统计分析等模块。</p>
+<p>本篇文档针对1.x之后版本所写。</p>
+<h3>使用方式</h3>
+<p>您可以通过使用ONES提供的公有云服务或者自己搭建私有云环境来部署使用，这取决于您的应用场景及网络环境。</p>
+<h3>其他</h3>
+<p>本文档尚未编写完成。</p>
+<h3>联系</h3> 
+<ul> 
+ <li>项目官网： <a href="https://ng-erp.com" rel="nofollow">https://ng-erp.com</a></li> 
+ <li>讨论 &amp; 反馈： <a href="http://forum.ng-erp.com" rel="nofollow">http://forum.ng-erp.com</a></li> 
+ <li>技术支持：@laofahai <a href="mailto:nemo@ng-erp.com" rel="nofollow">nemo@ng-erp.com</a></li> 
+ <li>商务合作：@li</li> 
+ <li>联系电话： 13325251626</li> 
+</ul>
+			</div>
+
+																														<h2 id="category_8579">开始使用</h2>
+																								<h3 id="text_35315" class="sin_target">安装</h3>
+<div class="sin_text">
+    					<h3>使用ONES提供的公有云服务</h3>
+<p>使用ONES提供的公有云服务不需要用户自己安装，仅需要通过注册向导注册即可，这也是我们推荐使用的方式；而且很多模块需要外网使用环境，比如移动端模块、短信/邮件等提醒模块。</p>
+<p>使用公有云服务也无需担心数据安全和访问速度，我们每天都有数据备份，防止数据丢失；国内访问速度和本地几乎无差别。</p>
+<p>访问地址：https://ones-cloud.com</p>
+<h3>自行部署使用</h3>
+<p>如果您公司有技术人员，或者有一定的动手能力，或者因为其他原因需要部署到私有云使用，请参见开发文档中 <a href="http://ones.mydoc.io/?t=17436" rel="nofollow">安装与升级</a> 一节；也可以联系我们付费进行安装。</p>
+			</div>
+
+																						<h3 id="text_35317" class="sin_target">初次使用配置</h3>
+<div class="sin_text">
+    					<h3>设置用户角色</h3>
+<p>安装或注册后，系统会自动生成一个名为「Super User」的超级管理角色，初次使用时请先为其授权。依次点击「系统首选项-》用户角色管理-》右键点击角色名称-》点击授权」，根据需要选定其可用权限，并保存(初次使用建议全部选择)。</p>
+<h3>启用应用</h3>
+<p>授权完成后，刷新页面，依次点击「系统首选项-》应用管理」，根据需要启用相应的应用。</p>
+<h3>工作流设置</h3>
+<p>如果使用到工作流（通常所有单据类应用都会使用到，比如采购、出入库、销售等），需要在「系统首选项-》工作流」中创建工作流程，具体可参见「工作流」一章。</p>
+<h3>系统首选项设置</h3>
+<p>依次点击「系统首选项-》首选项」可对系统进行设置。</p>
+			</div>
+
+																						<h3 id="text_35316" class="sin_target">界面介绍</h3>
+<div class="sin_text">
+    					<p><img src="https://static.oschina.net/uploads/img/201509/23004044_UPaF.png" alt="界面演示"></p>
+<h3>页面元素</h3> 
+<ul> 
+ <li>上方为一级导航菜单</li> 
+ <li>右上角为个人菜单</li> 
+ <li>左侧为二级导航菜单，点击一级导航进行切换</li> 
+ <li>中间部分为页面主体</li> 
+ <li>一级导航和主体页面之间为标签页切换部分</li> 
+</ul>
+<h3>数据展现与录入形式</h3>
+<p>ONES的数据展现默认可通过「数据表格」和「数据详情」两种方式展示。<br>数据录入包括「表单」和「单据」两种方式。单据即为入库单、采购单、销售单等。</p>
+<h4>数据表格</h4>
+<p>[图2]<br>表格最左侧复选框为多选操作，一些操作(如删除项目)可支持选中多个项目进行操作，点击复选框选中后，点击主体部分左上方的选中项目可看到可用操作；如果对单个项目进行操作还可在项目「行」上面点击右键。<br>表格右侧为过滤器，可通过点击的方式快速对数据进行过滤；如果模块支持，「列」最下方会有一个输入框，用于对当前列数据进行搜索；表格右下方为数据分页。<br>在表格「行」上面右键会显示当前行项目可用操作，双击左键会进入项目的详情界面或者编辑界面（取决于模块是否支持）。</p>
+<h4>数据详情</h4>
+<p>[图3]<br>详情页面通常用于展示复杂数据，如客户信息；客户信息可能包含很多项目，比如客户基本信息，客户联系人，客户跟踪情况等等等等，这种情况下就需要有一个页面对其所有信息进行总览；如果模块支持数据详情功能，在数据表格行上面双击可进入详情界面。<br>详情界面左侧为详细数据展示区域，右侧为详情项目导航区域，点击项目导航可切换展示内容。</p>
+<h4>表单</h4>
+<p>[图4]<br>表单是录入数据的方式之一，用于单条数据录入，如用户信息、客户基本信息等等。录入数据会进行三次验证，一是输入时即时验证，二是点击提交时前端验证，三是提交至后台处理时验证。<br>表单中支持多种「输入控件」，如文本输入框、数字输入框、邮件输入框、单选/复选输入、选择输入框、文件上传等等，这些控件有很多在单据中也支持。</p>
+<h4>单据</h4>
+<p>[图5]<br>单据包括三个部分，上面为基本信息区，从左至右为单据名称（可编辑），公司信息（系统首选项中设置），单据编号/二维码；中间为单据明细录入区；最下方为单据其他信息和统计区域，如录入时间、选择客户、合计等。<br>明细区域左侧为单据行号和增删行按钮，点击加号可增加一行，垃圾桶可删除当前行。点击明细行中的单元格可录入数据。</p>
+			</div>
+
+																						<h3 id="text_35679" class="sin_target">控制面板</h3>
+<div class="sin_text">
+    					<p>控制面板是用户登入系统后第一个界面，也是默认不可被关闭的标签页。</p>
+<p>[图1]</p>
+<p>控制面板中可以添加各个应用提供的「控制面板控件」，它们可被拖动改变位置及缩放；如果没有任何控件被启用，则在页面中间会显示比较醒目的新增控件按钮；如果有任何已启用的控件，则新增控件按钮被移至主体部分右上角。</p>
+<p>[图二]</p>
+<p>点击新增控件按钮，在弹出的modal中选择需要添加的控件，并点击确定；然后拖动控件的边缘可调整大小，左键点击并按住控件任意部分可拖动位置。</p>
+			</div>
+
+																														<h2 id="category_8719">核心模块</h2>
+																		<h3 id="category_8715">用户模块</h3>
+																						<h4 id="text_35680" class="sin_target">组织架构</h4>
+<div class="sin_text">
+    					<p>ONES中的组织架构由「部门」 「角色」 「用户」三个部分组成；部门是可存在多级，在部门列表中点击右键可新增子部门。</p> 
+<pre><code># 每个用户仅可从属于一个部门
+# 每个用户可拥有多个角色(工作岗位)
+</code></pre>
+<h3>部门管理</h3>
+<p>[图1]</p>
+<p>部门管理位于「系统首选项-》部门管理」，部门管理中有且仅有一个「根节点」即为公司。添加部门需要在其上级部门上面点击右键-》添加子部门；「部门负责人」为其部门的负责人，可在后面提到的权限中进行详细控制。</p>
+<h3>角色管理</h3>
+<p>[图2]<br>角色管理位于「系统首选项-》用户角色」，为角色授权在角色列表中点击右键-》授权。</p>
+<h3>用户管理</h3>
+<p>[图3]<br>用户管理位于「系统首选项-》用户」</p>
+			</div>
+
+																						<h4 id="text_35681" class="sin_target">权限控制</h4>
+<div class="sin_text">
+    					<p>ONES中包含多种权限控制手段，通过各种组合可实现基本访问、工作流等灵活的权限控制。</p>
+<h3>基本操作认证 扩展的RBAC</h3>
+<p>RBAC(Role-Based Access Control)即「基于角色的访问控制」，<code>在RBAC中，权限与角色相关联，用户通过成为适当角色的成员而得到这些角色的权限。这就极大地简化了权限的管理。在一个组织中，角色是为了完成各种工作而创造，用户则依据它的责任和资格来被指派相应的角色，用户可以很容易地从一个角色被指派到另一个角色。角色可依新的需求和系统的合并而赋予新的权限，而权限也可根据需要而从某角色中回收。角色与角色的关系可以建立起来以囊括更广泛的客观情况。</code></p>
+<p>ONES中对角色的概念进行了扩展，配合「部门」对于可授权的节点加入了「标记(flag)」的概念；模块中的授权节点被添加标记后，可为其增加更细化的「行级权限控制」，标记可选择仅自己部门、仅自己和下属等人性化的授权方式。</p>
+<p>[图1 授权界面截图]</p>
+<h3>工作流程中可执行的人、角色或部门</h3>
+<p>在ONES的工作流设计中，用户可设定某个操作为「角色」、「部门」、「用户」等任意颗粒度的可执行权限；具体可参照「工作流」一节。</p>
+<p>[图2 工作流设计界面截图]</p>
+			</div>
+
+																						<h4 id="text_35692" class="sin_target">个人设置</h4>
+<div class="sin_text">
+    					<h3>个人资料</h3>
+<p>用户可自行修改自己的部分资料，如姓名，电话等等，点击页面右上角的用户头像-》个人资料进行设置。</p>
+<p>「个人资料支持自定义字段」</p>
+<h3>个人首选项</h3>
+<p>每个系统用户可对自己进行个性化配置，点击页面右上角的用户头像-》个人首选项进行设置。</p>
+			</div>
+
+																												<h3 id="text_35693" class="sin_target">数据模型 (自定义字段)</h3>
+<div class="sin_text">
+    					<p>数据模型是ONES的特色功能之一，可为任意模块添加自定义的字段，并可为其设置是否可搜索，是否在列表中显示，输入控件等配置项。</p>
+<h3>基本使用</h3>
+<p>模块中支持数据模型的已设定，用户只需通过「基础数据-》数据模型字段」中添加即可。<br>[图1 数据模型字段列表]</p>
+<p>点击「新增数据模型字段」按钮可添加新的字段，需要填写以下表单：<br>[图2 新增模型字段]</p> 
+<ul> 
+ <li>从属于模块 选择需要添加字段至某模块</li> 
+ <li>别名 必须为英文，通常为程序内部使用，不会被显示</li> 
+ <li>显示名称 为字段在页面中显示的名称</li> 
+ <li>输入控件 选择字段的输入方式，注意单选、复选、下拉框、项目选择、select3等字段必须配置「data_source」项目</li> 
+ <li>数据类型 通常输入控件为数字、项目选择、select3的需要选择数字，单选、复选、下拉框等根据具体的数据源选择(value是否为数字)。</li> 
+ <li>是否可搜索 选择字段是否可在列表中进行搜索</li> 
+ <li>扩展配置见下表</li> 
+</ul>
+<h3>扩展配置</h3>
+<p>模型字段扩展配置会默认覆盖可选择的配置(search_able, widget, data_type等)<br>扩展配置语法为：key:value 每行一个。支持列表如下 前端数据API中的config.fields中支持的配置均可使用：<br><del>~<br>list_display:true # 是否在列表中显示 默认 false<br>sortable:true # 是否可排序 默认false<br>required:false # 是否必填，默认 true<br>widget:select # 输入控件 默认 text<br>data_source:[1,2,3] # 数据源。 可指定为数组或前端数据API。 数组最好不要使用关联数组（JS中的对象）<br>filters:link # 加入过滤器<br>blank:true # 对应required，是否可为空。默认为false<br><del>~</del></del></p>
+			</div>
+
+																														<h2 id="category_8720">应用模块</h2>
+																								<h3 id="text_35698" class="sin_target">工作流</h3>
+<div class="sin_text">
+    					<p>在企业的生产经营过程中，任何一项事务或业务都是有着流程存在的；传统的企业管理软件存在着流程固化或者流程设置麻烦的问题；ONES 1.0版本开始提供了一套可视化的流程设置系统，业务流程设置方便而又快速。并且流程可设置多个供业务过程中选择。</p>
+<h3>哪些模块支持工作流</h3>
+<p>目前所有单据类的模块支持工作流，如订单，采购，出入库等。</p>
+<h3>创建工作流</h3>
+<p>工作流设置位于「系统首选项-》工作流」中，点击新增。<br>[图1 创建工作流]</p>
+<p>工作流模块字段是需要手动填写的，格式为 <code>应用alias.应用模块alias</code>， 比如：<code>storage.stockIn</code>； 可以在具体模块的文档中查询到。</p>
+<h3>工作流设计</h3>
+<p>[图2 工作流设计]<br>在工作流列表中，点击右键可显示工作流设计按钮，点击工作流设计进入可视化工作流设计界面。</p>
+<p>设计界面中上方为工具栏，从左至右为「添加新的节点」，「新节点添加至哪个执行者」，「新增执行者」</p>
+<p>节点： 工作流中的一个操作节点，用于执行设置好的业务逻辑<br>执行者： 节点容器，可为「用户」、「角色」、「部门」<br>开始节点：每个工作流有且必有一个开始节点</p>
+<p>节点双击可设定其属性（或者右键单击节点，点击节点设置）<br>[图3 工作流节点设置]</p>
+<p>节点状态标签：显示标签，标识当前流程数据进行至的状态<br>节点动作类型：可选「执行一个服务接口」或者「修改当前流程数据」</p>
+<p>右键点击节点，可显示节点操作菜单：<br>下一节点是： 执行完当前节点后下一个可执行节点<br>条件为真/假： 条件判断节点专用</p>
+<p>点击节点或者连线可将其设为活动状态，按「delete」键可删除。</p>
+			</div>
+
+																<h3 id="category_8725">往来单位相关</h3>
+																							<h4 id="text_35956" class="sin_target">往来单位管理</h4>
+<div class="sin_text">
+    		    		<table cellpadding="0" cellspacing="0">
+		        <thead>
+			        <tr>
+			        				           		<th>项目</th>
+			            			           		<th>内容</th>
+			            			        </tr>
+		        </thead>
+		        <tbody>
+		        					        <tr>
+		        							        	<td>
+				        		<p>依赖模块</p>
+				        	</td>
+				        					        	<td>
+				        		<p>region 地区模块</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>是否支持详情查看</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>是否单据</p>
+				        	</td>
+				        					        	<td>
+				        		<p>否</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>是否支持工作流程</p>
+				        	</td>
+				        					        	<td>
+				        		<p>无</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>是否支持自定义字段</p>
+				        	</td>
+				        					        	<td>
+				        		<p>往来单位基本信息、联系人均支持</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>应用别名</p>
+				        	</td>
+				        					        	<td>
+				        		<p>contactsCompany</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>包含模块</p>
+				        	</td>
+				        					        	<td>
+				        		<p>contactsCompany.contactsCompany 基本信息<br>contactsCompany.contactsCompanyLinkman 联系人<br>contactsCompany.contactsCompanyRole 角色</p>
+				        	</td>
+				        					        </tr>
+		        			        </tbody>
+    		</table>
+								<p>日常业务中的往来关系不仅仅只有「客户」和「供应商」两种，而且它们的基本信息、联系人等都是同样的管理方式，所以我们在它们的基础上抽象出了「往来单位管理」模块。</p>
+<h3>基本管理</h3>
+<p>往来单位管理菜单位于「基础数据」中。分别是往来单位管理、联系人管理、角色管理。 往来单位角色目前仅为区分。</p>
+			</div>
+
+																							<h4 id="text_35696" class="sin_target">客户关系管理</h4>
+<div class="sin_text">
+    		    		<table cellpadding="0" cellspacing="0">
+		        <thead>
+			        <tr>
+			        				           		<th>项目</th>
+			            			           		<th>内容</th>
+			            			           		<th>备注</th>
+			            			        </tr>
+		        </thead>
+		        <tbody>
+		        					        <tr>
+		        							        	<td>
+				        		<p>依赖模块</p>
+				        	</td>
+				        					        	<td>
+				        		<p>contactsCompany 往来单位模块</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>是否支持详情查看</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是</p>
+				        	</td>
+				        					        	<td>
+				        		<p>客户模块，线索模块支持</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>是否单据</p>
+				        	</td>
+				        					        	<td>
+				        		<p>否</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>是否支持工作流程</p>
+				        	</td>
+				        					        	<td>
+				        		<p>无</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>是否支持自定义字段</p>
+				        	</td>
+				        					        	<td>
+				        		<p>线索模块支持</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        </tr>
+		        			        </tbody>
+    		</table>
+								<p>CRM(客户关系管理)包含了线索、客户、商机、合同等内容，其中线索和客户支持「池」的概念。<br>[图1 CRM流程图]</p>
+<h3>线索和线索池</h3>
+<h3>客户和客户池</h3>
+<h3>商机</h3>
+<h3>合同</h3>
+			</div>
+
+																					<h4 id="text_35697" class="sin_target">供应商管理</h4>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="category_8727">销售相关</h3>
+																					<h4 id="text_35699" class="sin_target">营销管理</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_35700" class="sin_target">销售管理</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_35707" class="sin_target">销售统计模块</h4>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="category_8726">仓储相关</h3>
+																					<h4 id="text_35703" class="sin_target">仓储管理</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_35702" class="sin_target">库存预警</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_35790" class="sin_target">出库单</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_35791" class="sin_target">入库单</h4>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="category_8728">采购相关</h3>
+																					<h4 id="text_35701" class="sin_target">采购管理</h4>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="category_8729">产品相关</h3>
+																					<h4 id="text_35704" class="sin_target">产品管理</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_35705" class="sin_target">产品属性管理</h4>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="category_8731">财会相关</h3>
+																					<h4 id="text_35708" class="sin_target">基本财务模块</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_35709" class="sin_target">会计模块</h4>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="category_8732">办公相关</h3>
+																					<h4 id="text_35710" class="sin_target">日程模块</h4>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="category_8730">统计相关</h3>
+																					<h4 id="text_35706" class="sin_target">统计分析接口模块</h4>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="category_8733">其他</h3>
+																															<h2 id="category_8723">其他</h2>
+																							<h3 id="text_35694" class="sin_target">输入控件</h3>
+<div class="sin_text">
+    </div>
+
+																									
+					</div>
+		<div class="clear"></div>
+	</div>
+	<div id="bottom_begin"></div>
+	<div class="sin_footer">
+		<div>
+			Powered by <a href="http://www.oschina.net" target="_blank">开源中国</a>
+		</div>
+	</div>
+	<script>
+		//计算图片的真实大小，如果超过编辑区域，则进行限制
+		var resizePicWidth = function(pic_width){
+			var imgs = document.getElementsByTagName("img");
+            var j=0;
+			for(var i=0;i<imgs.length;i++){
+                var realWidth;	//真实的宽度
+                var realHeight;		//真实的高度
+                //这里做下说明，$("<img/>")这里是创建一个临时的img标签，类似js创建一个new Image()对象！
+				var newImg = new Image();
+				newImg.onload=function() {
+                    realWidth = imgs[j].width;
+                    realHeight = imgs[j].height;
+                    //如果真实的宽度大于规定的宽度就按照100%显示
+                    if(realWidth>=pic_width){
+						imgs[j].style.width=(pic_width) + "px";
+                    } else{//如果小于浏览器的宽度按照原尺寸显示
+						imgs[j].style.width=realWidth+'px';
+                    }
+                    j++;
+                }
+				newImg.src=imgs[j].src;
+			}
+
+		}
+		var currentNode = null;
+		window.onscroll=function(){
+            var h = document.getElementById("top_end").getBoundingClientRect().top;
+            if(h<=0){
+				document.getElementById("sin_navi_id").className='sin_navi sin_navi_nomove';
+				document.getElementById("sin_content_id").className='sin_content sin_content_mar';
+            }else{
+                document.getElementById("sin_navi_id").className='sin_navi';
+                document.getElementById("sin_content_id").className='sin_content';
+            }
+            comLayout();
+            var arr= new Array();
+            var index = 0;
+			var sinTargets = getClass("h2","sin_target");
+			for(var i=0;i<sinTargets.length;i++){
+                var th = sinTargets[i].getBoundingClientRect().top - 80;	                if(th<=0){
+                    arr[index] = new Array();
+                    arr[index][0] = sinTargets[i].getAttribute("id");
+                    arr[index][1] = th;
+                    index++;
+                }
+			}
+
+            var curr = bubbleSort(arr);
+            if(curr!=null && curr!=currentNode){
+				var oldCurrIds = getClass("li","sin_navi_current");
+                if(oldCurrIds && oldCurrIds[0]){
+                    var oid=oldCurrIds[0].getAttribute("id");
+                    document.getElementById(oid).className=" ";
+                }
+				document.getElementById("navi_"+curr).className="sin_navi_current";
+                currentNode = curr;
+            }
+        }
+		
+		
+	    window.onresize = function(){
+            comLayout();
+		}
+
+        var ch = document.getElementById("sin_navi_id").offsetHeight;
+
+	    function comLayout() {
+	        var h = document.documentElement.clientHeight;
+	    	if(ch<h){
+	    		return;
+	    	}
+		    var i = document.getElementById("bottom_begin").getBoundingClientRect().top;
+	        if(i<h){
+                document.getElementById("sin_navi_id").style.height=(i+"px");
+		   	}else{
+                document.getElementById("sin_navi_id").style.height=(h+"px");
+		   	}
+	    }
+	    
+	    function bubbleSort(arr){
+	    	var i= arr.length;
+	    	if(i<=0){
+	    		return null;
+	    	}
+	    	var j;
+			var tempExchangVal;
+			while(i>0){
+				for(j=0;j<i-1;j++){
+					if(arr[j][1] < arr[j+1][1]){
+						tempExchangVal=arr[j];
+						arr[j]=arr[j+1];
+						arr[j+1]=tempExchangVal;
+					}
+				}
+				i--;
+			}
+			return arr[0][0];
+		}
+	    comLayout();
+	    resizePicWidth(680);
+
+        function getClass(tagname, className) { //tagname指元素，className指class的值
+            //判断浏览器是否支持getElementsByClassName，如果支持就直接的用
+            if (document.getElementsByClassName) {
+                return document.getElementsByClassName(className);
+            }
+            else {    //当浏览器不支持getElementsByClassName的时候用下面的方法
+                var tagname = document.getElementsByTagName(tagname);  //获取指定元素
+                var tagnameAll = [];     //这个数组用于存储所有符合条件的元素
+                for (var i = 0; i < tagname.length; i++) {     //遍历获得的元素
+                    if (tagname[i].className == className) {     //如果获得的元素中的class的值等于指定的类名，就赋值给tagnameAll
+                        tagnameAll[tagnameAll.length] = tagname[i];
+                    }
+                }
+                return tagnameAll;
+            }
+        }
+	</script>
+</body>
+</html>	
+<!-- Generated by OsChina.NET (init:1[ms],page:150[ms],ip:58.100.38.207) -->

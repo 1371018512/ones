@@ -1,0 +1,1934 @@
+			<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+  	<title>ONES开发文档_V1.0</title>
+  	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<style>
+		        body {
+            color: #666666;
+            font-family: 微软雅黑,Verdana,sans-serif,宋体;
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            color: #999999;
+            text-decoration: none;
+        }
+        a:hover {
+            color: #16B28F;
+        }
+        .sin_navi ul {
+            list-style: none outside none;
+            margin: 0;
+            padding: 0 0 0 10px;
+        }
+        .sin_navi ul li {
+            line-height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        li {
+            line-height: 24px;
+        }
+        table {
+            border-left: 1px solid #CCCCCC;
+            border-top: 1px solid #CCCCCC;
+            margin: 5px 10px;
+            text-align: left;
+            width: 678px;
+        }
+        table th {
+            background-color: #EEEEEE;
+            border-bottom: 1px solid #CCCCCC;
+            border-right: 1px solid #CCCCCC;
+            padding: 10px;
+        }
+        table td {
+            border-bottom: 1px solid #CCCCCC;
+            border-right: 1px solid #CCCCCC;
+        }
+        p {
+            line-height: 24px;
+            margin: 10px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            color: #111111;
+            font-weight: normal;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-size: 26px;
+        }
+        h2 {
+            border-bottom: 1px dashed #CCCCCC;
+            font-size: 24px;
+            padding: 10px 0;
+        }
+        h3 {
+            font-size: 20px;
+            padding: 8px 0;
+        }
+        h4 {
+            font-size: 18px;
+            margin-left: 10px;
+            padding: 5px 0;
+        }
+        h5 {
+            font-size: 16px;
+            margin-left: 10px;
+            padding: 5px 0;
+        }
+        h6 {
+            font-size: 16px;
+            margin-left: 10px;
+            padding: 5px 0;
+        }
+        blockquote {
+            background: url("../../../img/blockquote.gif") no-repeat scroll left top #F4F5F7;
+            margin: 5px 10px;
+            padding: 10px 10px 10px 30px;
+        }
+        pre {
+            background: none repeat scroll 0 0 #EEEEEE;
+            margin: 5px 10px;
+            padding: 10px;
+        }
+        .sin_callout {
+            margin: 5px 10px;
+        }
+        .sin_header {
+            background-color: #F7F7F7;
+            border-bottom: 1px solid #CCCCCC;
+            height: 80px;
+            width: 100%;
+        }
+        .sin_title {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .sin_title_text {
+            color: #000000;
+            float: left;
+            line-height: 80px;
+        }
+        .sin_version {
+            color: #999999;
+            float: left;
+            font-size: 14px;
+            padding-top: 25px;
+            margin-left: 10px;
+        }
+        .sin_main {
+            margin: 0 auto;
+            width: 1000px;
+        }
+        .sin_navi {
+            float: left;
+            margin-bottom: 20px;
+            overflow-y: scroll;
+            padding: 0;
+            position: relative;
+            width: 279px;
+            z-index: 1;
+        }
+        .sin_navi_nomove {
+            position: fixed;
+            top: 0;
+        }
+        .sin_navi_ca a {
+            color: #333333;
+        }
+        .sin_navi_ca a:hover {
+            color: #16B28F;
+        }
+        .sin_navi_current {
+            border-right: 3px solid #16B28F;
+        }
+        .sin_navi_current a {
+            color: #16B28F;
+        }
+        .sin_content {
+            background-color: #FFFFFF;
+            border-left: 1px solid #CCCCCC;
+            float: left;
+            margin-left: -20px;
+            padding: 10px 20px;
+            position: relative;
+            width: 699px;
+            z-index: 2;
+        }
+        .sin_content_mar {
+            margin-left: 259px;
+        }
+        .sin_footer {
+            border-top: 1px solid #CCCCCC;
+            color: #999999;
+            height: 80px;
+            line-height: 80px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .sin_info {
+            background: none repeat scroll 0 0 #FFFFCC;
+            border: 1px solid #D5D4D4;
+            border-radius: 4px 4px 4px 4px;
+            color: #999999;
+            margin: 10px 0;
+            padding: 14px;
+        }
+        .sin_link_logo {
+            color: #16B28F;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+        .sin_text {
+            margin-bottom: 10px;
+        }
+        .d_callout {
+            margin-bottom: 10px;
+        }
+        .d_callout_info {
+            background: none repeat scroll 0 0 #F4F8FA;
+            border-left: 4px solid #5BC0DE;
+            padding: 10px;
+        }
+        .d_callout_warn {
+            background: none repeat scroll 0 0 #FCF8F2;
+            border-left: 4px solid #F0AD4E;
+            padding: 10px;
+        }
+        .d_callout_danger {
+            background: none repeat scroll 0 0 #FDF7F7;
+            border-left: 4px solid #D9534F;
+            padding: 10px;
+        }
+        .d_callout_success {
+            background: none repeat scroll 0 0 #F3F8F3;
+            border-left: 4px solid #50AF51;
+            padding: 10px;
+        }
+        .d_callout input {
+            background-color: rgba(0, 0, 0, 0);
+            font-size: 15px;
+            margin-bottom: 5px;
+            padding: 10px 5px 0 10px;
+        }
+        .d_callout textarea {
+            background-color: rgba(0, 0, 0, 0);
+        }
+        .d_callout_icons a {
+            color: #AAAAAA;
+            margin-left: 10px;
+        }
+        a.d_callout_icon_info {
+            color: #5BC0DE;
+        }
+        a.d_callout_icon_warn {
+            color: #F0AD4E;
+        }
+        a.d_callout_icon_danger {
+            color: #D9534F;
+        }
+        a.d_callout_icon_success {
+            color: #50AF51;
+        }
+        .clear {
+            clear: both;
+        }
+
+	</style>
+</head>
+<body>
+	<div class="sin_header">
+		<div class="sin_title">
+			<h1 class="sin_title_text">ONES开发文档</h1>
+			<span class="sin_version">V1.0</span>
+			<div class="clear"></div>
+		</div>
+		<div id="top_end"></div>
+	</div>
+	<div class="sin_main">
+		<div class="sin_navi" id="sin_navi_id">
+			<ul style="margin: 20px 0;">
+				    																					<li class="sin_navi_ca" style="width: 246px;" id="navi_category_4711">
+								<a href="#category_4711">
+									开始
+								</a>
+							</li>
+										<ul>
+																								<li style="width:236px" id="navi_text_17434">
+						<a href="#text_17434">
+							序言
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17435">
+						<a href="#text_17435">
+							目录结构
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17436">
+						<a href="#text_17436">
+							安装
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17437">
+						<a href="#text_17437">
+							关于Restful
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17471">
+						<a href="#text_17471">
+							关于Yaml
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17472">
+						<a href="#text_17472">
+							关于前端样式
+						</a>	
+					</li>
+											</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_4712">
+								<a href="#category_4712">
+									后端基础
+								</a>
+							</li>
+										<ul>
+																			<li style="width:236px" id="navi_text_17439">
+						<a href="#text_17439">
+							序言
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17455">
+						<a href="#text_17455">
+							Schema &amp; Migrate
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17456">
+						<a href="#text_17456">
+							基本控制器
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17457">
+						<a href="#text_17457">
+							基本模型
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17458">
+						<a href="#text_17458">
+							命名概念的理解
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17473">
+						<a href="#text_17473">
+							API参考
+						</a>	
+					</li>
+											</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_4713">
+								<a href="#category_4713">
+									前端基础
+								</a>
+							</li>
+										<ul>
+																			<li style="width:236px" id="navi_text_17440">
+						<a href="#text_17440">
+							序言
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17441">
+						<a href="#text_17441">
+							ones对象及前端配置
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17442">
+						<a href="#text_17442">
+							前端缓存接口
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17443">
+						<a href="#text_17443">
+							前端插件机制
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17444">
+						<a href="#text_17444">
+							DataAPI
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17445">
+						<a href="#text_17445">
+							iframe之间的交互
+						</a>	
+					</li>
+																<li class="sin_navi_ca" style="width:236px" id="navi_category_4715">
+					<a href="#category_4715">
+						通用视图
+					</a>
+				</li>
+							<ul>
+																			<li style="width:226px" id="navi_text_17450">
+						<a href="#text_17450">
+							通用视图是什么
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_17446">
+						<a href="#text_17446">
+							数据表格
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_17447">
+						<a href="#text_17447">
+							表单
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_17470">
+						<a href="#text_17470">
+							字段生成器
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_17448">
+						<a href="#text_17448">
+							单据
+						</a>	
+					</li>
+																										<li style="width:226px" id="navi_text_17449">
+						<a href="#text_17449">
+							查看详情
+						</a>	
+					</li>
+											</ul>
+																							<li style="width:236px" id="navi_text_17451">
+						<a href="#text_17451">
+							控制面板
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17452">
+						<a href="#text_17452">
+							前端插件一览
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17453">
+						<a href="#text_17453">
+							API参考
+						</a>	
+					</li>
+											</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_4714">
+								<a href="#category_4714">
+									基本模块
+								</a>
+							</li>
+										<ul>
+																			<li style="width:236px" id="navi_text_17459">
+						<a href="#text_17459">
+							I18N
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17460">
+						<a href="#text_17460">
+							用户系统
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17461">
+						<a href="#text_17461">
+							数据模型
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17462">
+						<a href="#text_17462">
+							可配置项
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17463">
+						<a href="#text_17463">
+							通用类型
+						</a>	
+					</li>
+																<li class="sin_navi_ca" style="width:236px" id="navi_category_4716">
+					<a href="#category_4716">
+						工作流
+					</a>
+				</li>
+												</ul>
+																									<li class="sin_navi_ca" style="width: 246px;" id="navi_category_4717">
+								<a href="#category_4717">
+									开发一个新应用
+								</a>
+							</li>
+										<ul>
+																			<li style="width:236px" id="navi_text_17464">
+						<a href="#text_17464">
+							创建目录结构
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17465">
+						<a href="#text_17465">
+							应用配置
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17466">
+						<a href="#text_17466">
+							创建Schema
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17467">
+						<a href="#text_17467">
+							创建I18N
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17468">
+						<a href="#text_17468">
+							创建后端控制器、模型与服务
+						</a>	
+					</li>
+																										<li style="width:236px" id="navi_text_17469">
+						<a href="#text_17469">
+							创建前端模块
+						</a>	
+					</li>
+											</ul>
+																			</ul>
+		</div>
+		<div class="sin_content" id="sin_content_id">
+																					<h2 id="category_4711">开始</h2>
+																								<h3 id="text_17434" class="sin_target">序言</h3>
+<div class="sin_text">
+    					<p><strong>此文档尚未编写完成</strong></p>
+<h2>关于</h2>
+<p>ONES是一个开源的企业管理软件。 前端使用AngularJS，后端使用ThinkPHP + MySQL(默认)开发。由TEam Swift(特思维团队)开发维护。</p>
+<h2>获得ONES</h2>
+<p>你可以通过版本库获得ONES的开发版本，也可以通过ONES官网下载打包的稳定版。</p>
+<p>版本库地址：<br>* <a href="https://github.com/nemoxiaolan/ones" rel="nofollow">ones@github</a><br>* <a href="http://git.oschina.net/xiaolan/ones" rel="nofollow">ones@oschina</a><br>* <a href="https://coding.net/u/ones/p/ones_erp/git" rel="nofollow">ones@coding.net</a></p>
+<h2>联系我们</h2> 
+<ul> 
+ <li>项目官网： <a href="https://ng-erp.com" rel="nofollow">https://ng-erp.com</a></li> 
+ <li>讨论 &amp; 反馈： <a href="http://forum.ng-erp.com" rel="nofollow">http://forum.ng-erp.com</a></li> 
+ <li>技术支持：@laofahai <a href="mailto:nemo@ng-erp.com" rel="nofollow">nemo@ng-erp.com</a></li> 
+ <li>商务合作：@li</li> 
+ <li>联系电话： 13325251626</li> 
+</ul>
+<h2>参与文档编写及语言包制作</h2>
+<p>请联系 <a href="mailto:nemo@ng-erp.com" rel="nofollow">nemo@ng-erp.com</a></p>
+<h2>版权申明</h2>
+			</div>
+
+																							<h3 id="text_17435" class="sin_target">目录结构</h3>
+<div class="sin_text">
+    					<p>ONES目录结构</p>
+			<p>
+				<pre><code class="text">/bower_components
+/ones
+  /apps
+    /someApp   # 某应用目录
+      /views      # 应用视图，非必选
+      /main.js   # 前端主逻辑，可自定义
+      /model.js  # 前端模型，可自定义
+      /plugin.js  # 前端插件，非必选
+  /bower_components # 软连接至根目录bower_components，打包应用后无需再做软连接
+  /common # 前端基本
+  /images 
+  /lib    # 前端库
+  /styles # 前端样式
+  /views # 前端基本视图
+  /app.html  # 主框架入口
+  /frame.html  # 内部框架主入库，各应用均由此进入
+  /index.html   # 登陆页
+/server  # 后端目录遵循ThinkPHP 3.2.x 版本
+  /Application
+    /SomeApp  # 某应用后端目录
+      /...
+      /Locale # 语言包目录
+          /zh-Hans.yml 
+      /Schema  # 应用Schema
+          /0_app.yml
+      /config.yml  # 应用基本配置
+  /migrations   # 数据库migrate文件
+  /vendor  # 后端第三方库
+  /composer.json
+  /composer.lock
+  /config.yml  # 后端基本配置
+  /gateway.php  # 后端主入口
+  /phinx.yml   # phinx配置
+</code></pre>
+			</p>
+								<p>ONES后端遵循ThinkPHP 3.2.x版本目录结构。不同的是在 Application 中增加了 <code>Schema</code>目录、<code>Locale</code>目录和 <code>config.yml</code>文件。</p>
+			</div>
+
+																						<h3 id="text_17436" class="sin_target">安装</h3>
+<div class="sin_text">
+    					<h2>Requirements</h2> 
+<ul> 
+ <li>bower</li> 
+ <li>grunt</li> 
+ <li>npm</li> 
+ <li>composer</li> 
+ <li>php 5.5.9+</li> 
+ <li>mysql 5.6.5+</li> 
+</ul>
+<p><strong>PHP和MySQL版本均为最低要求版本，安装前请先确认。</strong></p>
+<h2>通过CLI安装</h2> 
+<pre><code>$ git clone http://git.oschina.net/xiaolan/ones ones # 取得最新代码
+$ cd ones
+
+$ npm install # 安装依赖 非必须
+$ bower install # 安装依赖
+
+$ cd server
+$ composer install # 安装后端第三方依赖
+
+$ php install/install.php # 简易安装向导，根据提示步骤来
+
+$ cd ..
+$ grunt build # 打包前端文件 非必须，部署环境下使用
+</code></pre>
+<p>![](<a href="http://forum.ng-erp.com/uploads/files/1442061065698-771e90a8-89c1-440a-94fa-5bfec5cbf4a1.png" rel="nofollow">http://forum.ng-erp.com/uploads/files/1442061065698-771e90a8-89c1-440a-94fa-5bfec5cbf4a1.png</a>)</p>
+<p>安装完成后，访问 <code>http://domain.com/path/to/ones/</code>会自动跳转至/ones/dist目录。开发模式下前端访问/ones/ones目录</p>
+<h2>常见问题及注意事项</h2> 
+<ul> 
+ <li>注意bower需要使用非sudo权限执行</li> 
+ <li>lnmp用户注意mysql内存占用问题</li> 
+ <li>npm和composer速度慢的时候，使用国内镜像 <a href="http://npm.taobao.org/" rel="nofollow">http://npm.taobao.org/</a> 和 <a href="http://packagist.cn/" rel="nofollow">http://packagist.cn/</a> ；bower速度一般还行，如果不行的话 可以挂代理。</li> 
+</ul>
+<h2>dist</h2>
+<p>ONES源码库中并不包含dist目录，dist目录是ONES前端打包的目录；开发环境中建议访问/ones目录；部署环境中使用 <code>grunt build</code>来创建dist目录（注意修改前端DEBUG模式为false，后端不要修改）。</p>
+<h2>修改配置</h2> 
+<ul> 
+ <li>数据库连接配置： /server/phinx.yml</li> 
+ <li>后端配置： /server/Application/Common/Conf/config.php</li> 
+ <li>前端配置： /ones/common/config.js</li> 
+</ul>
+<p>以上配置通常通过安装向导安装完成后，会自动设置，无特殊情况通常不需要再手动修改。</p>
+<h2>安全指引</h2>
+<p>因为ONES 1.x之后的版本中大部分使用yaml格式为配置文件，但yaml格式在webserver中并没有被禁止访问的时候，可能会暴露敏感信息；所以在webserver的配置中，需要将 *.yml 文件设为禁止访问，这并不影响ONES使用。</p>
+<h2>升级</h2>
+<p>首先需要通过git获得最新源码，然后重新执行一遍<code>npm install</code>, <code>bower install</code>。最后同步数据库结构：</p> 
+<pre><code>php vendor/robmorgan/phinx/bin/phinx migrate
+</code></pre>
+			</div>
+
+																						<h3 id="text_17437" class="sin_target">关于Restful</h3>
+<div class="sin_text">
+    					<h2>Restful</h2>
+<p>ONES的前端与后端是完全分离的，通过restful API与后端进行交互。并且扩展了两种HTTP方法，分别是「EVENT」和「EVENT_GET」。数据交互格式为 <code>JSON</code>。</p>
+<p>后端的ThinkPHP提供了RestController，并且提供了 <code>$controller-&gt;response()</code> 方法。「ONES重写了此方法」，第二个参数为当前的 <code>$model</code> 对象，而非是返回数据格式。 如果传递了第二个参数 <code>$model</code> 对象，则会将返回的数据进行格式化处理（默认）。</p>
+<h2>自定义的request header</h2>
+<p>ONES在每次请求中增加了三个header，分别如下：<br>* <code>Client-Language</code> 标识客户端所使用的语言<br>* <code>Token</code> 为PHP的session_id()，用于判断用户<br>* <code>API-Version</code> 标识客户端需要使用的API版本</p>
+<h2>API版本</h2>
+<p>ONES支持请求不同版本的API方法，提供了对新旧版本升级更迭的解决方案。</p>
+			</div>
+
+																						<h3 id="text_17471" class="sin_target">关于Yaml</h3>
+<div class="sin_text">
+    					<p>ONES 1.x及之后版本所有的配置除ThinkPHP定义的之外全部使用 <code>Yaml</code> 格式。</p>
+<p>ONES 1.x及之后版本语言包也同上。</p>
+<p>后端使用<code>\Symfony\Component\Yaml</code>解析，前端使用<code>yaml.js</code>解析。</p>
+<p>Yaml语法可参见： <a href="http://www.yaml.org/" rel="nofollow">Yaml Offical</a></p>
+			</div>
+
+																						<h3 id="text_17472" class="sin_target">关于前端样式</h3>
+<div class="sin_text">
+    					<h3>Twitter Bootstrap</h3>
+<p>ONES使用了一个叫做<a href="https://github.com/todc/todc-bootstrap" rel="nofollow">todc-bootstrap</a>的 Google-styled theme。 但是这个包中包含了bootstrap的CSS和JS文件，所以请一定注意使用<code>bower --save</code>的时候手动删掉<code>app.html</code>, <code>frame.html</code>, <code>index.html</code> 中 bootstrap 的JS和CSS引用。</p>
+<h3>Font Awesome</h3>
+<p>ONES使用了<a href="http://fontawesome.io/" rel="nofollow">font-awesome</a>，在ONES中，如有任何配置用到了 <code>icon</code>项目，均可使用FA的图标字体，注意这里要去掉<code>fa-</code>前缀。eg: <code>icon: book</code></p>
+<h3>自定义样式</h3>
+<p>ONES的应用支持自定义样式，样式表文件位置随意。 注意在config.yml中引入即可：</p> 
+<pre><code>include:
+  css:
+    - path/to/customize/style.css
+
+# 框架内全局样式扩展支持
+global_include:
+  css: 
+    - path/to/global_style.css
+
+# 主框架页面样式扩展支持
+main_include:
+  css:
+    - path/to/global_style.css
+</code></pre>
+			</div>
+
+																														<h2 id="category_4712">后端基础</h2>
+																								<h3 id="text_17439" class="sin_target">序言</h3>
+<div class="sin_text">
+    					<h3>关于ThinkPHP</h3>
+<p>ONES使用的是ThinkPHP 3.2.2版本，通过composer安装。 关于为什么要使用TP，而不是更加现代化的Laravel等框架，是各种历史及现状原因造成的。这也导致了ONES自己做了一些其他框架已有的重复轮子。</p>
+<h3>composer</h3>
+<p>国内<code>神秘力量</code>让compoer越来越不稳定，所以请follow this: <a href="http://packagist.cn/" rel="nofollow">Packagist中国镜像站</a></p>
+<h3>关于数据库同步</h3>
+<p>目前为止，TP并没有提供数据库同步工具，而像Laravel, Yii等早已提供，这让我们艳羡不已，所幸发现了 <a href="https://github.com/robmorgan/phinx" rel="nofollow">phinx</a> 这个项目，经过一点小改造之后，已经基本完成了ONES的数据库migrate需求，虽然还做不到像Django那样根据Model自动生成migration文件， 但是可以通过Schema文件来自动migrate。</p>
+<p>具体请参见 <a href="http://ones.mydoc.io?v=5976&amp;t=17455" rel="nofollow">Schema &amp; Migrate</a> </p>
+			</div>
+
+																						<h3 id="text_17455" class="sin_target">Schema &amp; Migrate</h3>
+<div class="sin_text">
+    					<h3>起</h3>
+<p>由于ONES一直使用的是ThinkPHP，数据库同步一直是个大问题， 每次数据表结构有更新不得不手动更改， 每次发布版本不得不带上一个 xxx.sql。 一直也羡慕django_south这样的库，可以自动侦测model的更改，生成migration文件，并且自动更新数据表结构。 而其他PHP框架提供的方法也是只能手动写一个migration文件，包括ONES目前使用的 phinx 解决方案。</p>
+<p>如何不用每次有数据库更改都需要手动写migration呢？Schema的想法诞生了，并且在1.0版本开始被支持。</p>
+<h3>phinx</h3>
+<p>项目：<a href="https://github.com/robmorgan/phinx" rel="nofollow">phinx@github</a> 文档：<a href="http://docs.phinx.org/en/latest/" rel="nofollow">phinx@readthedoc</a></p>
+<p>Phinx makes it ridiculously easy to manage the database migrations for your PHP app. In less than 5 minutes you can install Phinx and create your first database migration. Phinx is just about migrations without all the bloat of a database ORM system or framework.</p>
+<h3>Schema文件</h3>
+<p>数据表Schema文件位置位于：<code>/server/Application/SomeApp/Schema</code> 目录，不限定于写一个文件，可以写多个。格式为yaml。</p>
+<p>eg:<br><del>~[yaml]<br>table_name: field_a:<br> type: string # string类型 可以省略<br> field_b: type: integer<br> blank: true<br> $meta: indexes:<br> field_a: # 可指定复合索引<br> fields: [field_a, field_b]<br> unique: true # 可指定唯一索引<br> field_b: # 单字段索引<br> foreign: other_table:<br> foreign_table: xxx # 手动指定关联表 主要用于多字段关联同一个数据表<br> foreign_key: xxx # 手动指定关联字段<br> options: # 创建的外键关联字段选项，默认为integer，名称为 other_table_id<br> blank:true restrict: # 外键约束<br> delete: CASCADE # 支持4种外键约束</del></p> 
+<pre><code><br>注意 `$meta` 选项， $meta中包含indexes 和 foreign两部分，分别为指定索引及外键。
+
+字段选项支持项目如下：
+</code></pre>
+<p>$available = array(<br> ‘limit’,<br> ‘default’,<br> ‘null’,<br> ‘identity’,<br> ‘precision’,<br> ‘scale’,<br> ‘after’,<br> ‘update’,<br> ‘comment’,<br> ‘signed’,<br> ‘timezone’,<br> ‘properties’,<br> ‘values’,<br>);<br><del>~</del></p>
+<h3>创建migration</h3>
+<p>ONES中migration文件开发时是可以复用的，只要在方法结束之前加入 <code>exit()</code> 。 如果有任何手动执行的SQL则只能单独写Migration文件，不能出现 <code>exit()</code> 否则会失效。</p>
+<p><code>php vendor/roxxxx/phinx/bin/phinx create SomeMig</code></p>
+<p>/server/migrations/xxxxx_some_mig.php 中可修改migration信息。</p>
+<h3>BaseMigration</h3>
+<p>所有的migration类都继承自<code>Common\Lib\BaseMigration</code>。BaseMigration继承自 phinx的 AbstractMigration，所以phinx提供的方法均可使用。</p> 
+<ul> 
+ <li>BaseMigration::fromYaml($app_name) # 解析某应用的Schema/xx.yaml 并同步至数据库</li> 
+ <li>BaseMigration::add_auth_node() # 同步RBAC授权节点</li> 
+</ul>
+			</div>
+
+																						<h3 id="text_17456" class="sin_target">基本控制器</h3>
+<div class="sin_text">
+    					<p>ONES提供了一系列的通用方法，抽象了大部分的CURD操作，位于：<code>\Common\Controller\BaseRestController</code>，也是所有Controller的入口。</p>
+<h3>属性列表：</h3> 
+<pre><code>protected $allowMethod = array();
+protected $allowType = array('json');
+protected $defaultType = 'json';
+
+//基本应用
+protected $baseApps = array('home', 'dataModel', 'dashboard', 'account');
+//已启用应用
+protected $activeApps = array();
+// 应用参数配置
+protected $appConfigs = array();
+// 后端参数配置
+protected $bootstrapConfigs = array();
+// 当前语言
+protected $currentLanguage = 'zh-cn';
+// 当前用户信息
+protected $user = array();
+// 当前公司信息
+protected $company = array();
+// 中断当前操作
+protected $breakAction = false;
+// 当前数据模型字段
+protected $dataModelFields = array();
+// 当前数据表名称(对应的模型名称，如data_model_field =&gt; DataModelField)
+protected $model_name;
+// 当前节点的授权flag
+protected $current_node_auth_flag;
+// 模块别名，eg: crm.customerCommunicate
+protected $module_alias;
+// 当前用户已授权节点
+static protected $authed_nodes;
+// 是否当前公司的超级管理账户
+protected $is_super_user = false;
+
+// 使用自定义的model
+protected $listModel;
+protected $readModel;
+protected $deleteModel;
+</code></pre>
+<h3>方法列表：</h3>
+<p>CURD方法：<br><del>~<br>public on_list($return=false)<br>public on_read($return=false)<br>public on_post()<br>public on_put()<br>public on_delete()<br><del>~</del></del></p>
+<p>其他方法：<br><del>~</del></p>
+<h1>用于list, read中的过滤器</h1>
+<p>protected _filter(&amp;$map)</p>
+<h1>用于list排序</h1>
+<p>protected _order(&amp;$order)</p>
+<h1>1、将数据模型加入至源数据viewFields</h1>
+<h1>2、将字段增加至是否可搜索(模糊)</h1>
+<p>protected assign_data_model_data</p>
+<h1>检测节点是否授权</h1>
+<p>protected check_permission($node=null)</p>
+<h1>是否登录</h1>
+<p>protected is_login()</p>
+<h1>登录请求</h1>
+<p>protected login_required()</p>
+<h1>应用是否已启用</h1>
+<p>protected is_app_active($app)</p>
+<h1>rest请求返回json方法</h1>
+<p>protected response($data, $model=null, $is_table=false)</p>
+<h1>快捷方式</h1>
+<p>protected error($msg)<br>protected success($msg)<br><del>~</del></p>
+<h3>控制器构造</h3>
+<p>构造函数中做了一些基础的工作，顺序如下：</p> 
+<ol> 
+ <li>根据常量定义支持的HTTP请求方法</li> 
+ <li>判断header中是否包含token，如果包含的话，根据TOKEN加载当前用户信息</li> 
+ <li>加载插件 before_controller_construct</li> 
+ <li>调用父类构造方法</li> 
+ <li>根据应用、模块、请求方法，组合当前请求的授权节点</li> 
+ <li>加载当前用户所属公司信息</li> 
+ <li>加载当前公司启用应用</li> 
+ <li>设定启用应用</li> 
+ <li>导入非当前应用的插件<code>tags.php</code> 及函数<code>function.php</code> 等信息</li> 
+ <li>解析基本运行配置</li> 
+ <li>记录当前使用的API接口版本</li> 
+ <li>判断当前客户端使用语言</li> 
+ <li>解析应用配置</li> 
+ <li>获得当前用户所有已授权的节点</li> 
+ <li>检测当前节点是否已授权</li> 
+ <li>调用插件 after_controller_construct</li> 
+</ol>
+			</div>
+
+																					<h3 id="text_17457" class="sin_target">基本模型</h3>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="text_17458" class="sin_target">命名概念的理解</h3>
+<div class="sin_text">
+    					<h2>Controller与Event</h2>
+<h2>Service与Model</h2>
+			</div>
+
+																					<h3 id="text_17473" class="sin_target">API参考</h3>
+<div class="sin_text">
+    </div>
+
+																														<h2 id="category_4713">前端基础</h2>
+																								<h3 id="text_17440" class="sin_target">序言</h3>
+<div class="sin_text">
+    					<h3>AngularJS</h3>
+<p>ONES目前使用1.3.x版本分支。 路由使用 <code>angular-route</code>。 angular启动是在加载后端配置之后。</p>
+<h3>多frame布局</h3>
+<p>前端HTML容器页面有 <code>login.html</code> <code>app.html</code> <code>frame.html</code> 三个文件。分别对应登陆界面、主框架、以及内容框架。 <code>app.html</code> 中ng-repeat了N个 <code>frame.html</code>。 frame.html中再路由至不同controller。</p>
+<p>由于各种不太舒服的原因，ONES1.x版本之前一直没有提供多frame切换功能。 1.x版本一个主要的更新就是提供了多frame页面布局，并且提供了主框架与内容框架之间的数据交互接口。相比单页面来说，优点显而易见，缺点是每个页面都会重新加载一次所需的静态文件。 所以ONES提供了类似<code>requirejs</code>的按需加载方式，在<code>config.yml</code> 文件中指定应用需加载的文件或全局加载文件等。</p>
+			</div>
+
+																								<h3 id="text_17441" class="sin_target">ones对象及前端配置</h3>
+<div class="sin_text">
+    					<h3>window.ones</h3>
+<p><code>window.ones</code> 是一个全局的变量（当前window中）。 ONES提供的缓存、插件、基本配置等都存储与ones对象上。</p>
+					    		<table cellpadding="0" cellspacing="0">
+		        <thead>
+			        <tr>
+			        				           		<th>属性</th>
+			            			           		<th>默认</th>
+			            			           		<th>说明</th>
+			            			        </tr>
+		        </thead>
+		        <tbody>
+		        					        <tr>
+		        							        	<td>
+				        		<p>DEBUG</p>
+				        	</td>
+				        					        	<td>
+				        		<p>true</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是否开启DEBUG模式，后端配置会覆盖此配置</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>default_language</p>
+				        	</td>
+				        					        	<td>
+				        		<p>zh-Hans</p>
+				        	</td>
+				        					        	<td>
+				        		<p>默认使用语言 </p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>remote_entry</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>后端Rest API地址，以/结束</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>api_version</p>
+				        	</td>
+				        					        	<td>
+				        		<p>1.0</p>
+				        	</td>
+				        					        	<td>
+				        		<p>API版本</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>app_info</p>
+				        	</td>
+				        					        	<td>
+				        		<p>{}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>当前应用信息(框架内)</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>user_info</p>
+				        	</td>
+				        					        	<td>
+				        		<p>{}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>当前用户信息</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>pluginRegister</p>
+				        	</td>
+				        					        	<td>
+				        		<p>function() {}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>插件注册器</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>pluginScope</p>
+				        	</td>
+				        					        	<td>
+				        		<p>{}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>插件变量</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>caches</p>
+				        	</td>
+				        					        	<td>
+				        		<p>{}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>前端缓存接口</p>
+				        	</td>
+				        					        </tr>
+		        			        </tbody>
+    		</table>
+								<p>前四项为可配置项目。</p>
+			</div>
+
+																						<h3 id="text_17442" class="sin_target">前端缓存接口</h3>
+<div class="sin_text">
+    					<p>ones提供了一个封装的前端缓存API，使用三级缓存。</p>
+<p>按照优先级：<code>ones.caches._cachesData对象</code> &gt; <code>sessionStorage</code> &gt; <code>localStorage</code></p>
+<h2>缓存对象</h2> 
+<ul> 
+ <li>ones.caches._cacheData 使用JS变量存储，生命周期为当前页面，刷新或者关闭后缓存周期结束</li> 
+ <li>sessionStorage 使用HTML5 sessionStorage API，生命周期为当前页面，关闭当前页面后失效</li> 
+ <li>localStorage 使用HTML localStorage API，除非手动清除，不会失效。</li> 
+</ul>
+<h3>ones.caches.setItem(k, v, persistence)</h3>
+<p>setItem方法接受三个参数：</p> 
+<ul> 
+ <li>k 缓存键</li> 
+ <li>v 缓存值， 支持存入数组或者对象，会自动对数据JSON化处理</li> 
+ <li>persistence 是否持久化，可选：-1,0,1；分别使用ones.caches._cachesData对象，sessionStorage, localStorage。</li> 
+</ul>
+<h3>ones.caches.getItem(k)</h3>
+<p>getItem方法会按照优先级依次尝试取得缓存数据，如无结果会返回null；会自动尝试toJson() 转换为数组或者对象。</p>
+<h3>ones.caches.clear(level)</h3>
+<p>接受level参数，可选：-1,0,1；默认会清除所有缓存。</p>
+			</div>
+
+																						<h3 id="text_17443" class="sin_target">前端插件机制</h3>
+<div class="sin_text">
+    					<p>ONES的前端插件是通过<code>/ones/lib/plugins.js</code>实现的</p> 
+<ul> 
+ <li><code>ones.plugins</code> 插件方法注册对象，所有插件最终的执行函数都会定义到此对象中。</li> 
+ <li><code>ones.pluginHooks</code> 钩子列表</li> 
+ <li><code>ones.pluginVariables</code> 插件运行时变量，插件执行函数本身并无返回值，所有需交互的数据通过此对象。 <strong>此对象为私有，交互通过ones.pluginScope.get/set/push等方法</strong></li> 
+ <li><code>ones.pluginScope</code> 插件变量作用域。</li> 
+ <li><code>ones.pluginRegister</code> 插件注册方法，接受两个参数，第一个参数为插件挂载的钩子名称，第二个是插件的执行函数。第二个参数也可以在将方法注册到ones.plugins之后传入函数名称。</li> 
+ <li><code>ones.pluginsModule</code> angular模块，通过注入pluginExecutor使用。调用：<code>pluginExecutor.callPlugin(hookName, param1, param2 ... )</code></li> 
+</ul>
+<p>ONES的前端插件定义需要定义在main.js的angular.module之前。eg:<br><del>~<br> ones.pluginRegister(“someHookName”, function(injector, defer, param1, param2){<br> //do something<br> ones.pluginScope.set(“foo”, “some value”);</del></p> 
+<pre><code>    //defer.resolve(result);
+    //ones.pluginScope.set("defer", defer);
+})
+</code></pre> 
+<pre><code>插件执行函数前两个参数固定为injector和defer, injector用于手动获取angular的service, factory等。defer为延迟对象，当需和远程交互时，回调中执行`defer.resolve(result);`
+后面的参数在调用时传入。
+
+插件调用：
+</code></pre> 
+<pre><code>.controller("SomeController", [...., "pluginExecutor", function(plugin){
+    plugin.callPlugin("someHookName", param1, param2);
+
+    foo = ones.pluginScope.get("foo");
+
+    //ones.pluginScope.get("defer").$promise.then(...);
+}])
+</code></pre>
+<p><del>~<br>会执行所有挂载在<code>someHookName</code>上的插件执行函数。</del></p>
+			</div>
+
+																																				<h3 id="text_17444" class="sin_target">DataAPI</h3>
+<div class="sin_text">
+    					<h1>DataAPI</h1>
+<p>数据接口(DataAPI)是ONES中对angular模型的定义名称，在MVVM中提供M层的功能，需定义模型对应的应用、模块、数据表，以及定义和后端Restful API交互的$resource。 通过约定的配置 + 通用视图可实现绝大部分的显示， 而无需写复杂的HTML和controller逻辑。</p>
+<p>我们定义一个<code>Department.UserAPI</code>，注意命名方式为：AppAlias.ucfirst() + “.” + ModuleName.ucfirst() + “API” 注意中间的点</p> 
+<pre><code><br>.service("Department.UserAPI", ["$rootScope", "ones.dataAPIFactory", "$q", "$http", "ones.config", function($rootScope, res, $q, $http, conf){
+    this.config = {
+        app: '', // 此三项必选
+        module: '',
+        table: '',
+    };
+    
+    //resource资源对象，内部以.api 命名
+    this.resource = res.getResourceInstance({
+        uri: "department/user",
+        extra_methods: ['api_get', 'api_query'] // 支持这两个方法扩展 
+    });
+
+    this.unicode = function(item) {} // 返回当前对象实例的主显名称
+    this.unicode_lazy = function(id) {} //返回当前对象实例的主显名称（需从后端查询情况，返回promise）
+
+    //数据API方法，可自定义，因为需要和后端交互，所以这里使用了延迟对象
+    this.login = function(loginInfo) {
+        var defer = $q.defer();
+        $http.post(conf.BSU+'passport/userLogin', loginInfo).
+            success(function(data, status, headers, config) {
+                if(data.error) {
+                    defer.reject(toLang(data.msg, "messages", $rootScope));
+                } else if(data.sessionHash){
+                    defer.resolve(data.sessionHash);
+                }
+            }).
+            error(function(data, status, headers, config) {
+                defer.reject(toLang(data, "messages", $rootScope));
+            });
+        return defer;
+    };
+}]);
+</code></pre>
+<p>定义好之后就可以使用了：</p> 
+<pre><code>    //...前面通过注入器注入 ones.dataApiFactory 或者直接注入具体的数据API
+    var User = dataApiFactory.init("department", "user");
+    $scope.doLogin = function(){
+        User.login($scope.loginInfo).promise.then(..., ...)  //User.login的具体逻辑实现可以自定义，不一定非得返回延迟对象。
+    }
+    //...
+</code></pre>
+								<h6 id="widget_438354">api.config 可配置项目</h6>
+			
+					    		<table cellpadding="0" cellspacing="0">
+		        <thead>
+			        <tr>
+			        				           		<th>属性</th>
+			            			           		<th>默认</th>
+			            			           		<th>说明</th>
+			            			        </tr>
+		        </thead>
+		        <tbody>
+		        					        <tr>
+		        							        	<td>
+				        		<p>app</p>
+				        	</td>
+				        					        	<td>
+				        		<p>-</p>
+				        	</td>
+				        					        	<td>
+				        		<p>必选，指定当前应用</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>module</p>
+				        	</td>
+				        					        	<td>
+				        		<p>-</p>
+				        	</td>
+				        					        	<td>
+				        		<p>必选，指定当前模块</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>table</p>
+				        	</td>
+				        					        	<td>
+				        		<p>-</p>
+				        	</td>
+				        					        	<td>
+				        		<p>必选，指定对应的数据表</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>fields</p>
+				        	</td>
+				        					        	<td>
+				        		<p>{}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>非必选，将会同Schema信息合并，可指定字段的配置，配置项目见下表。</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>filters</p>
+				        	</td>
+				        					        	<td>
+				        		<p>{}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>指定过滤器字段，具体配置见<a href="http://www.oschina.net" rel="nofollow">过滤器</a></p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>list_display</p>
+				        	</td>
+				        					        	<td>
+				        		<p>[]</p>
+				        	</td>
+				        					        	<td>
+				        		<p>指定在grid中显示的字段</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>unaddable/uneditable</p>
+				        	</td>
+				        					        	<td>
+				        		<p>[]</p>
+				        	</td>
+				        					        	<td>
+				        		<p>指定在表单中不可用的字段</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>extra_selected_actions</p>
+				        	</td>
+				        					        	<td>
+				        		<p>[]</p>
+				        	</td>
+				        					        	<td>
+				        		<p>扩展grid选中项操作</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>undetailable</p>
+				        	</td>
+				        					        	<td>
+				        		<p>[]</p>
+				        	</td>
+				        					        	<td>
+				        		<p>指定在详情查看中不显示的字段</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>detailable</p>
+				        	</td>
+				        					        	<td>
+				        		<p>true</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是否可查看详情</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>detail_split</p>
+				        	</td>
+				        					        	<td>
+				        		<p>{}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>分栏式查看详情配置，具体配置参见[查看详情]</p>
+				        	</td>
+				        					        </tr>
+		        			        </tbody>
+    		</table>
+								<h6 id="widget_438356">api.config.fields 配置项目</h6>
+			
+					    		<table cellpadding="0" cellspacing="0">
+		        <thead>
+			        <tr>
+			        				           		<th>属性</th>
+			            			           		<th>默认值</th>
+			            			           		<th>说明</th>
+			            			        </tr>
+		        </thead>
+		        <tbody>
+		        					        <tr>
+		        							        	<td>
+				        		<p>addable</p>
+				        	</td>
+				        					        	<td>
+				        		<p>true</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是否在新增表单中出现</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>editable</p>
+				        	</td>
+				        					        	<td>
+				        		<p>true</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是否在修改表单中出现</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>detailable</p>
+				        	</td>
+				        					        	<td>
+				        		<p>true</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是否在详情表单中出现</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>widget</p>
+				        	</td>
+				        					        	<td>
+				        		<p>text</p>
+				        	</td>
+				        					        	<td>
+				        		<p>表单输入控件，参见 <a href="http://www.oschina.net" rel="nofollow">字段生成器</a></p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>data_source</p>
+				        	</td>
+				        					        	<td>
+				        		<p>’’</p>
+				        	</td>
+				        					        	<td>
+				        		<p>select等控件的数据源，支持数组和DataAPI形式</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>data_source_query_param</p>
+				        	</td>
+				        					        	<td>
+				        		<p>{}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>数据源查询时的条件</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>get_display</p>
+				        	</td>
+				        					        	<td>
+				        		<p>function() {}</p>
+				        	</td>
+				        					        	<td>
+				        		<p>可选，返回grid和detail中的显示，可做html拼接或filter等</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>cell_filter</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>grid和detail中显示文本的过滤器</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>detail_filter</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>detail中的过滤器，如果指定此值，则detail中cell_filter会被覆盖</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>label</p>
+				        	</td>
+				        					        	<td>
+				        		<p>camelCaseSpace(field)|lang</p>
+				        	</td>
+				        					        	<td>
+				        		<p>字段名称</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>help_text</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>表单中的帮助提示文字</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>required</p>
+				        	</td>
+				        					        	<td>
+				        		<p>true</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是否必选</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>multiple</p>
+				        	</td>
+				        					        	<td>
+				        		<p>false</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是否可多选，用户select等widget</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>map</p>
+				        	</td>
+				        					        	<td>
+				        		<p>field</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>search_able</p>
+				        	</td>
+				        					        	<td>
+				        		<p>false</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是否可搜索，可选true, false, 1, 2<br>true和1为模糊搜索，2为精准匹配</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>value</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>默认值</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>ensureUnique</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>是否唯一，值为DataAPI字符串</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>其他HTML属性</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>支持style, class, min, max等等</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>其他自定义控件所需属性</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        </tr>
+		        			        </tbody>
+    		</table>
+			</div>
+
+																							<h3 id="text_17445" class="sin_target">iframe之间的交互</h3>
+<div class="sin_text">
+    					<p>ONES 1.x之后版本为多iframe切换，主框架和子frame之间的数据沟通就成了一个比较麻烦的事儿。 所以ONES提供了一系列父/子框架之间的交互接口。</p>
+<h3>主框架向子框架广播</h3>
+<p>window.$broadcast_frame(id, data)<br>参数id为框架的顺序，frames.indexOf(frame)，data为要广播的数据，通常为JS对象。<br>eg:<br><del>~<br>window.$broadcast(1, {event: ‘some_event’, data:{ foo:bar } });<br><del>~</del></del></p>
+<h3>子框架向主框架冒泡</h3>
+<p>window.$emit_root(opts);<br>参数opts为要冒泡的数据，通常为JS对象，支持回调函数。</p>
+<p>eg:</p> 
+<pre><code>window.$emit_root({
+    event: 'confirm',
+    data: {},
+    callback: function() {}
+});
+</code></pre>
+<h3>快捷方式</h3>
+<p>框架中的 <code>RootFrameService</code> 服务提供了子框架向父框架冒泡事件的一些通用方法，如alert, confirm, close, open_frame等等</p>
+					    		<table cellpadding="0" cellspacing="0">
+		        <thead>
+			        <tr>
+			        				           		<th>方法/属性</th>
+			            			           		<th>参数</th>
+			            			           		<th>默认</th>
+			            			           		<th>说明</th>
+			            			        </tr>
+		        </thead>
+		        <tbody>
+		        					        <tr>
+		        							        	<td>
+				        		<p>frame_index</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>当前框架的id</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>open_frame</p>
+				        	</td>
+				        					        	<td>
+				        		<p>同frames.add</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>打开一个新的窗口</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>close</p>
+				        	</td>
+				        					        	<td>
+				        		<p>id</p>
+				        	</td>
+				        					        	<td>
+				        		<p>当前窗口</p>
+				        	</td>
+				        					        	<td>
+				        		<p>关闭指定窗口当前窗口</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>confirm</p>
+				        	</td>
+				        					        	<td>
+				        		<p>msg 提示信息内容<br>callback 回调函数</p>
+				        	</td>
+				        					        	<td>
+				        		
+				        	</td>
+				        					        	<td>
+				        		<p>弹出一个$modal确认对话框</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>alert</p>
+				        	</td>
+				        					        	<td>
+				        		<p>opts</p>
+				        	</td>
+				        					        	<td>
+				        		<p>同$alert 或者直接传递提示内容</p>
+				        	</td>
+				        					        	<td>
+				        		<p>弹出一个$alert提示框</p>
+				        	</td>
+				        					        </tr>
+		        			        </tbody>
+    		</table>
+			</div>
+
+																<h3 id="category_4715">通用视图</h3>
+																						<h4 id="text_17450" class="sin_target">通用视图是什么</h4>
+<div class="sin_text">
+    					<h3>通用视图是什么</h3>
+<p>通用视图是ONES中极大抽象前端view层代码的东西，除了提供一些常用的方法快捷方式外，更大的作用是为一些常用的视图显示及操作提供通用方法。 可以大部分的省略ONES模块中的controller以及view代码。<br>目前通用视图中包含 <code>「grid」, 「form」，「detail_view」</code>，<code>「bill」</code> 四部分。</p>
+<h3>前端全局路由</h3>
+<p>首先确认一点「ONES使用的是<code>angular-route</code>而非<code>ui-router</code>」。为什么不用ui-router后续再说。</p>
+<p><code>ones.commonViewModule.config</code> 方法中定义了按照ONES的方式开发的模块的通用路由匹配，如：<br><del>~<br>angular.module(‘ones.commonViewModule’, [])<br>.config([‘$routeProvider’, function($route){<br> $route.when(<br> // /:app/:module<br> // /:app/:module/add<br> // /:app/:module/edit/:id<br> // … and more<br> );<br>}])<br><del>~</del></del></p>
+<p>由于 ones.commonViewModule 在框架中是加载在 <code>ones.app.appName.main</code> 之后的，所以如果你在应用中写了路由规则，则会覆盖通用视图中的默认路由，并交由自定义的controller处理。</p>
+<p>ONES新版本已经完全废弃了以往的自定义resource和model，而全部使用 「数据API」模式。按照约定的命名方式则通用视图会根据路由匹配到的信息自动获得数据API及其resource等，并在grid, form, detail_view中使用。</p>
+			</div>
+
+																						<h4 id="text_17446" class="sin_target">数据表格</h4>
+<div class="sin_text">
+    					<h2>通用视图之 Grid 数据表格</h2>
+<p><img src="http://forum.ng-erp.com/uploads/files/1434028981442-2d85acf8-846c-477c-90e9-795b382251dd.png" alt="2D85ACF8-846C-477C-90E9-795B382251DD.png"> </p>
+<p>如图所示，左侧为数据表格主显示区域，右侧为数据过滤器（可通过点击过滤器按钮切换是否显示）。<br>* 可以通过行开始的复选框选择并进行选中项操作，主要用于多选操作。 在行上面点击右键可显示选中项目操作。<br>* 如果指定字段为 <code>search_able</code> 对应字段列底部会出现模糊/精准搜索框。<br>* 如果指定字段为 <code>sortable</code> 对应字段列点击列头可进行排序。</p>
+<h3>开始使用</h3>
+<p>ONES使用自己开发的 <code>ones.gridViewModule</code>，使用table布局，相比ngGrid功能要少一些，但是效率及响应速度要好的多。</p>
+<p>如果你的应用使用到了grid，在定义module时引入它。</p> 
+<pre><code># /ones/apps/yourApp/main.js
+
+angular.module('ones.app.yourApp.main', [
+    'ones.gridViewModule'
+]);
+</code></pre>
+<p>如果使用通用路由，则无需再定义grid的配置，对其进行自定义及扩展等，可在「数据API」中的约定配置进行。</p>
+			</div>
+
+																					<h4 id="text_17447" class="sin_target">表单</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_17470" class="sin_target">字段生成器</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_17448" class="sin_target">单据</h4>
+<div class="sin_text">
+    </div>
+
+																					<h4 id="text_17449" class="sin_target">查看详情</h4>
+<div class="sin_text">
+    </div>
+
+																											<h3 id="text_17451" class="sin_target">控制面板</h3>
+<div class="sin_text">
+    </div>
+
+																					<h3 id="text_17452" class="sin_target">前端插件一览</h3>
+<div class="sin_text">
+    </div>
+
+																					<h3 id="text_17453" class="sin_target">API参考</h3>
+<div class="sin_text">
+    </div>
+
+																														<h2 id="category_4714">基本模块</h2>
+																							<h3 id="text_17459" class="sin_target">I18N</h3>
+<div class="sin_text">
+    </div>
+
+																					<h3 id="text_17460" class="sin_target">用户系统</h3>
+<div class="sin_text">
+    </div>
+
+																						<h3 id="text_17461" class="sin_target">数据模型</h3>
+<div class="sin_text">
+    					<h3>关于数据模型</h3>
+<p>数据模型是ONES早期版本中提出的概念，目的在于可以灵活扩展数据表字段；引入Schema API后，ONES v1.x中的数据模型部分更是变得更加底层化，基本完全合并到Schema结构中；并且将可搜索字段和不可搜索字段数据表分离，解决了早期版本中数据模型字段不可搜索的弊端。</p>
+<h3>为模块启用数据模型</h3>
+<p>以往来单位为例：</p>
+<p>新建 <code>/front-end/apps/contactsCompany/plugin.js</code> 并将其加入全局引用JS中</p> 
+<pre><code>(function(window, angular, ones) {
+
+    // 注册到可支持自定义字段
+    ones.pluginRegister('data_model_supported', function(injector, defered) {
+        ones.pluginScope.append('data_model_supported', {
+            label: _('contactsCompany.Contacts Company') + _('common.Module'),
+            value: 'contactsCompany.contactsCompany'
+        });
+    });
+
+})(window,window.angular,window.ones);
+</code></pre> 
+<pre><code># server/Application/ContactsCompany/config.yml
+
+#....
+global_include:
+    js:
+        - apps/contactsCompany/plugin
+#....
+</code></pre>
+<p>这样就完成了为往来单位基本模块启用扩展字段的功能。</p>
+<h3>模型字段扩展配置</h3>
+<p><strong>模型字段扩展配置会默认覆盖可选择的配置(search_able, widget, data_type等)</strong><br>扩展配置语法为：<code>key:value</code> 每行一个。支持列表如下 <code>前端数据API中的config.fields中支持的配置均可使用</code>：<br><del>~<br>list_display:true # 是否在列表中显示 默认 false<br>sortable:true # 是否可排序 默认false<br>required:false # 是否必填，默认 true<br>widget:select # 输入控件 默认 text<br>data_source:[1,2,3] # 数据源。 可指定为数组或前端数据API。 数组最好不要使用关联数组（JS中的对象）<br>filters:link # 加入过滤器<br>blank:true # 对应required，是否可为空。默认为false<br><del>~</del></del></p>
+			</div>
+
+																					<h3 id="text_17462" class="sin_target">可配置项</h3>
+<div class="sin_text">
+    </div>
+
+																					<h3 id="text_17463" class="sin_target">通用类型</h3>
+<div class="sin_text">
+    </div>
+
+																<h3 id="category_4716">工作流</h3>
+																															<h2 id="category_4717">开发一个新应用</h2>
+																								<h3 id="text_17464" class="sin_target">创建目录结构</h3>
+<div class="sin_text">
+    					<h3>目录结构</h3>
+<p>参考 <a href="http://ones.mydoc.io?v=5976&amp;t=17435" rel="nofollow">目录结构</a> 一节</p>
+<h3>使用工具</h3>
+<p>ONES自带了一个用python写的小脚本，用于创建一个应用的基本目录结构或者应用的模块的文件，并且将其加入git。位于 /utils/builder/</p>
+<p>使用方法如下：<br><del>~<br>$ cd /path/to/ones<br>$ python utils/builder app.py -n appAlias -a ‘Author Name’ -l ‘<a href="http://author.link" rel="nofollow">http://author.link</a>’<br>$ python utils/builder module.py -a appAlias -m AppModuleName<br><del>~</del></del></p>
+<p>要注意参数大小写，应用别名首字母小写的驼峰命名，模块名称使用首字母大写的驼峰命名。</p>
+<h3>手动创建</h3>
+<p>参考 <a href="http://ones.mydoc.io?v=5976&amp;t=17435" rel="nofollow">目录结构</a> 一节。</p>
+			</div>
+
+																								<h3 id="text_17465" class="sin_target">应用配置</h3>
+<div class="sin_text">
+    					<p>ONES的应用使用统一的配置文件，格式为yaml，位于<code>/path/to/ones/server/Application/SomeApp/config.yml</code>。</p>
+<h3>可配置项目列表</h3>
+					    		<table cellpadding="0" cellspacing="0">
+		        <thead>
+			        <tr>
+			        				           		<th>配置项</th>
+			            			           		<th>类型</th>
+			            			           		<th>说明</th>
+			            			        </tr>
+		        </thead>
+		        <tbody>
+		        					        <tr>
+		        							        	<td>
+				        		<p>alias</p>
+				        	</td>
+				        					        	<td>
+				        		<p>string</p>
+				        	</td>
+				        					        	<td>
+				        		<p>应用别名，必填。</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>author</p>
+				        	</td>
+				        					        	<td>
+				        		<p>string</p>
+				        	</td>
+				        					        	<td>
+				        		<p>应用作者</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>link</p>
+				        	</td>
+				        					        	<td>
+				        		<p>string</p>
+				        	</td>
+				        					        	<td>
+				        		<p>应用介绍链接</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>requirements</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>依赖应用的别名</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>load_modules</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>前端加载的其他angular模块</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>auth_nodes</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>RBAC授权节点</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>auth_dont_need_login</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>无需登录的节点</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>auth_dont_need_check</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>需登录但无需检查的节点</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>include</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>包含js和css两个子数组，用于在框架中当前应用引入。</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>global_include</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>同上，用于框架中全局引入(需应用启用)。</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>force_global_include</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>同上，但不需应用启用，强制引入。</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>main_include</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>包含js和css两个子数组，用于主框架中引入。</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>navs</p>
+				        	</td>
+				        					        	<td>
+				        		<p>array</p>
+				        	</td>
+				        					        	<td>
+				        		<p>导航菜单</p>
+				        	</td>
+				        					        </tr>
+		        					        <tr>
+		        							        	<td>
+				        		<p>load_all_i18n</p>
+				        	</td>
+				        					        	<td>
+				        		<p>boolean</p>
+				        	</td>
+				        					        	<td>
+				        		<p>是否加载所有语言包，默认会加载当前应用及其依赖应用。</p>
+				        	</td>
+				        					        </tr>
+		        			        </tbody>
+    		</table>
+								<h3>静态文件引入</h3>
+<p>include, global_include, force_global_include, main_include<br>分别用于当前应用引入、已启用应用框架内全局引入、忽略是否已启用检测的强制框架内全局引入、主框架引入。</p>
+<p>它们均需要包含js和css两个数组，并且忽略扩展名。 注意如果有前端功能，include是必须的，ONES前端不会加载除HTML中引入和声明引入的静态文件之外的任何文件。</p>
+<p>eg:<br><del>~<br>…<br>include: - js:<br> - apps/appAlias/main<br>main_include: - css:<br> - apps/appAlias/statics/customize_style<br>…<br><del>~</del></del></p>
+<h3>auth_nodes 授权节点</h3>
+<p>ONES中使用RBAC来对用户的权限进行认证，并且区分出9种情况下的行级权限，如下属、部门等。在ONES中我们称节点是否支持行级权限为 「flag」。 写法如下：</p>
+<p>不支持行级权限：<br><del>~<br>- sale.orders.get<br><del>~<br>支持行级权限：<br><del>~<br>- sale.orders.get|flag<br><del>~<br>前面的sale.orders.get命名方法为：应用别名+模块名称首字母小写+rest方法名/controller方法名称。<br><code>|flag</code> 代表此节点支持行级权限。</del></del></del></del></p>
+<h3>导航菜单</h3>
+<p>ONES前端支持三级导航，第一级位于页面顶部，第二级、第三级位于页面左侧，二级菜单可折叠。<br>在配置项目中通过 <code>navs</code> 提现。 eg:<br><del>~<br>navs: Base Data Set: # 一次菜单显示名，会自动转化语言包<br> app: home # 所属应用别名，用于语言包处理<br> icon: dashboard # 图标，所有导航菜单项目均可使用此参数<br> children: # 二次菜单数组<br> System Common Data: # 同上<br> app: common # 注意此参数必选，否则会导致语言包错误，不能正确显示<br> children: Common Type:<br> app:home link: home/commonType # 具体链接 =&gt; frame.html#/home/commonType<br><del>~</del></del></p>
+			</div>
+
+																					<h3 id="text_17466" class="sin_target">创建Schema</h3>
+<div class="sin_text">
+    </div>
+
+																					<h3 id="text_17467" class="sin_target">创建I18N</h3>
+<div class="sin_text">
+    </div>
+
+																					<h3 id="text_17468" class="sin_target">创建后端控制器、模型与服务</h3>
+<div class="sin_text">
+    </div>
+
+																					<h3 id="text_17469" class="sin_target">创建前端模块</h3>
+<div class="sin_text">
+    </div>
+
+																									
+				  		<div class="sin_info" style="margin-top: 10px;">
+	  			Present by TEam Swift.
+https://ng-erp.com  http://forum.ng-erp.com
+	  		</div>
+	  				</div>
+		<div class="clear"></div>
+	</div>
+	<div id="bottom_begin"></div>
+	<div class="sin_footer">
+		<div>
+			Powered by <a href="http://www.oschina.net" target="_blank">开源中国</a>
+		</div>
+	</div>
+	<script>
+		//计算图片的真实大小，如果超过编辑区域，则进行限制
+		var resizePicWidth = function(pic_width){
+			var imgs = document.getElementsByTagName("img");
+            var j=0;
+			for(var i=0;i<imgs.length;i++){
+                var realWidth;	//真实的宽度
+                var realHeight;		//真实的高度
+                //这里做下说明，$("<img/>")这里是创建一个临时的img标签，类似js创建一个new Image()对象！
+				var newImg = new Image();
+				newImg.onload=function() {
+                    realWidth = imgs[j].width;
+                    realHeight = imgs[j].height;
+                    //如果真实的宽度大于规定的宽度就按照100%显示
+                    if(realWidth>=pic_width){
+						imgs[j].style.width=(pic_width) + "px";
+                    } else{//如果小于浏览器的宽度按照原尺寸显示
+						imgs[j].style.width=realWidth+'px';
+                    }
+                    j++;
+                }
+				newImg.src=imgs[j].src;
+			}
+
+		}
+		var currentNode = null;
+		window.onscroll=function(){
+            var h = document.getElementById("top_end").getBoundingClientRect().top;
+            if(h<=0){
+				document.getElementById("sin_navi_id").className='sin_navi sin_navi_nomove';
+				document.getElementById("sin_content_id").className='sin_content sin_content_mar';
+            }else{
+                document.getElementById("sin_navi_id").className='sin_navi';
+                document.getElementById("sin_content_id").className='sin_content';
+            }
+            comLayout();
+            var arr= new Array();
+            var index = 0;
+			var sinTargets = getClass("h2","sin_target");
+			for(var i=0;i<sinTargets.length;i++){
+                var th = sinTargets[i].getBoundingClientRect().top - 80;	                if(th<=0){
+                    arr[index] = new Array();
+                    arr[index][0] = sinTargets[i].getAttribute("id");
+                    arr[index][1] = th;
+                    index++;
+                }
+			}
+
+            var curr = bubbleSort(arr);
+            if(curr!=null && curr!=currentNode){
+				var oldCurrIds = getClass("li","sin_navi_current");
+                if(oldCurrIds && oldCurrIds[0]){
+                    var oid=oldCurrIds[0].getAttribute("id");
+                    document.getElementById(oid).className=" ";
+                }
+				document.getElementById("navi_"+curr).className="sin_navi_current";
+                currentNode = curr;
+            }
+        }
+		
+		
+	    window.onresize = function(){
+            comLayout();
+		}
+
+        var ch = document.getElementById("sin_navi_id").offsetHeight;
+
+	    function comLayout() {
+	        var h = document.documentElement.clientHeight;
+	    	if(ch<h){
+	    		return;
+	    	}
+		    var i = document.getElementById("bottom_begin").getBoundingClientRect().top;
+	        if(i<h){
+                document.getElementById("sin_navi_id").style.height=(i+"px");
+		   	}else{
+                document.getElementById("sin_navi_id").style.height=(h+"px");
+		   	}
+	    }
+	    
+	    function bubbleSort(arr){
+	    	var i= arr.length;
+	    	if(i<=0){
+	    		return null;
+	    	}
+	    	var j;
+			var tempExchangVal;
+			while(i>0){
+				for(j=0;j<i-1;j++){
+					if(arr[j][1] < arr[j+1][1]){
+						tempExchangVal=arr[j];
+						arr[j]=arr[j+1];
+						arr[j+1]=tempExchangVal;
+					}
+				}
+				i--;
+			}
+			return arr[0][0];
+		}
+	    comLayout();
+	    resizePicWidth(680);
+
+        function getClass(tagname, className) { //tagname指元素，className指class的值
+            //判断浏览器是否支持getElementsByClassName，如果支持就直接的用
+            if (document.getElementsByClassName) {
+                return document.getElementsByClassName(className);
+            }
+            else {    //当浏览器不支持getElementsByClassName的时候用下面的方法
+                var tagname = document.getElementsByTagName(tagname);  //获取指定元素
+                var tagnameAll = [];     //这个数组用于存储所有符合条件的元素
+                for (var i = 0; i < tagname.length; i++) {     //遍历获得的元素
+                    if (tagname[i].className == className) {     //如果获得的元素中的class的值等于指定的类名，就赋值给tagnameAll
+                        tagnameAll[tagnameAll.length] = tagname[i];
+                    }
+                }
+                return tagnameAll;
+            }
+        }
+	</script>
+</body>
+</html>	
+<!-- Generated by OsChina.NET (init:1[ms],page:320[ms],ip:58.100.38.207) -->

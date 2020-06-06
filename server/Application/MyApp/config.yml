@@ -1,0 +1,28 @@
+alias: myApp
+author: 'zhanglei'
+link: 
+requirements: 
+
+auth_nodes:
+    
+include:
+    js:
+        - apps/myApp/main
+        - apps/myApp/model
+global_include:
+    js:
+        - apps/myApp/model
+
+
+navs:
+    Myapp1:
+        children:
+            Myapp2:
+                app: myApp
+                icon: sitemap
+                children:
+                    myApp3:
+                        app: myApp
+                        icon: users
+                        link: myApp/schedulePlan
+            

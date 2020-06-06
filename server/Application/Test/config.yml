@@ -1,0 +1,11 @@
+alias: test
+author: 
+link: 
+requirements: 
+
+auth_nodes:
+
+include:
+    js:
+        - apps/test/main
+        - apps/test/model
