@@ -576,11 +576,7 @@
                             _mv: self.scope.filterOptions.matchFieldValue || undefined,
                             _df: self.data_model_fields || undefined
                         };
-<<<<<<< HEAD
-						console.log(p);
-=======
 
->>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         angular.extend(p, self.options.query_params, extraParams || {});
 
                         if(self.scope.filterOptions && !p._kw) {
@@ -591,11 +587,7 @@
                         try {
                             self.options.resource.query(p).$promise.then(function(remoteData) {
                                 self.setPagingData(remoteData, page, pageSize);
-<<<<<<< HEAD
-								console.log(remoteData);
-=======
 
->>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                                 // 设置非固定列容器宽度
                                 $('#grid-not-fixed-fields-container').css({
                                     marginLeft: $('#grid-fixed-fields-container').width() - 1

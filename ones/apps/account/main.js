@@ -216,10 +216,6 @@
             '$scope',
             'Account.UserPreferenceAPI',
             function($scope, preference_api) {
-<<<<<<< HEAD
-				console.log("accountgogogo");
-=======
->>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                 $scope.formConfig = {
                     resource: preference_api.resource,
                     model   : preference_api,
