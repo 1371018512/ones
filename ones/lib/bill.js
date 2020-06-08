@@ -167,17 +167,9 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         });
 
                         self.scope.$root.current_item = self.parentScope.bill_meta_data;
-<<<<<<< HEAD
-                       
-                        self.scope.bill_rows = rows;
-                        
-
-						
-=======
 
                         self.scope.bill_rows = rows;
 
->>>>>>> 26e8e5be4a170183b46d260f86edaa14a6838bdd
                         var workflow_api = $injector.get('Bpm.WorkflowAPI');
                         // 获取工作流按钮
                         if(self.opts.model.config.workflow) {
