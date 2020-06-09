@@ -6,9 +6,8 @@
      * */
     'use strict';
     angular.module('ones.app.myApp.main', [
-		'ones.frameInnerModule',
-		'ones.gridViewModule',
-		'ones.detailViewModule'
+		'ones.app.myApp.model',
+		'ones.app.myApp.plans'
 	]);
 	console.log("myApp!")
 		

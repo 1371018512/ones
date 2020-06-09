@@ -260,7 +260,7 @@
                         mirror.push(item);
                     });
 
-                    return self.selected_actions = mirror;
+                    return self.selected_actions;
 
                 };
 

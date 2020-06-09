@@ -1,0 +1,11 @@
+APP_NAME: 装运计划模块
+
+Plans: 装运计划
+ShipName: 船名
+246: 246重量
+shifen: 石粉重量
+guazipian: 瓜子片重量
+phone: 电话
+remark: 备注
+Add New Plans: 新增货运计划
+Plans: 货运计划

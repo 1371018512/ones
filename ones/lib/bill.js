@@ -139,63 +139,124 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         id: $routeParams.id,
                         _ir: true // include_rows
                     };
-                    self.opts.model.resource.get(p).$promise.then(function(response_data){
-                        angular.deep_extend(
-                            self.parentScope.bill_meta_data,
-                            format_rest_data(response_data.meta, self.opts.model.config.fields)
-                        );
-
-                        var rows = response_data.rows;
-                        if(response_data.meta.locked && $routeParams.action === 'edit') {
-                            return RootFrameService.alert({
-                                type: 'danger',
-                                content: _('common.This item is locked and can not be edit')
-                            });
-                        }
-                        angular.forEach(rows, function(row, k) {
-                            angular.forEach(row, function(value, field) {
-                                if(!row[field+'__label__']) {
-                                    if(self.row_model.config.fields[field] && typeof self.row_model.config.fields[field].get_display === 'function') {
-                                        rows[k][field+'__label__'] = self.row_model.config.fields[field].get_display(value, row);
-                                    } else {
-                                        rows[k][field+'__label__'] = value;
-                                    }
-                                }
-
-                                rows[k][field+'__label__'] = filter_invalid_value(rows[k][field+'__label__']);
-                            });
-                        });
-
-                        self.scope.$root.current_item = self.parentScope.bill_meta_data;
-
-                        self.scope.bill_rows = rows;
-
-                        var workflow_api = $injector.get('Bpm.WorkflowAPI');
-                        // 获取工作流按钮
-                        if(self.opts.model.config.workflow) {
-                            var _fd = [
-                                'id', 'label'
-                            ];
-                            workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
-                                .then(function(next_nodes){
-                                    self.parentScope.$parent.workflow_node_in_bill = next_nodes;
-                                });
-                        }
-
-                        // 未开始的工作流
-                        if(!response_data.meta.workflow_id) {
-                            self.parentScope.$parent.workflow_not_started = true;
-                            workflow_api.get_all_workflow(self.opts.model.config.app + '.' + self.opts.model.config.module).then(function(all_workflow) {
-                                self.parentScope.$parent.all_workflows = all_workflow;
-                            });
-                        }
-
-                        // 更新合计
-                        self.common_methods.re_calculate_total(self.parentScope, rows, self.total_able_fields, false);
-
-                        generate_bar_code();
-                    });
-
+					
+					if(self.opts.model.resource == 'mock'){
+						let response_data = plans_detail_data();
+						console.log(response_data);
+						angular.deep_extend(
+						    self.parentScope.bill_meta_data,
+						    format_rest_data(response_data.meta, self.opts.model.config.fields)
+						);
+						
+						var rows = response_data.rows;
+						if(response_data.meta.locked && $routeParams.action === 'edit') {
+						    return RootFrameService.alert({
+						        type: 'danger',
+						        content: _('common.This item is locked and can not be edit')
+						    });
+						}
+						angular.forEach(rows, function(row, k) {
+						    angular.forEach(row, function(value, field) {
+						        if(!row[field+'__label__']) {
+						            if(self.row_model.config.fields[field] && typeof self.row_model.config.fields[field].get_display === 'function') {
+						                rows[k][field+'__label__'] = self.row_model.config.fields[field].get_display(value, row);
+						            } else {
+						                rows[k][field+'__label__'] = value;
+						            }
+						        }
+						
+						        rows[k][field+'__label__'] = filter_invalid_value(rows[k][field+'__label__']);
+						    });
+						});
+						
+						self.scope.$root.current_item = self.parentScope.bill_meta_data;
+						
+						self.scope.bill_rows = rows;
+						
+						var workflow_api = $injector.get('Bpm.WorkflowAPI');
+						// 获取工作流按钮
+						if(self.opts.model.config.workflow) {
+						    var _fd = [
+						        'id', 'label'
+						    ];
+						    workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
+						        .then(function(next_nodes){
+						            self.parentScope.$parent.workflow_node_in_bill = next_nodes;
+						        });
+						}
+						
+						// 未开始的工作流
+						if(!response_data.meta.workflow_id) {
+						    self.parentScope.$parent.workflow_not_started = true;
+						    workflow_api.get_all_workflow(self.opts.model.config.app + '.' + self.opts.model.config.module).then(function(all_workflow) {
+						        self.parentScope.$parent.all_workflows = all_workflow;
+						    });
+						}
+						
+						// 更新合计
+						self.common_methods.re_calculate_total(self.parentScope, rows, self.total_able_fields, false);
+						
+						generate_bar_code();
+					}
+					else{
+						self.opts.model.resource.get(p).$promise.then(function(response_data){
+							console.log(response_data);
+						    angular.deep_extend(
+						        self.parentScope.bill_meta_data,
+						        format_rest_data(response_data.meta, self.opts.model.config.fields)
+						    );
+						
+						    var rows = response_data.rows;
+						    if(response_data.meta.locked && $routeParams.action === 'edit') {
+						        return RootFrameService.alert({
+						            type: 'danger',
+						            content: _('common.This item is locked and can not be edit')
+						        });
+						    }
+						    angular.forEach(rows, function(row, k) {
+						        angular.forEach(row, function(value, field) {
+						            if(!row[field+'__label__']) {
+						                if(self.row_model.config.fields[field] && typeof self.row_model.config.fields[field].get_display === 'function') {
+						                    rows[k][field+'__label__'] = self.row_model.config.fields[field].get_display(value, row);
+						                } else {
+						                    rows[k][field+'__label__'] = value;
+						                }
+						            }
+						
+						            rows[k][field+'__label__'] = filter_invalid_value(rows[k][field+'__label__']);
+						        });
+						    });
+						
+						    self.scope.$root.current_item = self.parentScope.bill_meta_data;
+						
+						    self.scope.bill_rows = rows;
+						
+						    var workflow_api = $injector.get('Bpm.WorkflowAPI');
+						    // 获取工作流按钮
+						    if(self.opts.model.config.workflow) {
+						        var _fd = [
+						            'id', 'label'
+						        ];
+						        workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
+						            .then(function(next_nodes){
+						                self.parentScope.$parent.workflow_node_in_bill = next_nodes;
+						            });
+						    }
+						
+						    // 未开始的工作流
+						    if(!response_data.meta.workflow_id) {
+						        self.parentScope.$parent.workflow_not_started = true;
+						        workflow_api.get_all_workflow(self.opts.model.config.app + '.' + self.opts.model.config.module).then(function(all_workflow) {
+						            self.parentScope.$parent.all_workflows = all_workflow;
+						        });
+						    }
+						
+						    // 更新合计
+						    self.common_methods.re_calculate_total(self.parentScope, rows, self.total_able_fields, false);
+						
+						    generate_bar_code();
+						});
+					}
                 };
 
                 this.run = function() {

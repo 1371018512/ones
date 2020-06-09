@@ -2,17 +2,30 @@ alias: myApp
 author: 'zhanglei'
 link: 
 requirements: 
+    - product
+    - bpm
+    - crm
+    - contactsCompany
 
 auth_nodes:
-    
+
+load_modules:
+    - ones.gridViewModule
+    - ones.app.product.model
+
 include:
     js:
+        - apps/myApp/plans
         - apps/myApp/main
         - apps/myApp/model
+        - apps/product/model
+        - apps/storage/model
+        - apps/contactsCompany/model
+        - apps/crm/model
+
 global_include:
     js:
         - apps/myApp/model
-
 
 navs:
     Myapp1:
@@ -21,8 +34,12 @@ navs:
                 app: myApp
                 icon: sitemap
                 children:
-                    myApp3:
+                    装运计划:
                         app: myApp
                         icon: users
-                        link: myApp/schedulePlan
+                        link: myApp/plans
+                    增加装运计划:
+                        app: myApp
+                        icon: users
+                        link: myApp/plans/add/bill
             
