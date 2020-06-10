@@ -773,6 +773,7 @@
                     // 默认值
                     self.set_default_value(config);
 
+                    //console.log(config, opts.columns);
 
                     var column_width = 12/opts.columns;
 

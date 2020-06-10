@@ -362,7 +362,7 @@ ones.global_module
                 bill_fields: [
                     'product_id'
                     , 'unit_price'
-                    ,'quantity'
+                    , 'quantity'
                     , 'subtotal_amount'
                     ,'remark'
                 ],

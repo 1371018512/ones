@@ -134,7 +134,6 @@
 				    group_tpl: BILL_META_INPUT_GROUP_TPL
 				};
 
-
             }
         ])
     ;
@@ -172,6 +171,12 @@ ones.global_module
                             return to_decimal_display(value);
                         }
                     },
+					net_receive: {
+					    get_display: function(value, item) {
+					        return to_decimal_display(value);
+					    },
+					    label: '总重'
+					},
                     user_info_id: {
 						label: '创建人',
                         cell_filter: 'to_user_fullname'
@@ -217,7 +222,7 @@ ones.global_module
                 table: 'plans_detail',
                 fields: {
                     ship_id: {
-                        label: "船只"
+                        label: "船名"
                         //, widget: 'select3'
                         //, data_source: 'Product.ProductAPI'
                         //, auto_query: false
@@ -228,7 +233,7 @@ ones.global_module
                         //, 'ng-keydown': '$parent.$parent.$parent.fetch_unit_price(bill_rows, $parent.$parent, $parent.$index, $event)'
                     }
                     , remark: {
-                        label: _('common.Remark')
+                        label: '装运泊位备注'
                         , blank: true
                         , editable_required: 'ship_id'
                         , force_editable: true
@@ -284,13 +289,13 @@ ones.global_module
 					    , total_able: true
 					},
 					customer: {
-						label: "客户"
+						label: "货主"
 						, get_display: function() {
 						    return false;
 						}
 					},
 					phone: {
-						label: "电话"
+						label: "联系电话"
 						, get_display: function() {
 						    return false;
 						}
@@ -301,6 +306,7 @@ ones.global_module
                     , 'quantity1'
 					, 'quantity2'
                     , 'quantity3'
+					//, 'subtotal_amount'
                     , 'customer'
 					, 'phone'
                     ,'remark'

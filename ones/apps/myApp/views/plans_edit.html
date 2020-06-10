@@ -1,4 +1,11 @@
 <page-actions></page-actions>
+<script>
+	let bans =[
+		'quantity3'
+	]
+	$('.bill-body').children().data("bans", bans);
+	//console.log($('.bill-body').data("bans"))
+</script>
 <div class="bill-container" ng-class="{'workflowing': workflowing}">
     <div ng-include="'views/billHeader.html'"></div>
     <div class="bill-body">
@@ -10,6 +17,9 @@
                 <span class="input-group-addon" ng-bind="'common.Remark'|lang"></span>
                 <input type="text" class="form-control" ng-model="bill_meta_data.remark" ng-readonly="bill_meta_data.locked">
             </div>
+			<div class="bill-footer-input-item">
+			    <input-field config="net_receive_amount_config" ng-readonly="bill_meta_data.locked"></input-field>
+			</div>
             <div class="bill-footer-input-item">
                 <input-field config="start_date_config" ng-readonly="bill_meta_data.locked"></input-field>
             </div>
@@ -18,6 +28,5 @@
 			</div>
         </div>
         <div ng-include="'views/billFooter.html'"></div>
-
     </div>
 </div>

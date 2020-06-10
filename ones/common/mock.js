@@ -6,27 +6,15 @@ function plans_data(){
 		},
 		{
 			0:{
-				//$$hashKey: "object:57",
 				bill_no: "A2F0894701 106",
 				bill_no__source__: "A2F0894701 106",
 				company_id: 1,
-				//contacts_company_id: "3",
-				//created: "2020-06-08 13:38:21"
-				//created__source__: "2020-06-08 13:38:21"
 				start_time: "2020-06-08 13:38:21",
 				start_time__source__: "2020-06-08 13:38:21",
 				end_time: "2020-06-08 13:38:21",
 				end_time__source__: "2020-06-08 13:38:21",
-				//currency: null
-				//customer_address: "奥术大师多大所大所多"
-				//customer_id: "测试客户"
-				//customer_id__label__: "测试客户"
-				//customer_id__source__: 1
-				//customer_phone: "65761125"
 				id: 3,
 				id__source__: 3,
-				//net_receive: 900
-				//net_receive__source__: 900
 				quantity: 2,
 				quantity__source__: 2,
 				remark: "五",
@@ -40,9 +28,6 @@ function plans_data(){
 				trashed: "0",
 				user_info_id: "admin",
 				user_info_id__source__: 1
-				//workflow_id: ""
-				//workflow_id__label__: null
-				//workflow_id__source__: null
 			}
 		}
 	];
@@ -51,23 +36,13 @@ function plans_data(){
 function plans_detail_data(){
 	var data = {
 		meta :{
-			//$$hashKey: "object:57",
 			bill_no: "A2F0894701 106",
 			bill_no__source__: "A2F0894701 106",
 			company_id: 1,
-			//contacts_company_id: "3",
-			//created: "2020-06-08 13:38:21"
-			//created__source__: "2020-06-08 13:38:21"
 			start_time: "2020-06-08 13:38:21",
 			start_time__source__: "2020-06-08 13:38:21",
 			end_time: "2020-06-08 13:38:21",
 			end_time__source__: "2020-06-08 13:38:21",
-			//currency: null
-			//customer_address: "奥术大师多大所大所多"
-			//customer_id: "测试客户"
-			//customer_id__label__: "测试客户"
-			//customer_id__source__: 1
-			//customer_phone: "65761125"
 			id: 3,
 			id__source__: 3,
 			//net_receive: 900
@@ -85,9 +60,7 @@ function plans_detail_data(){
 			trashed: "0",
 			user_info_id: "admin",
 			user_info_id__source__: 1
-			//workflow_id: ""
-			//workflow_id__label__: null
-			//workflow_id__source__: null
+
 		},
 		rows :[
 			{
@@ -135,3 +108,4 @@ function plans_detail_data(){
 	}
 	return data;
 }
+

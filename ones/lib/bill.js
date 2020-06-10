@@ -596,16 +596,16 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     if(!bar_code || false === self.opts.model.config.display_barcode) {
                         return;
                     }
-
-                    $(self.opts.bill_no.bar_code_container).append('<img />');
-                    $timeout(function() {
-                        $(self.opts.bill_no.bar_code_container + ' img').JsBarcode(bar_code, {
-                            height: 40,
-                            fontSize: 8,
-                            displayValue: self.opts.bill_no.display_value,
-                            format:	"CODE128"
-                        });
-                    });
+					
+					$timeout(function(){
+						$(self.opts.bill_no.bar_code_container).append('<img />');
+						$(self.opts.bill_no.bar_code_container + ' img').JsBarcode(bar_code, {
+						    height: 40,
+						    fontSize: 8,
+						    displayValue: self.opts.bill_no.display_value,
+						    format:	"CODE128"
+						});
+					})                  
 
                     self.parentScope.bar_code_field = self.opts.bill_no.field;
                     self.parentScope.bill_meta_data[self.opts.bill_no.field] = bar_code;
@@ -707,7 +707,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                                 ele.delegate('input.form-control', 'blur', function() {
                                     // 隐藏输入框
                                     setTimeout(function() {
-                                        ele.find('.bill_editable_widget').addClass('hide');
+                                        //ele.find('.bill_editable_widget').addClass('hide');
                                         ele.find('label.bill_row_td_editable_label').removeClass('hide');
                                     }, 350);
 
