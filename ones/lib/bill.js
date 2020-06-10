@@ -16,6 +16,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
             '$parse',
             '$compile',
             '$aside',
+
             'PageSelectedActions',
             'RootFrameService',
             'ones.form_fields_factory',
@@ -103,6 +104,16 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     },
                     // 重新计算小计
                     re_calculate_subtotal: function($runtime_scope, rows, row_scope, row_index) {
+						if(ones.app_info.app == 'myApp'){
+							var sub_total_getter = $parse('bill_rows['+row_index+'].subtotal_amount');
+							var sub_total_label_getter = $parse('bill_rows['+row_index+'].subtotal_amount__label__');
+							var sub_total = to_decimal_display(rows[row_index].quantity1)
+								+ to_decimal_display(rows[row_index].quantity2)
+								+ to_decimal_display(rows[row_index].quantity3);
+							sub_total_getter.assign(row_scope, to_decimal_display(sub_total));
+							sub_total_label_getter.assign(row_scope, to_decimal_display(sub_total, false, true));
+							return;
+						}
                         if(!rows[row_index].quantity || !rows[row_index].unit_price) {
                             return;
                         }
@@ -129,6 +140,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         }
                         angular.deep_extend(self.parentScope.bill_meta_data, data.meta);
                         self.scope.bill_rows = data.rows;
+
                         self.max_tr_id = data.rows.length+1;
 
                         generate_bar_code();
@@ -139,34 +151,33 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         id: $routeParams.id,
                         _ir: true // include_rows
                     };
-					
-					if(self.opts.model.resource == 'mock'){
+                    if(self.opts.model.resource == 'mock'){
 						let response_data = plans_detail_data();
 						console.log(response_data);
 						angular.deep_extend(
-						    self.parentScope.bill_meta_data,
-						    format_rest_data(response_data.meta, self.opts.model.config.fields)
+							self.parentScope.bill_meta_data,
+							format_rest_data(response_data.meta, self.opts.model.config.fields)
 						);
 						
 						var rows = response_data.rows;
 						if(response_data.meta.locked && $routeParams.action === 'edit') {
-						    return RootFrameService.alert({
-						        type: 'danger',
-						        content: _('common.This item is locked and can not be edit')
-						    });
+							return RootFrameService.alert({
+								type: 'danger',
+								content: _('common.This item is locked and can not be edit')
+							});
 						}
 						angular.forEach(rows, function(row, k) {
-						    angular.forEach(row, function(value, field) {
-						        if(!row[field+'__label__']) {
-						            if(self.row_model.config.fields[field] && typeof self.row_model.config.fields[field].get_display === 'function') {
-						                rows[k][field+'__label__'] = self.row_model.config.fields[field].get_display(value, row);
-						            } else {
-						                rows[k][field+'__label__'] = value;
-						            }
-						        }
+							angular.forEach(row, function(value, field) {
+								if(!row[field+'__label__']) {
+									if(self.row_model.config.fields[field] && typeof self.row_model.config.fields[field].get_display === 'function') {
+										rows[k][field+'__label__'] = self.row_model.config.fields[field].get_display(value, row);
+									} else {
+										rows[k][field+'__label__'] = value;
+									}
+								}
 						
-						        rows[k][field+'__label__'] = filter_invalid_value(rows[k][field+'__label__']);
-						    });
+								rows[k][field+'__label__'] = filter_invalid_value(rows[k][field+'__label__']);
+							});
 						});
 						
 						self.scope.$root.current_item = self.parentScope.bill_meta_data;
@@ -176,21 +187,21 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 						var workflow_api = $injector.get('Bpm.WorkflowAPI');
 						// 获取工作流按钮
 						if(self.opts.model.config.workflow) {
-						    var _fd = [
-						        'id', 'label'
-						    ];
-						    workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
-						        .then(function(next_nodes){
-						            self.parentScope.$parent.workflow_node_in_bill = next_nodes;
-						        });
+							var _fd = [
+								'id', 'label'
+							];
+							workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
+								.then(function(next_nodes){
+									self.parentScope.$parent.workflow_node_in_bill = next_nodes;
+								});
 						}
 						
 						// 未开始的工作流
 						if(!response_data.meta.workflow_id) {
-						    self.parentScope.$parent.workflow_not_started = true;
-						    workflow_api.get_all_workflow(self.opts.model.config.app + '.' + self.opts.model.config.module).then(function(all_workflow) {
-						        self.parentScope.$parent.all_workflows = all_workflow;
-						    });
+							self.parentScope.$parent.workflow_not_started = true;
+							workflow_api.get_all_workflow(self.opts.model.config.app + '.' + self.opts.model.config.module).then(function(all_workflow) {
+								self.parentScope.$parent.all_workflows = all_workflow;
+							});
 						}
 						
 						// 更新合计
@@ -200,63 +211,64 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 					}
 					else{
 						self.opts.model.resource.get(p).$promise.then(function(response_data){
-							console.log(response_data);
-						    angular.deep_extend(
-						        self.parentScope.bill_meta_data,
-						        format_rest_data(response_data.meta, self.opts.model.config.fields)
-						    );
+							console.log(JSON.parse(JSON.stringify(response_data)));
+							angular.deep_extend(
+								self.parentScope.bill_meta_data,
+								format_rest_data(response_data.meta, self.opts.model.config.fields)
+							);
 						
-						    var rows = response_data.rows;
-						    if(response_data.meta.locked && $routeParams.action === 'edit') {
-						        return RootFrameService.alert({
-						            type: 'danger',
-						            content: _('common.This item is locked and can not be edit')
-						        });
-						    }
-						    angular.forEach(rows, function(row, k) {
-						        angular.forEach(row, function(value, field) {
-						            if(!row[field+'__label__']) {
-						                if(self.row_model.config.fields[field] && typeof self.row_model.config.fields[field].get_display === 'function') {
-						                    rows[k][field+'__label__'] = self.row_model.config.fields[field].get_display(value, row);
-						                } else {
-						                    rows[k][field+'__label__'] = value;
-						                }
-						            }
+							var rows = response_data.rows;
+							if(response_data.meta.locked && $routeParams.action === 'edit') {
+								return RootFrameService.alert({
+									type: 'danger',
+									content: _('common.This item is locked and can not be edit')
+								});
+							}
+							angular.forEach(rows, function(row, k) {
+								angular.forEach(row, function(value, field) {
+									if(!row[field+'__label__']) {
+										if(self.row_model.config.fields[field] && typeof self.row_model.config.fields[field].get_display === 'function') {
+											rows[k][field+'__label__'] = self.row_model.config.fields[field].get_display(value, row);
+										} else {
+											rows[k][field+'__label__'] = value;
+										}
+									}
 						
-						            rows[k][field+'__label__'] = filter_invalid_value(rows[k][field+'__label__']);
-						        });
-						    });
+									rows[k][field+'__label__'] = filter_invalid_value(rows[k][field+'__label__']);
+								});
+							});
 						
-						    self.scope.$root.current_item = self.parentScope.bill_meta_data;
+							self.scope.$root.current_item = self.parentScope.bill_meta_data;
 						
-						    self.scope.bill_rows = rows;
+							self.scope.bill_rows = rows;
 						
-						    var workflow_api = $injector.get('Bpm.WorkflowAPI');
-						    // 获取工作流按钮
-						    if(self.opts.model.config.workflow) {
-						        var _fd = [
-						            'id', 'label'
-						        ];
-						        workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
-						            .then(function(next_nodes){
-						                self.parentScope.$parent.workflow_node_in_bill = next_nodes;
-						            });
-						    }
+							var workflow_api = $injector.get('Bpm.WorkflowAPI');
+							// 获取工作流按钮
+							if(self.opts.model.config.workflow) {
+								var _fd = [
+									'id', 'label'
+								];
+								workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
+									.then(function(next_nodes){
+										self.parentScope.$parent.workflow_node_in_bill = next_nodes;
+									});
+							}
 						
-						    // 未开始的工作流
-						    if(!response_data.meta.workflow_id) {
-						        self.parentScope.$parent.workflow_not_started = true;
-						        workflow_api.get_all_workflow(self.opts.model.config.app + '.' + self.opts.model.config.module).then(function(all_workflow) {
-						            self.parentScope.$parent.all_workflows = all_workflow;
-						        });
-						    }
+							// 未开始的工作流
+							if(!response_data.meta.workflow_id) {
+								self.parentScope.$parent.workflow_not_started = true;
+								workflow_api.get_all_workflow(self.opts.model.config.app + '.' + self.opts.model.config.module).then(function(all_workflow) {
+									self.parentScope.$parent.all_workflows = all_workflow;
+								});
+							}
 						
-						    // 更新合计
-						    self.common_methods.re_calculate_total(self.parentScope, rows, self.total_able_fields, false);
+							// 更新合计
+							self.common_methods.re_calculate_total(self.parentScope, rows, self.total_able_fields, false);
 						
-						    generate_bar_code();
+							generate_bar_code();
 						});
 					}
+
                 };
 
                 this.run = function() {
@@ -353,6 +365,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         };
 
                         this.scope.$parent.do_quick_search = function($event, index) {
+
                             if(undefined !== index) {
                                 do_select(index);
                                 return;
@@ -385,6 +398,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         this.scope.$parent.show_quick_search = true;
                     }
 
+
                     // 行字段
                     this.scope.row_fields = this.row_model.config.bill_fields;
                     this.scope.column_defs = this.row_model.config.fields;
@@ -395,14 +409,17 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         config.field = config.field || field;
 
                         if(!config.field_model) {
+
                             self.scope.column_defs[field].field_model = field;
                         }
 
                         if(!config.field_label_model) {
+
                             self.scope.column_defs[field].field_label_model = field+'__label__';
                         }
 
                         if(!config['ng-model']) {
+
                             self.scope.column_defs[field]['ng-model'] = 'bill_rows[$parent.$index].' + field;
                         }
 
@@ -425,7 +442,9 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     });
 
 
+
                     // 批量设定
+
                     this.scope.batch_set_value = function(field, batch) {
                         var i = 0;
                         var cells = $('td[data-field="'+field+'"]');
@@ -447,8 +466,10 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         self.scope.bill_rows.splice(index, 1);
                     };
 
+
                     // 单元格初始化
                     this.scope.cell_init = function(column_def, td, form_name, td_scope) {
+
 
                         var tr_id = td.data('row-index');
 
@@ -596,8 +617,8 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     if(!bar_code || false === self.opts.model.config.display_barcode) {
                         return;
                     }
-					
-					$timeout(function(){
+
+                    $timeout(function(){
 						$(self.opts.bill_no.bar_code_container).append('<img />');
 						$(self.opts.bill_no.bar_code_container + ' img').JsBarcode(bar_code, {
 						    height: 40,
@@ -605,7 +626,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 						    displayValue: self.opts.bill_no.display_value,
 						    format:	"CODE128"
 						});
-					})                  
+					})       
 
                     self.parentScope.bar_code_field = self.opts.bill_no.field;
                     self.parentScope.bill_meta_data[self.opts.bill_no.field] = bar_code;
@@ -707,7 +728,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                                 ele.delegate('input.form-control', 'blur', function() {
                                     // 隐藏输入框
                                     setTimeout(function() {
-                                        //ele.find('.bill_editable_widget').addClass('hide');
+                                        ele.find('.bill_editable_widget').addClass('hide');
                                         ele.find('label.bill_row_td_editable_label').removeClass('hide');
                                     }, 350);
 
@@ -853,6 +874,8 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                             // 字段配置
                             column_def = scope.$parent.$eval(attrs.billEditAble);
 
+
+
                             if($routeParams.id) {
                                 bind_before_and_after(column_def);
                             }
@@ -869,10 +892,12 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                             //ele.delegate('label', 'click', function() {
                             //    bind_element_event(ele);
                             //});
+
                             ele.bind('click', function() {
                                 bind_element_event(column_def, ele, true);
                             });
                         }, 50);
+
                     }
                 };
             }

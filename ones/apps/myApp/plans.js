@@ -5,10 +5,8 @@
      * @link http://ng-erp.com
      * */
     'use strict';
-	console.log("xx");
     angular.module('ones.app.myApp.plans', ['ones.billModule'])
         .config(['$routeProvider', function($route) {
-			console.log("test");
             $route
                 .when('/myApp/plans/add/bill', {
                     controller : 'MyAppPlansBillCtrl',
@@ -33,7 +31,7 @@
             '$timeout',
             'MyApp.PlansAPI',
             'MyApp.PlansDetailAPI',
-            'Product.ProductAPI',
+            'Ship.ShipAPI',
             'Bpm.WorkflowAPI',
             'BillModule',
             '$routeParams',
@@ -41,9 +39,8 @@
             '$injector',
             'RootFrameService',
             '$parse',
-            function($scope, $timeout, plan_api, plan_detail_api, product_api,
+            function($scope, $timeout, plan_api, plan_detail_api, ship_api,
                      workflow_api, bill, $routeParams, $q, $injector, RootFrameService, $parse) {
-				console.log("test");
                 if(!$routeParams.id) {
                     $scope.bill_meta_data = {
                         start_time: new Date(moment().format()),
@@ -171,12 +168,6 @@ ones.global_module
                             return to_decimal_display(value);
                         }
                     },
-					net_receive: {
-					    get_display: function(value, item) {
-					        return to_decimal_display(value);
-					    },
-					    label: '总重'
-					},
                     user_info_id: {
 						label: '创建人',
                         cell_filter: 'to_user_fullname'
@@ -196,7 +187,7 @@ ones.global_module
                 sortable: [
                     'start_time', 'quantity', 'end_time'
                 ],
-                list_hide: []
+                list_hide: ['remark']
             };
 
             if(is_app_loaded('printer')) {
@@ -208,9 +199,9 @@ ones.global_module
     ])
     .service('MyApp.PlansDetailAPI', [
         'ones.dataApiFactory',
-        'Product.ProductAPI',
+        'Ship.ShipAPI',
         '$q',
-        function(dataAPI, product, $q) {
+        function(dataAPI, ship, $q) {
             /* this.resource = dataAPI.getResourceInstance({
                 uri: 'sale/ordersDetail'
             }); */
@@ -223,9 +214,9 @@ ones.global_module
                 fields: {
                     ship_id: {
                         label: "船名"
-                        //, widget: 'select3'
-                        //, data_source: 'Product.ProductAPI'
-                        //, auto_query: false
+                        , widget: 'select3'
+                        , data_source: 'Ship.ShipAPI'
+                        , auto_query: false
                         , get_display: function() {
                             return false;
                         }
@@ -306,7 +297,7 @@ ones.global_module
                     , 'quantity1'
 					, 'quantity2'
                     , 'quantity3'
-					//, 'subtotal_amount'
+					, 'subtotal_amount'
                     , 'customer'
 					, 'phone'
                     ,'remark'

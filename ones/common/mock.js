@@ -7,27 +7,18 @@ function plans_data(){
 		{
 			0:{
 				bill_no: "A2F0894701 106",
-				bill_no__source__: "A2F0894701 106",
 				company_id: 1,
 				start_time: "2020-06-08 13:38:21",
-				start_time__source__: "2020-06-08 13:38:21",
 				end_time: "2020-06-08 13:38:21",
-				end_time__source__: "2020-06-08 13:38:21",
 				id: 3,
-				id__source__: 3,
 				quantity: 2,
-				quantity__source__: 2,
 				remark: "五",
 				source_id: 0,
 				source_model: "",
-				source_model__source__: null,
-				status: "",
-				status__source__: 0,
+				status: 0,
 				subject: "装运订单",
-				subject__source__: "装运订单",
 				trashed: "0",
-				user_info_id: "admin",
-				user_info_id__source__: 1
+				user_info_id: 1,
 			}
 		}
 	];
@@ -37,62 +28,36 @@ function plans_detail_data(){
 	var data = {
 		meta :{
 			bill_no: "A2F0894701 106",
-			bill_no__source__: "A2F0894701 106",
 			company_id: 1,
 			start_time: "2020-06-08 13:38:21",
-			start_time__source__: "2020-06-08 13:38:21",
 			end_time: "2020-06-08 13:38:21",
-			end_time__source__: "2020-06-08 13:38:21",
 			id: 3,
-			id__source__: 3,
-			//net_receive: 900
-			//net_receive__source__: 900
 			quantity: 2,
-			quantity__source__: 2,
 			remark: "五",
 			source_id: 0,
-			source_model: "",
-			source_model__source__: null,
-			status: "",
-			status__source__: 0,
+			source_model: null,
+			status: 0,
 			subject: "装运订单",
-			subject__source__: "装运订单",
 			trashed: "0",
-			user_info_id: "admin",
-			user_info_id__source__: 1
-
+			user_info_id: 1,
 		},
 		rows :[
 			{
 				already_in__after__: "KG",
-				already_in__after____label__: "KG",
 				attribute_content_ids: [null],
-				attribute_content_ids__label__: [null],
 				company_id: 1,
-				company_id__label__: 1,
 				id: 2,
-				id__label__: 2,
 				measure_unit: "KG",
-				measure_unit__label__: "KG",
 				plans_id: 3,
-				plans_id__label__: 3,
 				ship_id: 1,
 				ship_id__label__: "诺亚方舟",
-				ship_id__label____label__: "诺亚方舟",
 				product_unique_id: "1",
-				product_unique_id__label__: "1",
 				quantity1: 1000,
 				quantity1__after__: "KG",
-				quantity1__after____label__: "KG",
-				quantity1__label__: 1000,
 				quantity2: 1000,
 				quantity2__after__: "KG",
-				quantity2__after____label__: "KG",
-				quantity2__label__: 1000,
 				quantity3: 1000,
 				quantity3__after__: "KG",
-				quantity3__after____label__: "KG",
-				quantity3__label__: 1000,
 				remark: null,
 				remark__label__: "",
 				customer: '王经理',
@@ -100,12 +65,79 @@ function plans_detail_data(){
 				phone: '13456112000',
 				phone__label__: '13456112000',
 				serial_number: "1",
-				serial_number__label__: "1",
 				trashed: "0",
-				trashed__label__: "0"
 			}
 		]
 	}
 	return data;
 }
 
+function ship_data(){
+	var data = [
+		{
+			count: "1", 
+			totalPages: 1,
+		},
+		{
+			0:{
+				bar_code: "2324324",
+				company_id: 1,
+				id: 1,
+				ship_brand: "生松工 898",
+				carrying_capacity: 10000,
+				measure_unit: "KG",
+				name: "诺亚方舟",
+				ship_category_id: 1,
+				ship_category_id__label__: "Ship Category",
+				serial_number: "1",
+				trashed: "0"
+			}
+		} 
+	];
+	return data;
+}
+
+function shipAPI_data(){
+	var data = [
+		{
+			bar_code: "2324324",
+			company_id: 1,
+			id: 1,
+			ship_brand: "生松工 898",
+			carrying_capacity: 10000,
+			measure_unit: "KG",
+			name: "诺亚方舟",
+			ship_category_id: 1,
+			ship_category_id__label__: "Ship Category",
+			serial_number: "1",
+			trashed: "0"
+		}
+	];
+	return data;
+}
+
+//如果设计表时使用了外键，需要添加到foreign中
+//这里的返回值应该对应的是server的schema
+function plans_schema_data(){
+	var data = {
+		plans :{
+			enable_trash: true,
+			foreign:{
+				/* user_info:{
+					restrict: {delete: "CASCADE"}
+				},
+				workflow:{
+					options: {blank: true},
+					restrict: {delete: "SET_NULL"}
+				}	 */			
+			},
+			indexes:{},
+			list_display: [],
+			structure: {
+				0:{}
+			}
+			
+		}
+	}
+	return data;
+}

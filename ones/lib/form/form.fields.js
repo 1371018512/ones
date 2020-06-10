@@ -633,13 +633,35 @@
 
                             query_params._mf = _mf.join();
                             query_params._mv = _mv.join();
-
+							console.log(JSON.parse(JSON.stringify(query_params)));
+							if(data_source.resource=='mock2'){
+								let data = shipAPI_data();
+								console.log(JSON.parse(JSON.stringify(data)));
+								items_getter.assign(runtime_scope, []);
+								var items = [];
+								angular.forEach(data, function(item) {
+								    items.push({
+								        value: item[valueField],
+								        label: to_item_display(item, data_source, config.data_source_label_field)
+								    });
+								});
+								
+								items = items || [];
+								items_getter.assign(runtime_scope, items);
+								
+								if(enter_ing) {
+								    do_select3_item_select(items[0], false);
+								}
+								
+								enter_ing = false;
+								return;
+							} 
                             data_source.resource.api_query(query_params).$promise.then(function(data) {
                                 if(!data) {
                                     //items_getter.assign(runtime_scope, []);
                                     return false;
                                 }
-
+								console.log(JSON.parse(JSON.stringify(data)));
                                 items_getter.assign(runtime_scope, []);
                                 var items = [];
                                 angular.forEach(data, function(item) {

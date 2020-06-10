@@ -212,7 +212,7 @@
                         exclude_meta: false,
                         callback: function (schema) {
                             self.schema = schema;
-
+							console.log(JSON.parse(JSON.stringify(schema)));
                             schema[self.model_config.table] = schema[self.model_config.table] || {};
 
                             self.parentScope.grid_trash_able = schema[self.model_config.table].enable_trash || false;
@@ -594,8 +594,17 @@
 								    marginLeft: $('#grid-fixed-fields-container').width() - 1
 								});
 								return;
+							}else if(self.options.resource=='mock2'){
+								let remoteData = ship_data();
+								self.setPagingData(remoteData, page, pageSize);
+								console.log(remoteData);
+								$('#grid-not-fixed-fields-container').css({
+								    marginLeft: $('#grid-fixed-fields-container').width() - 1
+								});
+								return;
 							}
                             self.options.resource.query(p).$promise.then(function(remoteData) {
+								console.log(JSON.parse(JSON.stringify(remoteData)));
                                 self.setPagingData(remoteData, page, pageSize);
                                 // 设置非固定列容器宽度
                                 $('#grid-not-fixed-fields-container').css({

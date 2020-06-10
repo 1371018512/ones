@@ -1,0 +1,26 @@
+alias: ship
+author: 'zhanglei'
+link: ''
+requirements: 
+
+auth_nodes:
+
+include: 
+    js:
+        - apps/ship/model
+        - apps/ship/main
+
+global_include:
+    js:
+
+navs:
+    Myapp1:
+        children:
+            船只管理:
+                app: ship
+                icon: navicon
+                children:
+                    船只: 
+                        app: ship
+                        icon: navicon
+                        link: ship/ship

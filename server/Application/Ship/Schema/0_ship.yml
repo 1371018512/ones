@@ -1,0 +1,20 @@
+ship:
+    serial_number:
+        limit: 100
+    name:
+        limit: 100
+    ship_brand:
+        limit: 20
+    carrying_capacity:
+        type: decimal
+        precision: 14
+        scale: 4
+    ship_category_id:
+    bar_code:
+        type: string
+        limit: 30
+        blank: true
+    $meta:
+        indexes:
+        foreign:
+        enable_trash: true

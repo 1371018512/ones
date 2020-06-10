@@ -1,0 +1,55 @@
+plans:
+    subject:
+        limit: 100
+    bill_no:
+        limit: 20
+    quantity:
+        type: decimal
+        precision: 14
+        scale: 4
+    start_time:
+        type: datetime
+        default: CURRENT_TIMESTAMP
+    end_time:
+        type: datetime
+        default: CURRENT_TIMESTAMP
+    remark:
+        blank: true
+    user_info_id:
+    $meta:
+        indexes:
+        foreign:
+        enable_trash: true
+
+plans_detail:
+    quantity1:
+        type: decimal
+        precision: 14
+        scale: 4
+    quantity2:
+        type: decimal
+        precision: 14
+        scale: 4
+    quantity3:
+        type: decimal
+        precision: 14
+        scale: 4
+    ship_id:
+        type: string
+        limit: 100
+    subtotal_amount:
+        type: decimal
+        precision: 14
+        scale: 4
+    phone:
+        type: string
+        limit: 100
+    remark:
+        blank: true 
+    customer:
+        type: string
+        limit: 100
+    $meta:
+        indexes:
+        foreign:
+        enable_trash: true

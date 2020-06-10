@@ -2,7 +2,7 @@ alias: myApp
 author: 'zhanglei'
 link: 
 requirements: 
-    - product
+    - ship
     - bpm
     - crm
     - contactsCompany
@@ -11,14 +11,14 @@ auth_nodes:
 
 load_modules:
     - ones.gridViewModule
-    - ones.app.product.model
+    - ones.app.ship.model
 
 include:
     js:
         - apps/myApp/plans
         - apps/myApp/main
         - apps/myApp/model
-        - apps/product/model
+        - apps/ship/model
         - apps/storage/model
         - apps/contactsCompany/model
         - apps/crm/model
