@@ -116,28 +116,3 @@ function shipAPI_data(){
 	return data;
 }
 
-//如果设计表时使用了外键，需要添加到foreign中
-//这里的返回值应该对应的是server的schema
-function plans_schema_data(){
-	var data = {
-		plans :{
-			enable_trash: true,
-			foreign:{
-				/* user_info:{
-					restrict: {delete: "CASCADE"}
-				},
-				workflow:{
-					options: {blank: true},
-					restrict: {delete: "SET_NULL"}
-				}	 */			
-			},
-			indexes:{},
-			list_display: [],
-			structure: {
-				0:{}
-			}
-			
-		}
-	}
-	return data;
-}

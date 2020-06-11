@@ -92,7 +92,7 @@
         </button>
         <a href="javascript:void(0)"
            class="btn btn-sm btn-info"
-           ng-show="grid_trash_able" ng-click="goTrash()">
+           ng-show="!(back_able===true||$root.back_able==true)&&grid_trash_able" ng-click="goTrash()">
             <i class="fa fa-trash-o"></i>
             <span ng-bind="'common.Trash'|lang"></span>
         </a>
