@@ -97,6 +97,8 @@
                     module: 'shipCategory',
                     table: 'ship_category',
 					addable: false,
+					label_field: "name",
+					value_field: "id",
                     fields: {
                         name: {
                             get_display: function(value, item) {

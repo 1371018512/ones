@@ -109,10 +109,18 @@
                  * 取得需编辑的数据
                  * */
                 this.load_edit_data = function() {
+					if(this.config.resource=='mock2'){
+						let data = shipAPI_data();
+						console.log(data);
+						self.scope.edit_data_source = data;
+						self.scope.$broadcast('form.dataLoaded', data);					
+						return;
+					}
                     this.config.resource.get({
                         id: this.config.id,
                         _df: this.data_model_fields
                     }).$promise.then(function(data){
+							console.log(data);
                             self.scope.edit_data_source = data;
                             self.scope.$broadcast('form.dataLoaded', data);
                         });
@@ -271,7 +279,7 @@
                             // 修改源数据
                             self.scope.$watch('edit_data_source', function(data) {
                                 if(!data) return;
-                                format_data_form_rest(data, fields_define, self.scope, $parse);
+								format_data_form_rest(data, fields_define, self.scope, $parse);
                             });
 
                             /*

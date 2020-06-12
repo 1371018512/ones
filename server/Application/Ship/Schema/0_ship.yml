@@ -17,9 +17,6 @@ ship:
     $meta:
         indexes:
         foreign:
-            company:
-                restrict:
-                    delete: CASCADE
         enable_trash: true
 
 ship_category:
@@ -34,11 +31,5 @@ ship_category:
         limit: 6
     $meta:
         indexes:
-            name:
-            lft:
-            rgt:
         foreign:
-            company:
-                restrict:
-                    delete: CASCADE
         enable_trash: true

@@ -101,7 +101,7 @@
                     label_field: "name",
                     value_field: "id",
                     addable: false,
-					editable: true,
+					//editable: true,
                     fields: {
                         name: {
                             get_display: function(value, item) {
@@ -130,7 +130,7 @@
                     extra_methods: ['api_query', 'update', 'api_get']
                 });
 
-            } 
+            }
         ])
     ;
 
