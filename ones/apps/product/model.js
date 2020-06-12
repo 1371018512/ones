@@ -101,7 +101,7 @@
                     label_field: "name",
                     value_field: "id",
                     addable: false,
-
+					editable: true,
                     fields: {
                         name: {
                             get_display: function(value, item) {
@@ -125,13 +125,12 @@
                     ]
                 };
 
-
                 this.resource = dataAPI.getResourceInstance({
                     uri: 'product/productCategory',
                     extra_methods: ['api_query', 'update', 'api_get']
                 });
 
-            }
+            } 
         ])
     ;
 

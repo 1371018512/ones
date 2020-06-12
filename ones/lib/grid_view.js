@@ -602,6 +602,14 @@
 								    marginLeft: $('#grid-fixed-fields-container').width() - 1
 								});
 								return;
+							}else if(self.options.resource=='mock_ship_category'){
+								let remoteData = ship_category_data();
+								self.setPagingData(remoteData, page, pageSize);
+								console.log(remoteData);
+								$('#grid-not-fixed-fields-container').css({
+								    marginLeft: $('#grid-fixed-fields-container').width() - 1
+								});
+								return;
 							}
                             self.options.resource.query(p).$promise.then(function(remoteData) {
 								console.log(JSON.parse(JSON.stringify(remoteData)));

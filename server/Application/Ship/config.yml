@@ -24,3 +24,7 @@ navs:
                         app: ship
                         icon: navicon
                         link: ship/ship
+                    船只分类:
+                        app: ship
+                        icon: navicon
+                        link: ship/shipCategory

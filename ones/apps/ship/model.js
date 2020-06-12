@@ -87,7 +87,49 @@
 				this.resource = 'mock2';
 				
             }
+        ]).
+		service("Ship.ShipCategoryAPI", [
+            'ones.dataApiFactory',
+            'RootFrameService',
+            function(dataAPI, RootFrameService) {
+                this.config = {
+                    app: 'ship',
+                    module: 'shipCategory',
+                    table: 'ship_category',
+					addable: false,
+                    fields: {
+                        name: {
+                            get_display: function(value, item) {
+                                return item.prefix_name;
+                            }
+                        },
+						lft: {
+						    addable: false,
+						    editable: false
+						},
+						rgt: {
+						    addable: false,
+						    editable: false
+						}
+                    },
+
+                    list_hide: ['lft','rgt'],
+                    columns: 1,
+                    extra_selected_actions: [
+                        get_selected_action_for_add_child(RootFrameService)
+                    ]
+                };
+
+
+                /* this.resource = dataAPI.getResourceInstance({
+                    uri: 'product/productCategory',
+                    extra_methods: ['api_query', 'update', 'api_get']
+                }); */
+				this.resource='mock_ship_category';
+
+            }
         ])
+    ;
     ;
 
 })(window, window.angular, window.ones, window.io);

@@ -53,8 +53,9 @@
                     this.config.form_name = this.scope.form_name = 'id_'+this.config.model_prefix;
 
                     this.model_config = this.config.model.config;
+					console.log(this.model_config);
                     this.model_config.fields = this.model_config.fields || {};
-
+					
                     ones.DEBUG  && console.debug('model_config: ', this.model_config);
                     // 是否字段分组
                     if(this.model_config.fields_groups) {
@@ -425,6 +426,7 @@
                     compile: function(element, attrs, transclude) {
                         return {
                             pre: function ($scope, iElement, iAttrs, controller) {
+								console.log($scope.config);
                                 form.init($scope, $scope.config).promise.then(function(html){
                                     angular.element(element).append($compile(html)($scope));
                                 });

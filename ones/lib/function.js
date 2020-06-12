@@ -510,6 +510,7 @@ var get_selected_action_for_add_child = function(RootFrameService, link, label) 
                 src: link + '/add/pid/'+item.id,
                 singleton: true
             });
+			console.log(item.id);
         }
     };
 };

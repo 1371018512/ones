@@ -116,3 +116,34 @@ function shipAPI_data(){
 	return data;
 }
 
+function ship_category_data(){
+	var data = [
+		{
+			company_id: "1",
+			deep: 0,//指深度，子类比父类的深度加1
+			has_child: true,
+			id: 1,
+			lft: "1",//一个标识，子类的下标应该在父类的范围内
+			name: "船",
+			prefix: "",
+			prefix_name: "船",
+			remark: null,
+			rgt: "4",
+			trashed: "0"
+		},
+		{
+			company_id: "1",
+			deep: 1,
+			has_child: false,
+			id: 2,
+			lft: "2",
+			name: "小船",
+			prefix: "",
+			prefix_name: "|---小船",
+			remark: null,
+			rgt: "3",
+			trashed: "0"
+		},
+	];
+	return data;
+}

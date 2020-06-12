@@ -17,4 +17,28 @@ ship:
     $meta:
         indexes:
         foreign:
+            company:
+                restrict:
+                    delete: CASCADE
+        enable_trash: true
+
+ship_category:
+    name:
+    remark:
+        blank: true
+    lft:
+        type: integer
+        limit: 6
+    rgt:
+        type: integer
+        limit: 6
+    $meta:
+        indexes:
+            name:
+            lft:
+            rgt:
+        foreign:
+            company:
+                restrict:
+                    delete: CASCADE
         enable_trash: true
