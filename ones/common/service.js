@@ -19,6 +19,7 @@
                         app: opts.app,
                         table: opts.table
                     };
+					console.log(queryParams);
                     var schema = this.resource.api_get(queryParams).$promise;
 
                     if (typeof opts.callback === "function") {

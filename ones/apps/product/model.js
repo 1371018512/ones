@@ -96,7 +96,7 @@
             function(dataAPI, RootFrameService) {
                 this.config = {
                     app: 'product',
-                    module: 'product_category',
+                    module: 'productCategory',
                     table: 'product_category',
                     label_field: "name",
                     value_field: "id",

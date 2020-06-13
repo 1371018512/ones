@@ -125,7 +125,7 @@
                         extra_params: extra_params || {}
                     }
                 };
-
+				console.log($scope.formConfig);
             }
 
         ])

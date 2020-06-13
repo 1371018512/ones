@@ -115,6 +115,12 @@
 						self.scope.edit_data_source = data;
 						self.scope.$broadcast('form.dataLoaded', data);					
 						return;
+					}else if(this.config.resource=='mock_ship_category'){
+						let data = ship_category_data2();
+						console.log(data);
+						self.scope.edit_data_source = data;
+						self.scope.$broadcast('form.dataLoaded', data);	
+						return;
 					}
                     this.config.resource.get({
                         id: this.config.id,
@@ -138,9 +144,9 @@
                         exclude_meta: true,
                         schema: self.config.schema,
                         callback: function(result) {
-
+							console.log(result)
                             result = result[self.model_config.table].structure || {};
-
+							
                             if(!result) {
                                 return false;
                             }

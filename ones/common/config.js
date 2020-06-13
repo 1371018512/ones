@@ -353,7 +353,7 @@ angular.module("ones.configModule", [
                 try {
                     //尝试使用DataAPI模式
                     apiName = group.ucfirst()+"."+module.ucfirst()+"API";
-
+					console.log(apiName)
                     this.model = $injector.get(apiName);
                     this.resource = this.model.resource;
                     this.modelName = apiName;
