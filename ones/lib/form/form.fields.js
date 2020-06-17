@@ -534,7 +534,9 @@
                             select_real_method(item);
 
                             if(auto_hide) {
-                                $('#'+config.id).trigger('blur');
+                                $timeout(function () {
+                                    $('#'+config.id).trigger('blur');
+                                },500);
                             }
                         };
 
