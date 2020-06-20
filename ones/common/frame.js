@@ -53,7 +53,7 @@ var frame_init = function() {
 
             // copy
             if(ones.app_info.config.author) {
-                angular.element('#footer-copy-link').text(ones.app_info.config.author || 'TEam Swift');
+                angular.element('#footer-copy-link').text(ones.app_info.config.author || 'Ling Hui');
                 angular.element('#footer-copy-link').attr('href', ones.app_info.config.link || 'javascript:void(0)');
             }
 
@@ -174,8 +174,8 @@ var frame_init = function() {
                             };
 
                             // 帮助链接
-                            var search_link = 'http://ones_manual.mydoc.io/?q=%s %s&p=search';
-                            $scope.help_link = ones.app_info.config.document || 'http://ones_manual.mydoc.io' || sprintf(
+                            var search_link = 'http://linghui/?q=%s %s&p=search';
+                            $scope.help_link = ones.app_info.config.document || 'http://linghui.mydoc.io' || sprintf(
                                 search_link, ones.app_info.app, to_app_name(ones.app_info.app)
                             );
 

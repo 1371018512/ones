@@ -1,8 +1,8 @@
 (function(window, angular, ones, io){
     /*
      * @app purchase
-     * @author laofahai@TEam Swift
-     * @link http://ng-erp.com
+     * @author linghui
+     *
      * */
     'use strict';
     angular.module('ones.app.purchase.model', [])
