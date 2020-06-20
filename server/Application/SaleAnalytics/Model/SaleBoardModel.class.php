@@ -3,8 +3,8 @@
 /*
  * @app SaleAnalytics
  * @package SaleAnalytics.model.SaleBoard
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace SaleAnalytics\Model;
 use Common\Model\CommonViewModel;

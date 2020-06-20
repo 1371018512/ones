@@ -3,8 +3,8 @@
 /*
  * @app Storage
  * @package Storage.model.StockOut
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Storage\Model;
 use Common\Model\CommonViewModel;

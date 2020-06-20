@@ -3,8 +3,8 @@
 /*
  * @app Bpm
  * @package Bpm.event.WorkflowProgress
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Bpm\Event;
 use Common\Event\BaseRestEvent;

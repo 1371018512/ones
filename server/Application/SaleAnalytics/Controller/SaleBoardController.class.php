@@ -3,8 +3,8 @@
 /*
  * @app SaleAnalytics
  * @package SaleAnalytics.controller.SaleBoard
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace SaleAnalytics\Controller;
 use Common\Controller\BaseRestController;

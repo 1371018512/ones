@@ -3,8 +3,8 @@
 /*
  * @app Region
  * @package Region.event.Region
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Region\Event;
 use Common\Event\BaseRestEvent;

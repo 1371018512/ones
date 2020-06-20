@@ -3,8 +3,8 @@
 /*
  * @app Productattribute
  * @package Productattribute.service.ProductAttributeContent
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Productattribute\Service;
 use Common\Model\CommonModel;

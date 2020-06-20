@@ -3,8 +3,8 @@
 /*
  * @app Account
  * @package Account.model.CompanyProfile
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Account\Model;
 use Common\Model\CommonViewModel;

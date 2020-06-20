@@ -3,8 +3,8 @@
 /*
  * @app Finance
  * @package Finance.controller.FinanceAccount
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Finance\Controller;
 use Common\Controller\BaseRestController;

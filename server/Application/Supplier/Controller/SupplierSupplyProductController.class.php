@@ -3,8 +3,8 @@
 /*
  * @app Supplier
  * @package Supplier.controller.SupplierSupplyProduct
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Supplier\Controller;
 use Common\Controller\BaseRestController;

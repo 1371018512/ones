@@ -3,8 +3,8 @@
 /*
  * @app Storage
  * @package Storage.service.StockLog
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Storage\Service;
 use Common\Model\CommonModel;

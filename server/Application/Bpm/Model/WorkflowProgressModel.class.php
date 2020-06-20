@@ -3,8 +3,8 @@
 /*
  * @app Bpm
  * @package Bpm.model.WorkflowProgress
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Bpm\Model;
 use Common\Model\CommonViewModel;

@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: nemo <335454250@qq.com>
+ * User: linghui
  * Date: 9/25/15
  * Time: 20:12
  */
@@ -20,7 +20,7 @@ class MailService {
     /*
      * 发送邮件接口
      * @params array $to eg: [
-     *   ['335454250@qq.com', 'Laofahai']
+     *   ['335454250@qq.com', 'Llinghui']
      * ]
      * */
     static public function send_to($to, $subject, $content, $sign_content=true) {

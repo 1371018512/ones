@@ -3,8 +3,8 @@
 /*
  * @app Purchase
  * @package Purchase.service.PurchaseDetail
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Purchase\Service;
 use Common\Model\CommonModel;

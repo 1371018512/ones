@@ -3,8 +3,8 @@
 /*
  * @app Bpm
  * @package Bpm.controller.WorkflowProgress
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Bpm\Controller;
 use Common\Controller\BaseRestController;

@@ -3,8 +3,8 @@
 /*
  * @app Printer
  * @package Printer.event.PrintTemplate
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Printer\Event;
 use Common\Event\BaseRestEvent;

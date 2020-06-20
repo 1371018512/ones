@@ -3,8 +3,8 @@
 /*
  * @app Purchase
  * @package Purchase.event.Purchase
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Purchase\Event;
 use Common\Event\BaseRestEvent;

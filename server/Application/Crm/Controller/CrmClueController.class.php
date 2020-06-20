@@ -1,8 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: nemo <335454250@qq.com>
- * Date: 6/6/15
+ * User: linghui
  * Time: 09:52
  */
 

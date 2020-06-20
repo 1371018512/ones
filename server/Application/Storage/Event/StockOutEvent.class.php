@@ -3,8 +3,8 @@
 /*
  * @app Storage
  * @package Storage.event.StockOut
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Storage\Event;
 use Common\Event\BaseRestEvent;

@@ -3,8 +3,8 @@
 /*
  * @app SaleAnalytics
  * @package SaleAnalytics.event.SaleVolume
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace SaleAnalytics\Event;
 use Common\Event\BaseRestEvent;
