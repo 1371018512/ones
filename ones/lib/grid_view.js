@@ -114,7 +114,7 @@
                         try {
                             var mc = $injector.get('ones.MessageCenter');
                             console.debug('Try to connect message center');
-                            mc.on('data_changed', function(data) {
+                            mc.on('some_data_changed', function(data) {
                                 ones.DEBUG && console.debug('grid detcted data_changed event', data);
                                 if(data.app === self.app_info.app && data.module === self.app_info.module) {
                                     self.refresh();
