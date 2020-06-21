@@ -33,7 +33,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         , field: 'bill_no' // bar code 存储ID
                         , display_value: true // 是否显示字符
                         , height: 40
-                        , fontSize: 10
+                        , fontSize: 16
                         , value: generate_bill_no()
                     }
                 };
@@ -541,7 +541,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     $timeout(function() {
                         $(self.opts.bill_no.bar_code_container + ' img').JsBarcode(bar_code, {
                             height: 40,
-                            fontSize: 8,
+                            fontSize: 16,
                             displayValue: self.opts.bill_no.display_value,
                             format:	"CODE128"
                         });

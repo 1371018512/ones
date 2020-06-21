@@ -620,7 +620,7 @@ function display_as_barcode(element, string, width, height, displayValue) {
         quite: 10,
         format: "CODE128",
         displayValue: false === displayValue ? false : true,
-        fontSize: 12,
+        fontSize: 16,
         backgroundColor:"",
         lineColor:"#000"
     });
