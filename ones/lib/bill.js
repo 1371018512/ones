@@ -54,6 +54,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 
                     // 行model
                     this.row_model = $injector.get(opts.model.config.bill_row_model);
+					console.log(this.row_model.config)
                     this.total_able_fields = [];
                     angular.forEach(this.row_model.config.fields, function(config, field) {
                         if(config.total_able) {
@@ -104,7 +105,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     },
                     // 重新计算小计
                     re_calculate_subtotal: function($runtime_scope, rows, row_scope, row_index) {
-						if(ones.app_info.app == 'myApp'){
+						if(ones.app_info.app == 'shippingPlan'){
 							var sub_total_getter = $parse('bill_rows['+row_index+'].subtotal_amount');
 							var sub_total_label_getter = $parse('bill_rows['+row_index+'].subtotal_amount__label__');
 							var sub_total = to_decimal_display(rows[row_index].quantity1)
@@ -645,6 +646,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         config: "="
                     },
                     link: function(scope, element, attrs) {
+						console.log(scope.$parent.$eval(attrs.config))
                         bill.init(scope, scope.$parent.$eval(attrs.config));
                     }
                 };
@@ -871,7 +873,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         $timeout(function() {
                             // 字段配置
                             column_def = scope.$parent.$eval(attrs.billEditAble);
-
+							//console.log(column_def);
 
 
                             if($routeParams.id) {

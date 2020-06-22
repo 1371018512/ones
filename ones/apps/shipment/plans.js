@@ -1,26 +1,26 @@
 (function(window, angular, ones, io){
     /*
-     * @app ShippingPlan
+     * @app Shipment
      * @author laofahai@TEam Swift
      * @link http://ng-erp.com
      * */
     'use strict';
-    angular.module('ones.app.shippingPlan.plans', ['ones.billModule'])
+    angular.module('ones.app.shipment.plans', ['ones.billModule'])
         .config(['$routeProvider', function($route) {
             $route
-                .when('/shippingPlan/plans/add/bill', {
+                .when('/shipment/plans/add/bill', {
                     controller : 'ShippingPlanPlansBillCtrl',
                     templateUrl: appView('plans_edit.html')
                 })
-                .when('/shippingPlan/plans/edit/bill/:id', {
+                .when('/shipment/plans/edit/bill/:id', {
                     controller : 'ShippingPlanPlansBillCtrl',
                     templateUrl: appView('plans_edit.html')
                 })
-                .when('/shippingPlan/plans/:action/bill/:id', {
+                .when('/shipment/plans/:action/bill/:id', {
                     controller : 'ShippingPlanPlansBillCtrl',
                     templateUrl: appView('plans_edit.html')
                 })
-                .when('/shippingPlan/plans/:action/bill/:id/node/:node_id', {
+                .when('/shipment/plans/:action/bill/:id/node/:node_id', {
                     controller : 'ShippingPlanPlansBillCtrl',
                     templateUrl: appView('plans_edit.html')
                 })
@@ -29,8 +29,8 @@
         .controller('ShippingPlanPlansBillCtrl', [
             '$scope',
             '$timeout',
-            'ShippingPlan.PlansAPI',
-            'ShippingPlan.PlansDetailAPI',
+            'Shipment.PlansAPI',
+            'Shipment.PlansDetailAPI',
             'Ship.ShipAPI',
             'Bpm.WorkflowAPI',
             'BillModule',
@@ -136,24 +136,24 @@
     ;
 
 ones.global_module
-    .service('ShippingPlan.PlansAPI', [
+    .service('Shipment.PlansAPI', [
         'ones.dataApiFactory',
         '$injector',
         function(dataAPI, $injector) {
 
-            /* this.resource = dataAPI.getResourceInstance({
-                uri: 'sale/orders'
-            }); */
-			this.resource = "mock";
+            this.resource = dataAPI.getResourceInstance({
+                uri: 'shipment/shippingPlans'
+            }); 
+			//this.resource = "mock";
 
             this.config = {
-                app: 'shippingPlan',
+                app: 'shipment',
                 module: 'plans',
                 table: 'plans',
                 is_bill: true,
                 detail_able: true,
                 //workflow: 'sale.orders',
-                bill_row_model: 'ShippingPlan.PlansDetailAPI',
+                bill_row_model: 'Shipment.PlansDetailAPI',
                 fields: {
                     bill_no: {
                         search_able: true,
@@ -162,11 +162,6 @@ ones.global_module
                     subject: {
                         search_able: true,
                         grid_fixed: true
-                    },
-                    quantity: {
-                        get_display: function(value, item) {
-                            return to_decimal_display(value);
-                        }
                     },
                     user_info_id: {
 						label: '创建人',
@@ -202,18 +197,18 @@ ones.global_module
             }
         }
     ])
-    .service('ShippingPlan.PlansDetailAPI', [
+    .service('Shipment.PlansDetailAPI', [
         'ones.dataApiFactory',
         'Ship.ShipAPI',
         '$q',
         function(dataAPI, ship, $q) {
-            /* this.resource = dataAPI.getResourceInstance({
-                uri: 'sale/ordersDetail'
-            }); */
-			this.resource = "mock";
+            this.resource = dataAPI.getResourceInstance({
+                uri: 'shipment/shippingPlansDetail'
+            });
+			//this.resource = "mock";
 
             this.config = {
-                app: 'shippingPlan',
+                app: 'shipment',
                 module: 'plansDetail',
                 table: 'plans_detail',
                 fields: {
@@ -284,12 +279,12 @@ ones.global_module
 					    }
 					    , total_able: true
 					},
-					customer: {
+					customer_id: {
 						label: "货主"
 						, editable_required: 'ship_id'
 						//, force_editable: true
 					},
-					phone: {
+					customer_phone: {
 						label: "联系电话"
 						, editable_required: 'ship_id'
 						//, force_editable: true
@@ -301,8 +296,8 @@ ones.global_module
 					, 'quantity2'
                     , 'quantity3'
 					, 'subtotal_amount'
-                    , 'customer'
-					, 'phone'
+                    , 'customer_id'
+					, 'customer_phone'
                     ,'remark'
                 ],
 

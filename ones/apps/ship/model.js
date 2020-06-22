@@ -109,11 +109,11 @@
                 };
 
 
-                /* this.resource = dataAPI.getResourceInstance({
-                    uri: 'product/productCategory',
+                this.resource = dataAPI.getResourceInstance({
+                    uri: 'ship/shipCategory',
                     extra_methods: ['api_query', 'update', 'api_get']
-                }); */
-				this.resource='mock_ship_category';
+                }); 
+				//this.resource='mock_ship_category';
 
             }
         ])

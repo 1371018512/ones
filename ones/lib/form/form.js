@@ -406,16 +406,21 @@
                         var data = angular.copy(self.scope[self.config.model_prefix]) || {};
 
                         data = post_data_format(data, fields_define, $injector);
-
+						
+						console.log("提交不成功")
+						
                         if(self.parentScope.form_submit_action) {
                             var result = self.parentScope.form_submit_action(get_params, data);
                             if(result && typeof result.then === 'function') {
                                 result.then(callback)
                             }
+							console.log("？")
                         } else {
                             if(self.config.isEdit) {
+								console.log("？？")
                                 self.config.resource.update(get_params, data).$promise.then(callback);
                             } else {
+								console.log("？？？")
                                 self.config.resource.save(get_params, data).$promise.then(callback);
                             }
                         }
