@@ -12,14 +12,16 @@
      * 返回产品计量单位
      * */
     window.to_product_measure_unit = function(product_api, $q, item) {
-        if(!item || (!item.product_id && !item.measure_unit)) {
+		console.log(item);
+        if(!item || (!item.ship_id && !item.product_id && !item.measure_unit)) {
             return;
         }
+		let id = item.ship_id||item.product_id;
         if(item.measure_unit) {
             return item.measure_unit;
         } else {
             var defer = $q.defer();
-            product_api.resource.api_get({id: item.product_id, _fd: 'measure_unit'}).$promise.then(function(product_item){
+            product_api.resource.api_get({id: id, _fd: 'measure_unit'}).$promise.then(function(product_item){
                 item.measure_unit = product_item.measure_unit;
                 defer.resolve(product_item.measure_unit);
             });

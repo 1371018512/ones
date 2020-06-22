@@ -117,7 +117,6 @@
 
                 // 取得商品单价
                 $scope.fetch_unit_price = function(rows, row_scope, row_index, $event) {
-
                     $timeout(function() {
                         if($event && $event.keyCode !== KEY_CODES.enter) {
                             return;

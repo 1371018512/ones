@@ -41,7 +41,7 @@
 							    return accounting.format(value, ones.system_preference.decimal_scale);
 							}
 						},
-						ship_category_id: {
+						ship_category: {
 						    label: '船只种类'					    
 						},
                         bar_code: {
@@ -79,10 +79,10 @@
                 } */
 
 
-                /* this.resource = dataAPI.getResourceInstance({
+                this.resource = dataAPI.getResourceInstance({
                     uri: 'ship/ship',
                     extra_methods: ['api_query', 'update', 'api_get']
-                }); */
+                }); 
 				
 				this.resource = 'mock2';
 				

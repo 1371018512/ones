@@ -470,7 +470,6 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     // 单元格初始化
                     this.scope.cell_init = function(column_def, td, form_name, td_scope) {
 
-
                         var tr_id = td.data('row-index');
 
                         column_def['ng-model'] = form_name + '.' + column_def.field;
@@ -817,9 +816,8 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                                         });
                                     }
                                 });
-
+								
                             }
-
 
                         };
 

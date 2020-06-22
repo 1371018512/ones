@@ -86,7 +86,7 @@
                         query_params.action = $routeParams.action;
                         break;
                 }
-				console.log($routeParams.app, $routeParams.module);
+				//console.log($routeParams.app, $routeParams.module);
                 dataAPI.init($routeParams.app, $routeParams.module);
                 $scope.gridConfig = {
                     resource: dataAPI.resource,

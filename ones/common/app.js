@@ -62,7 +62,7 @@
                     // console.log(window.frames[index]);
                     // console.log(data);
 
-                    ('$on_root' in window.frames[index]) && window.frames[index].$on_root(data);
+                    //('$on_root' in window.frames[index]) && window.frames[index].$on_root(data);
                 },300);//st增加了延迟时间
             };
 

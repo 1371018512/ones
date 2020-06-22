@@ -201,7 +201,7 @@
                                     if(!ids) return;
 
                                     var method = ids.length > 1 ? 'remove' : 'delete';
-
+									console.log("its"+method)
                                     model.resource[method]({
                                         id: ids,
                                         _df: self.data_model_fields

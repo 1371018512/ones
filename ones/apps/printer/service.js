@@ -35,9 +35,7 @@
                             $scope.print_data = data;
                             $('#print-container').html($compile(template_html)($scope));
                         };
-
                         service = $injector.get(get_current_data_api($routeParams));
-
                         $scope.print_config = template.config;
 
                         // 单据
@@ -70,32 +68,43 @@
 
                 $scope.templates = [];
                 var templates_id_map = {};
-                print_template_api.resource.api_query({
-                    _f: 'id,name',
-                    _mf: 'module_alias',
-                    _mv: sprintf('%s.%s', $routeParams.app, $routeParams.module),
-                    _parse_config: true
-                }).$promise.then(function(response_data) {
-                    if(!response_data.length) {
-                        RootFrameService.alert({content: _('printer.Please create print template first'), type: 'danger'});
-                        return;
-                    }
-
-                    for(var i=0;i<response_data.length;i++) {
-                        templates_id_map['id_'+response_data[i].id] = i;
-                    }
-
-                    $scope.templates = response_data;
-                    $scope.selected_template = response_data[0].id;
-                });
-
-                $scope.$watch("selected_template", function(selected_template) {
-                    if(!selected_template) {
-                        return;
-                    }
-                    render_html($scope.templates[templates_id_map['id_'+selected_template]]);
-                });
-
+				
+				if(print_template_api.resource=='mock'){
+					var response_data=printer_data();
+					
+					for(var i=0;i<response_data.length;i++) {
+					    templates_id_map['id_'+response_data[i].id] = i;
+					}
+										
+					$scope.templates = response_data;
+					$scope.selected_template = response_data[0].id;
+				}else{
+					print_template_api.resource.api_query({
+					    _f: 'id,name',
+					    _mf: 'module_alias',
+					    _mv: sprintf('%s.%s', $routeParams.app, $routeParams.module),
+					    _parse_config: true
+					}).$promise.then(function(response_data) {
+					    if(!response_data.length) {
+					        RootFrameService.alert({content: _('printer.Please create print template first'), type: 'danger'});
+					        return;
+					    }
+					
+					    for(var i=0;i<response_data.length;i++) {
+					        templates_id_map['id_'+response_data[i].id] = i;
+					    }
+					
+					    $scope.templates = response_data;
+					    $scope.selected_template = response_data[0].id;
+					});
+				}
+								
+				$scope.$watch("selected_template", function(selected_template) {
+				    if(!selected_template) {
+				        return;
+				    }
+				    render_html($scope.templates[templates_id_map['id_'+selected_template]]);
+				});
 
                 // 获取单据数据
                 this.get_data_by_bill = function(service, template, callback) {
@@ -123,7 +132,7 @@
 
                     $scope.fields_define = row_model.config.fields;
                     $scope.total_items = {};
-
+										
                     service.resource.get(p).$promise.then(function(response_data) {
 
                         var rows = response_data.rows;
@@ -131,7 +140,9 @@
 
                         angular.forEach(rows, function (row, k) {
                             var cleared_row = {};
+							console.log(row);
                             angular.forEach(template.config.bill_row_fields, function(field) {
+								console.log(field);
                                 if(!row[field + '__label__']) {
                                     if (row_model.config.fields[field] && typeof row_model.config.fields[field].get_display === 'function') {
                                         cleared_row[field] = row_model.config.fields[field].get_display(row[field], row);
@@ -151,7 +162,10 @@
                             });
                             cleared_rows.push(cleared_row);
                         });
-
+						console.log({
+                            meta: response_data.meta,
+                            rows: cleared_rows
+                        })
                         callback({
                             meta: response_data.meta,
                             rows: cleared_rows
@@ -210,7 +224,9 @@
                 this.resource = dataAPI.getResourceInstance({
                     uri: 'printer/printTemplate',
                     extra_methods: ['api_get', 'api_query']
-                });
+                }); 
+				
+				//this.resource='mock';
             }
         ])
     ;

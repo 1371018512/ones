@@ -52,14 +52,14 @@
                     filters: {
                         is_default: {
                             type: 'link'
-                        },
+                        }/* ,
                         app_id: {
                             type: 'link',
                             get_display: function(item) {
                                 return to_app_name(item.alias);
                             },
                             value_field: 'app_id'
-                        }
+                        } */
                     },
                     extra_selected_actions: [{
                         label: _('bpm.Workflow Design'),

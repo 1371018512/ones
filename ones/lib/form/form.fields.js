@@ -532,16 +532,19 @@
                             }
 
                             select_real_method(item);
-
-                            if(auto_hide) {
-                                $('#'+config.id).trigger('blur');
-                            }
+							
+							if(auto_hide) {
+								$timeout(function(){
+									$('#'+config.id).trigger('blur');
+								},500);								
+							}
                         };
 
                         runtime_scope.do_select3_item_select = do_select3_item_select;
 
                         // 上下键索引
                         runtime_scope.do_select3_keydown = function($event) {
+							//console.log($event);
                             set_runtime_model($($event.target).data('origin-model'));
                             switch($event.keyCode) {
                                 case KEY_CODES.DOWN:
@@ -679,7 +682,6 @@
                                 }
 
                                 enter_ing = false;
-
                             });
                         };
 

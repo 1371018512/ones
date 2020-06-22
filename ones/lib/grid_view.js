@@ -750,7 +750,7 @@
                                             || camelCaseSpace(field),
                                         items: link_filter_items
                                     });
-
+									console.log(self.scope.filters.links[self.scope.filters.links.length-1]);
                                 } catch(e) {
                                     console.log(e);
                                     return;
@@ -909,7 +909,7 @@
                             pre: function($scope, iElement, iAttrs, controller) {
                                 var fetchData = function(){
                                     var gridOptions = $scope.$parent.$eval(iAttrs.config);
-
+									console.log(gridOptions)
                                     GridView.init($scope, gridOptions);
 
                                     angular.forEach(GridView.methodsList, function(method, k){

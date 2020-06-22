@@ -183,6 +183,11 @@ ones.global_module
                     'subject'
                 ],
                 filters: {
+					by_user: {
+					    label: _('common.User'),
+					    type: 'link',
+					    data_source: window.DEAL_USER_DATASOURCE
+					}
                 },
                 sortable: [
                     'start_time', 'quantity', 'end_time'
@@ -227,7 +232,7 @@ ones.global_module
                         label: '装运泊位备注'
                         , blank: true
                         , editable_required: 'ship_id'
-                        , force_editable: true
+                        //, force_editable: true
                     }
                     , quantity1: {
                         label: "矿1"
@@ -236,9 +241,9 @@ ones.global_module
                             return to_decimal_display(value);
                         }
                         // 单元格后置计量单位
-                        /* , get_bill_cell_after: function(value, item) {
-                            return to_product_measure_unit(product, $q, item);
-                        }, */
+                        , get_bill_cell_after: function(value, item) {
+                            return to_product_measure_unit(ship, $q, item);
+                        }
                         , 'ng-blur': '$parent.$parent.$parent.re_calculate_subtotal(bill_rows, $parent.$parent, $parent.$index)'
                         , editable_required: 'ship_id'
                         , total_able: true
@@ -281,15 +286,13 @@ ones.global_module
 					},
 					customer: {
 						label: "货主"
-						, get_display: function() {
-						    return false;
-						}
+						, editable_required: 'ship_id'
+						//, force_editable: true
 					},
 					phone: {
 						label: "联系电话"
-						, get_display: function() {
-						    return false;
-						}
+						, editable_required: 'ship_id'
+						//, force_editable: true
 					}
                 },
                 bill_fields: [

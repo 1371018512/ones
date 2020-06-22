@@ -165,3 +165,41 @@ function ship_category_data2(){
 	};
 	return data;
 }
+
+function printer_data(){
+	var data=[
+		{
+			id:1,
+			content:`
+			<table>
+			    <thead>
+			    <tr>
+			        <th ng-repeat="(key,value) in print_data.rows[0]"
+					ng-bind-html="key">			           
+			        </th>
+			    </tr>
+			    </thead>
+			    <tbody>
+			    <tr ng-repeat="row in print_data.rows">
+			        <td ng-repeat="item in row"
+						ng-bind-html="item"
+						>
+			        </td>
+			    </tr>
+			    </tbody>
+			</table>
+			`
+			,//最后的模板
+			config:{
+				bill_row_fields: [
+				    'product_id'
+				    , 'unit_price'
+				    , 'quantity'
+				    , 'subtotal_amount'
+				    ,'remark'
+				],
+			}
+		}
+	]
+	return data;
+}
