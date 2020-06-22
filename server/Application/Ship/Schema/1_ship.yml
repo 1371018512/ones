@@ -9,10 +9,14 @@ ship:
         type: decimal
         precision: 14
         scale: 4
-    ship_category_id:
+    ship_category:
     bar_code:
         type: string
         limit: 30
+        blank: true
+    measure_unit:
+        type: string
+        limit: 20
         blank: true
     $meta:
         indexes:

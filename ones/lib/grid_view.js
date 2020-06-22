@@ -594,7 +594,7 @@
 								    marginLeft: $('#grid-fixed-fields-container').width() - 1
 								});
 								return;
-							}else if(self.options.resource=='mock2'){
+							}/* else if(self.options.resource=='mock2'){
 								let remoteData = ship_data();
 								self.setPagingData(remoteData, page, pageSize);
 								console.log(remoteData);
@@ -602,7 +602,7 @@
 								    marginLeft: $('#grid-fixed-fields-container').width() - 1
 								});
 								return;
-							}else if(self.options.resource=='mock_ship_category'){
+							} */else if(self.options.resource=='mock_ship_category'){
 								let remoteData = ship_category_data();
 								self.setPagingData(remoteData, page, pageSize);
 								console.log(remoteData);

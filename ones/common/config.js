@@ -22,8 +22,8 @@ ones.default_language = 'zh-cn';
 /*
 * 后端根目录
 * */
-ones.remote_base = '../server/'; 
-/* ones.remote_base = 'https://frp.rei0x0.com:1234/onesx/server/'; */
+/* ones.remote_base = '../server/'; */
+ones.remote_base = 'https://frp.rei0x0.com:1234/onesx/server/'; 
 
 /*
 * 后端Restful接口地址

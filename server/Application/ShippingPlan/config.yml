@@ -1,4 +1,4 @@
-alias: myApp
+alias: shippingPlan
 author: 'zhanglei'
 link: 
 requirements: 
@@ -15,9 +15,9 @@ load_modules:
 
 include:
     js:
-        - apps/myApp/plans
-        - apps/myApp/main
-        - apps/myApp/model
+        - apps/shippingPlan/plans
+        - apps/shippingPlan/main
+        - apps/shippingPlan/model
         - apps/ship/model
         - apps/storage/model
         - apps/contactsCompany/model
@@ -25,21 +25,21 @@ include:
 
 global_include:
     js:
-        - apps/myApp/model
+        - apps/shippingPlan/model
 
 navs:
     Myapp1:
         children:
             Myapp2:
-                app: myApp
+                app: shippingPlan
                 icon: sitemap
                 children:
                     装运计划:
-                        app: myApp
+                        app: shippingPlan
                         icon: users
-                        link: myApp/plans
+                        link: shippingPlan/plans
                     增加装运计划:
-                        app: myApp
+                        app: shippingPlan
                         icon: users
-                        link: myApp/plans/add/bill
+                        link: shippingPlan/plans/add/bill
             

@@ -1,36 +1,36 @@
 (function(window, angular, ones, io){
     /*
-     * @app MyApp
+     * @app ShippingPlan
      * @author laofahai@TEam Swift
      * @link http://ng-erp.com
      * */
     'use strict';
-    angular.module('ones.app.myApp.plans', ['ones.billModule'])
+    angular.module('ones.app.shippingPlan.plans', ['ones.billModule'])
         .config(['$routeProvider', function($route) {
             $route
-                .when('/myApp/plans/add/bill', {
-                    controller : 'MyAppPlansBillCtrl',
+                .when('/shippingPlan/plans/add/bill', {
+                    controller : 'ShippingPlanPlansBillCtrl',
                     templateUrl: appView('plans_edit.html')
                 })
-                .when('/myApp/plans/edit/bill/:id', {
-                    controller : 'MyAppPlansBillCtrl',
+                .when('/shippingPlan/plans/edit/bill/:id', {
+                    controller : 'ShippingPlanPlansBillCtrl',
                     templateUrl: appView('plans_edit.html')
                 })
-                .when('/myApp/plans/:action/bill/:id', {
-                    controller : 'MyAppPlansBillCtrl',
+                .when('/shippingPlan/plans/:action/bill/:id', {
+                    controller : 'ShippingPlanPlansBillCtrl',
                     templateUrl: appView('plans_edit.html')
                 })
-                .when('/myApp/plans/:action/bill/:id/node/:node_id', {
-                    controller : 'MyAppPlansBillCtrl',
+                .when('/shippingPlan/plans/:action/bill/:id/node/:node_id', {
+                    controller : 'ShippingPlanPlansBillCtrl',
                     templateUrl: appView('plans_edit.html')
                 })
             ;
         }])
-        .controller('MyAppPlansBillCtrl', [
+        .controller('ShippingPlanPlansBillCtrl', [
             '$scope',
             '$timeout',
-            'MyApp.PlansAPI',
-            'MyApp.PlansDetailAPI',
+            'ShippingPlan.PlansAPI',
+            'ShippingPlan.PlansDetailAPI',
             'Ship.ShipAPI',
             'Bpm.WorkflowAPI',
             'BillModule',
@@ -136,7 +136,7 @@
     ;
 
 ones.global_module
-    .service('MyApp.PlansAPI', [
+    .service('ShippingPlan.PlansAPI', [
         'ones.dataApiFactory',
         '$injector',
         function(dataAPI, $injector) {
@@ -147,13 +147,13 @@ ones.global_module
 			this.resource = "mock";
 
             this.config = {
-                app: 'myApp',
+                app: 'shippingPlan',
                 module: 'plans',
                 table: 'plans',
                 is_bill: true,
                 detail_able: true,
                 //workflow: 'sale.orders',
-                bill_row_model: 'MyApp.PlansDetailAPI',
+                bill_row_model: 'ShippingPlan.PlansDetailAPI',
                 fields: {
                     bill_no: {
                         search_able: true,
@@ -202,7 +202,7 @@ ones.global_module
             }
         }
     ])
-    .service('MyApp.PlansDetailAPI', [
+    .service('ShippingPlan.PlansDetailAPI', [
         'ones.dataApiFactory',
         'Ship.ShipAPI',
         '$q',
@@ -213,7 +213,7 @@ ones.global_module
 			this.resource = "mock";
 
             this.config = {
-                app: 'myApp',
+                app: 'shippingPlan',
                 module: 'plansDetail',
                 table: 'plans_detail',
                 fields: {

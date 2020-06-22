@@ -19,34 +19,20 @@
                     module: 'ship',
                     table: 'ship',
                     fields: {
-                        serial_number: {
-                            ensureUnique: 'Ship.ShipAPI',
-                            search_able: true,
-                            grid_fixed: true
-                        },
                         name: {
                             search_able: true,
                             grid_fixed: true
                             //search_able_fields: 'name,pinyin'
                         },
-						ship_brand: {
-							label: '船号',
-							search_able: true,
-							grid_fixed: true
-							//search_able_fields: 'name,pinyin'
-						},
 						carrying_capacity: {
 							label: '核重',
 							get_display: function(value) {
 							    return accounting.format(value, ones.system_preference.decimal_scale);
 							}
 						},
-						ship_category: {
+						ship_category_id: {
 						    label: '船只种类'					    
-						},
-                        bar_code: {
-                            search_able: true
-                        }						
+						}
                     },
                     sortable: ['id'],
                     filters: {
@@ -84,7 +70,7 @@
                     extra_methods: ['api_query', 'update', 'api_get']
                 }); 
 				
-				this.resource = 'mock2';
+				//this.resource = 'mock2';
 				
             }
         ]).
