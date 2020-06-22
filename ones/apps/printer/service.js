@@ -71,7 +71,7 @@
                 $scope.templates = [];
                 var templates_id_map = {};
                 print_template_api.resource.api_query({
-                    _f: 'id,name',
+                    _fd: 'id,name,config,content',
                     _mf: 'module_alias',
                     _mv: sprintf('%s.%s', $routeParams.app, $routeParams.module),
                     _parse_config: true
