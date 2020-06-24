@@ -7,7 +7,7 @@
     }
 </style>
 <div class="print-header">
-    <span class="bill-no" ng-bind="print_data.meta.bill_no"></span>
+    <span class="bill-no" ng-bind="'编号：'+print_data.meta.bill_no"></span>
     <h1>
         <span ng-bind="'company_profile.company_name'|to_ones_var"></span>
         <span ng-bind="print_data.meta.subject"></span>
@@ -43,7 +43,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="item in print_data.rows track by item.id">
+            <tr ng-repeat="item in print_data.rows track by $index">
                 <td ng-if="print_config.bill_row_fields.indexOf('_sn')>=0" ng-bind="$index+1" align="center"></td>
                 <td
                         ng-bind="item[row_field]"
