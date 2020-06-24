@@ -160,7 +160,7 @@
                             multiple: false,
                             auth_node: "get",
                             action: function(evt, selected, theItem){
-                                theItem = theItem || {};
+                                theItem = theItem || selected[0];
                                 var action = model.config.is_bill ? "view/bill" : "view";
 
                                 if(model.config.detail_split) {
@@ -175,6 +175,7 @@
                                 });
                             }
                         });
+
                     }
 
                     //删除

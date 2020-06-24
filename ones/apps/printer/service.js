@@ -21,7 +21,7 @@
             '$compile',
             '$injector',
             function($scope, dataAPI, $routeParams, print_template_api, RootFrameService, $compile, $injector) {
-
+                debugger;
                 var self = this;
 
                 $scope.back_able = true;
@@ -33,12 +33,13 @@
                     try {
                         var fetch_data_callback = function(data) {
                             $scope.print_data = data;
+                            debugger;
                             $('#print-container').html($compile(template_html)($scope));
                         };
 
                         service = $injector.get(get_current_data_api($routeParams));
-
-                        $scope.print_config = template.config;
+                        debugger;
+                        $scope.print_config = template.config;//= {bill_row_fields:['_sn','product_id','remark','stock_quantity','unit_price','quantity','subtotal_amount']};
 
                         // 单据
                         if(service.config.is_bill) {
