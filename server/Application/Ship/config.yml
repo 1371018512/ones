@@ -1,0 +1,27 @@
+alias: ship
+author: Author Name
+link: http://author.link
+requirements:
+
+auth_nodes:
+
+include:
+    js:
+        - apps/ship/main
+        - apps/ship/model
+
+navs:
+    港口管理:
+        app: ship
+        icon: ship
+        children:
+            船只管理:
+                app: ship
+                icon: navicon
+                children:
+                    船只管理:
+                        app: ship
+                        link: ship/ship
+                    船只种类:
+                        app: ship
+                        link: ship/shipCategory

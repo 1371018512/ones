@@ -1,0 +1,50 @@
+ship_category:
+  name:
+  # 左右值无限级分类
+  # 每一个后代节点的左值总是大于父类，右值总是小于父级，右值总是小于左值
+  lft:
+    type: integer
+    limit: 6
+  rgt:
+    type: integer
+    limit: 6
+  remark:
+    blank: true
+  $meta:
+    indexes:
+      name:
+      lft:
+      rgt:
+    foreign:
+      company:
+        restrict:
+          delete: CASCADE
+    enable_trash: true
+
+ship:
+  name:
+  carrying_capacity:
+    type: decimal
+    default: 0.0000
+    precision: 14
+    scale: 4
+  measure_unit:
+    type: string
+    limit: 20
+    blank: true
+  $meta:
+    # 索引
+    indexes:
+      name:
+    # 外键
+    foreign:
+      ship_category:
+        restrict:
+          delete: CASCADE
+      company:
+        restrict:
+          delete: CASCADE
+    # 记录使用频率
+    record_rate: true
+    # 启用删除回收站
+    enable_trash: true

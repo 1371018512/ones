@@ -1,0 +1,44 @@
+alias: shipment
+author: Author Name
+link: http://author.link
+requirements:
+    - ship
+    - bpm
+    - crm
+    - contactsCompany
+
+auth_nodes:
+
+load_modules:
+    - ones.gridViewModule
+    - ones.app.ship.model
+
+include:
+    js:
+        - apps/shipment/plans
+        - apps/shipment/main
+        - apps/shipment/model
+        - apps/ship/model
+        - apps/storage/model
+        - apps/contactsCompany/model
+        - apps/crm/model
+
+global_include:
+    js:
+        - apps/shipment/model
+
+navs:
+    港口管理:
+        children:
+            装运计划:
+                app: shipment
+                icon: sitemap
+                children:
+                    装运计划:
+                        app: shipment
+                        icon: users
+                        link: shipment/plans
+                    增加装运计划:
+                        app: shipment
+                        icon: users
+                        link: shipment/plans/add/bill
