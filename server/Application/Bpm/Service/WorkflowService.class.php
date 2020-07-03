@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: nemo <335454250@qq.com>
+ * User: linghui
  * Date: 7/7/15
  * Time: 08:56
  *
@@ -42,7 +42,7 @@ class WorkflowService extends CommonModel {
 
     // 自动执行的「用户角色」，将不会出现在用户可见操作中
     protected $auto_executor = [
-        'auto: auto' // 自动执行
+        'auto:auto' // 自动执行
         , 'auto:wait' // 等待外部响应
     ];
 

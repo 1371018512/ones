@@ -1,11 +1,10 @@
 <?php
 
-/*
+/**
  * @app Ship
  * @package Ship.service.Ship
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
- * */
+ * @author Lin
+ */
 namespace Ship\Service;
 use Common\Model\CommonModel;
 

@@ -3,8 +3,8 @@
 /*
  * @app Region
  * @package Region.service.Region
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Region\Service;
 use Common\Model\CommonModel;

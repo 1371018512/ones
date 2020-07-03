@@ -3,8 +3,8 @@
 /*
  * @app Storage
  * @package Storage.controller.StockOut
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Storage\Controller;
 use Common\Controller\CommonBillController;

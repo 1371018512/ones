@@ -3,8 +3,8 @@
 /*
  * @app Account
  * @package Account.event.CompanyProfile
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Account\Event;
 use Common\Event\BaseRestEvent;

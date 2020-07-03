@@ -250,9 +250,9 @@ ones.global_module
 					        return to_decimal_display(value);
 					    }
 					    // 单元格后置计量单位
-					    /* , get_bill_cell_after: function(value, item) {
-					        return to_product_measure_unit(product, $q, item);
-					    }, */
+					    , get_bill_cell_after: function(value, item) {
+					        return to_product_measure_unit(ship, $q, item);
+					    }
 					    , 'ng-blur': '$parent.$parent.$parent.re_calculate_subtotal(bill_rows, $parent.$parent, $parent.$index)'
 					    , editable_required: 'ship_id'
 					    , total_able: true
@@ -264,9 +264,9 @@ ones.global_module
 					        return to_decimal_display(value);
 					    }
 					    // 单元格后置计量单位
-					    /* , get_bill_cell_after: function(value, item) {
-					        return to_product_measure_unit(product, $q, item);
-					    }, */
+					    , get_bill_cell_after: function(value, item) {
+					        return to_product_measure_unit(ship, $q, item);
+					    }
 					    , 'ng-blur': '$parent.$parent.$parent.re_calculate_subtotal(bill_rows, $parent.$parent, $parent.$index)'
 					    ,editable_required: 'ship_id'
 					    , total_able: true

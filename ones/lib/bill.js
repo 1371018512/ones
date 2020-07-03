@@ -105,12 +105,13 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     },
                     // 重新计算小计
                     re_calculate_subtotal: function($runtime_scope, rows, row_scope, row_index) {
-						if(ones.app_info.app == 'shippingPlan'){
+						if(ones.app_info.app == 'shipment'){
 							var sub_total_getter = $parse('bill_rows['+row_index+'].subtotal_amount');
 							var sub_total_label_getter = $parse('bill_rows['+row_index+'].subtotal_amount__label__');
 							var sub_total = to_decimal_display(rows[row_index].quantity1)
 								+ to_decimal_display(rows[row_index].quantity2)
 								+ to_decimal_display(rows[row_index].quantity3);
+							console.log(sub_total+'?')
 							sub_total_getter.assign(row_scope, to_decimal_display(sub_total));
 							sub_total_label_getter.assign(row_scope, to_decimal_display(sub_total, false, true));
 							return;

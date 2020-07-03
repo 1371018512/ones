@@ -10,6 +10,6 @@ Search Able: 是否可搜索
 Extra Config: 扩展配置
 Belongs To Module: 从属于模块
 
-help_text_field_extra_config: "每行一个配置，eg: key:value。<a href=\"http://forum.ng-erp.com/topic/13\" target=\"_blank\">配置项目参考</a>"
+help_text_field_extra_config: "每行一个配置，eg: key:value。<a href=\"http://forum.linghui.com/topic/13\" target=\"_blank\">配置项目参考</a>"
 help_text_search_able: '<strong class="text-warning">选中后不可进行修改</strong>'
 help_text_alias: '接受英文字母和下划线，建议加入命名前缀'

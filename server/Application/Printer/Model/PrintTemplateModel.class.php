@@ -3,8 +3,8 @@
 /*
  * @app Printer
  * @package Printer.model.PrintTemplate
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Printer\Model;
 use Common\Model\CommonViewModel;

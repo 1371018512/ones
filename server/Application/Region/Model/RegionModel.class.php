@@ -3,8 +3,8 @@
 /*
  * @app Region
  * @package Region.model.Region
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Region\Model;
 use Common\Model\CommonViewModel;

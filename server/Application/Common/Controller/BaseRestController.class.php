@@ -194,7 +194,7 @@ class BaseRestController extends RestController {
 
         // 获得用户已授权节点
         $authed_nodes = session('authed_nodes');
-        if(APP_APP_DEBUG || !$authed_nodes) {
+        if(APP_DEBUG || !$authed_nodes) {
             $authed_nodes = D('Account/Authorize')->get_authed_nodes();
             session('authed_nodes', $authed_nodes);
         }
@@ -1075,7 +1075,7 @@ class BaseRestController extends RestController {
      * 日志 附加在返回的数据中
      * */
     protected function append_log_to_data($data) {
-        if(true !== APP_APP_DEBUG || !$data) {
+        if(true !== APP_DEBUG || !$data) {
             return $data;
         }
 

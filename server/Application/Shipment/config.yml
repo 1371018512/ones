@@ -1,7 +1,7 @@
-alias: shippingPlan
-author: 'zhanglei'
-link: 
-requirements: 
+alias: shipment
+author: Author Name
+link: http://author.link
+requirements:
     - ship
     - bpm
     - crm
@@ -15,9 +15,9 @@ load_modules:
 
 include:
     js:
-        - apps/shippingPlan/plans
-        - apps/shippingPlan/main
-        - apps/shippingPlan/model
+        - apps/shipment/plans
+        - apps/shipment/main
+        - apps/shipment/model
         - apps/ship/model
         - apps/storage/model
         - apps/contactsCompany/model
@@ -25,21 +25,20 @@ include:
 
 global_include:
     js:
-        - apps/shippingPlan/model
+        - apps/shipment/model
 
 navs:
-    Myapp1:
+    港口管理:
         children:
-            Myapp2:
-                app: shippingPlan
+            装运计划:
+                app: shipment
                 icon: sitemap
                 children:
                     装运计划:
-                        app: shippingPlan
+                        app: shipment
                         icon: users
-                        link: shippingPlan/plans
+                        link: shipment/plans
                     增加装运计划:
-                        app: shippingPlan
+                        app: shipment
                         icon: users
-                        link: shippingPlan/plans/add/bill
-            
+                        link: shipment/plans/add/bill

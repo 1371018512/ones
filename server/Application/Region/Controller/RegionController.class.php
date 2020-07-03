@@ -3,8 +3,8 @@
 /*
  * @app Region
  * @package Region.controller.Region
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Region\Controller;
 use Common\Controller\BaseRestController;

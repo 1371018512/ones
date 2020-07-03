@@ -3,8 +3,8 @@
 /*
  * @app Finance
  * @package Finance.service.Receivables
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Finance\Service;
 use Common\Model\CommonModel;

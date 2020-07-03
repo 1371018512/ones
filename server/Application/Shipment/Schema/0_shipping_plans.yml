@@ -1,0 +1,80 @@
+shipping_plans:
+  subject:
+    limit: 100
+    blank: true
+  bill_no:
+    limit: 20
+  source_model:
+    limit: 100
+    blank: true
+  source_id:
+    type: integer
+    limit: 11
+    blank: true
+  start_time:
+    type: datetime
+    default: CURRENT_TIMESTAMP
+  end_time:
+    type: datetime
+    default: CURRENT_TIMESTAMP
+  remark:
+    blank: true
+  status:
+    type: integer
+    limit: 1
+  $meta:
+    indexes:
+      subject:
+      bill_no:
+      source_model:
+      source_id:
+      created:
+    foreign:
+      user_info:
+        restrict:
+          delete: CASCADE
+      company:
+        restrict:
+          delete: CASCADE
+      workflow:
+        options:
+          blank: true
+        restrict:
+          delete: SET_NULL
+    enable_trash: true
+
+shipping_plans_detail:
+  quantity1:
+    type: decimal
+    precision: 14
+    scale: 4
+  quantity2:
+    type: decimal
+    precision: 14
+    scale: 4
+  quantity3:
+    type: decimal
+    precision: 14
+    scale: 4
+  subtotal_amount:
+    type: decimal
+    precision: 14
+    scale: 4
+  remark:
+    blank: true
+  $meta:
+    indexes:
+    foreign:
+      customer:
+        restrict:
+          delete: CASCADE
+      ship:
+        restrict:
+          delete: CASCADE
+      shipping_plans:
+        restrict:
+          delete: CASCADE
+      company:
+        restrict:
+          delete: CASCADE
+    enable_trash: true

@@ -16,6 +16,7 @@
         if(!item || (!item.ship_id && !item.product_id && !item.measure_unit)) {
             return;
         }
+		console.log(item.measure_unit);
 		let id = item.ship_id||item.product_id;
         if(item.measure_unit) {
             return item.measure_unit;

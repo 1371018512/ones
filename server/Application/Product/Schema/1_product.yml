@@ -1,4 +1,3 @@
-#产品种类
 product_category:
     name:
     lft:
@@ -19,7 +18,7 @@ product_category:
                 restrict:
                     delete: CASCADE
         enable_trash: true
-#产品
+            
 product:
     name:
     cost:
@@ -62,4 +61,5 @@ product:
         record_rate: true
         # 启用删除回收站
         enable_trash: true
+
 

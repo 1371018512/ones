@@ -3,8 +3,8 @@
 /*
  * @app Purchase
  * @package Purchase.service.Purchase
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Purchase\Service;
 use Common\Service\CommonBillService;

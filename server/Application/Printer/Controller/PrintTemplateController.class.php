@@ -3,8 +3,8 @@
 /*
  * @app Printer
  * @package Printer.controller.PrintTemplate
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Printer\Controller;
 use Common\Controller\BaseRestController;

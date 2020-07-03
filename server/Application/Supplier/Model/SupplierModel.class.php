@@ -3,8 +3,8 @@
 /*
  * @app Supplier
  * @package Supplier.model.Supplier
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Supplier\Model;
 use Common\Model\CommonViewModel;

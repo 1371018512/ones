@@ -3,8 +3,8 @@
 /*
  * @app Sale
  * @package Sale.service.OrdersDetail
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
+ * @author linghui
+ * @link http://linghui.com
  * */
 namespace Sale\Service;
 use Common\Model\CommonModel;

@@ -1,11 +1,10 @@
 <?php
 
-/*
+/**
  * @app Ship
  * @package Ship.controller.Ship
- * @author laofahai@TEam Swift
- * @link http://ng-erp.com
- * */
+ * @author Lin
+ */
 namespace Ship\Controller;
 use Common\Controller\BaseRestController;
 
