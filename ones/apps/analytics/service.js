@@ -1,8 +1,8 @@
 (function(window, angular, ones, io){
     /*
      * @app analytics
-     * @author laofahai@TEam Swift
-     * @link http://ng-erp.com
+     * @author linghui
+     *
      * */
     'use strict';
     ones.global_module

@@ -1,8 +1,8 @@
 (function(window, angular, ones, io){
     /*
      * @app printer
-     * @author laofahai@TEam Swift
-     * @link http://ng-erp.com
+     * @author linghui
+     *
      * */
     'use strict';
     ones.global_module
@@ -21,7 +21,7 @@
             '$compile',
             '$injector',
             function($scope, dataAPI, $routeParams, print_template_api, RootFrameService, $compile, $injector) {
-
+                debugger;
                 var self = this;
 
                 $scope.back_able = true;
@@ -33,11 +33,12 @@
                     try {
                         var fetch_data_callback = function(data) {
                             $scope.print_data = data;
+                            debugger;
                             $('#print-container').html($compile(template_html)($scope));
                         };
                         service = $injector.get(get_current_data_api($routeParams));
-                        $scope.print_config = template.config;
-
+						debugger;
+                        $scope.print_config = template.config;//= {bill_row_fields:['_sn','product_id','remark','stock_quantity','unit_price','quantity','subtotal_amount']};
                         // 单据
                         if(service.config.is_bill) {
                             self.get_data_by_bill(service, template, fetch_data_callback);
@@ -80,7 +81,7 @@
 					$scope.selected_template = response_data[0].id;
 				}else{
 					print_template_api.resource.api_query({
-					    _f: 'id,name',
+                    _fd: 'id,name,config,content',
 					    _mf: 'module_alias',
 					    _mv: sprintf('%s.%s', $routeParams.app, $routeParams.module),
 					    _parse_config: true
@@ -140,10 +141,10 @@
 
                         angular.forEach(rows, function (row, k) {
                             var cleared_row = {};
-							console.log(row);
+							
                             angular.forEach(template.config.bill_row_fields, function(field) {
-								console.log(field);
-                                if(!row[field + '__label__']) {
+                                
+								if(!row[field + '__label__']) {
                                     if (row_model.config.fields[field] && typeof row_model.config.fields[field].get_display === 'function') {
                                         cleared_row[field] = row_model.config.fields[field].get_display(row[field], row);
                                     } else {
@@ -162,10 +163,7 @@
                             });
                             cleared_rows.push(cleared_row);
                         });
-						console.log({
-                            meta: response_data.meta,
-                            rows: cleared_rows
-                        })
+
                         callback({
                             meta: response_data.meta,
                             rows: cleared_rows

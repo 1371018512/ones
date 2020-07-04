@@ -143,7 +143,7 @@ function config_init(apps, callback) {
                 } else {
                     alert('Something is wrong when loading bootstrap config, please open Developer Tool see more details.');
                 }
-                console.error('You can get help here: http://forum.ng-erp.com');
+                console.error('You can get help here: http://forum.linghui.com');
             }
         }
     });
