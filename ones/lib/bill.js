@@ -55,7 +55,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 
                     // 行model
                     this.row_model = $injector.get(opts.model.config.bill_row_model);
-					console.log(this.row_model.config)
+					//console.log(this.row_model.config)
                     this.total_able_fields = [];
                     angular.forEach(this.row_model.config.fields, function(config, field) {
                         if(config.total_able) {
@@ -112,7 +112,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 							var sub_total = to_decimal_display(rows[row_index].quantity1)
 								+ to_decimal_display(rows[row_index].quantity2)
 								+ to_decimal_display(rows[row_index].quantity3);
-							console.log(sub_total+'?')
+
 							sub_total_getter.assign(row_scope, to_decimal_display(sub_total));
 							sub_total_label_getter.assign(row_scope, to_decimal_display(sub_total, false, true));
 							return;
@@ -214,7 +214,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 					}
 					else{
 						self.opts.model.resource.get(p).$promise.then(function(response_data){
-							console.log(JSON.parse(JSON.stringify(response_data)));
+
 							angular.deep_extend(
 								self.parentScope.bill_meta_data,
 								format_rest_data(response_data.meta, self.opts.model.config.fields)
@@ -648,7 +648,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         config: "="
                     },
                     link: function(scope, element, attrs) {
-						console.log(scope.$parent.$eval(attrs.config))
+
                         bill.init(scope, scope.$parent.$eval(attrs.config));
                     }
                 };

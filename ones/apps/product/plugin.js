@@ -12,7 +12,7 @@
      * 返回产品计量单位
      * */
     window.to_product_measure_unit = function(product_api, $q, item) {
-		console.log(item);
+
         if(!item || (!item.ship_id && !item.product_id && !item.measure_unit)) {
             return;
         }

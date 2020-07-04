@@ -53,7 +53,7 @@
                     this.config.form_name = this.scope.form_name = 'id_'+this.config.model_prefix;
 
                     this.model_config = this.config.model.config;
-					console.log(this.model_config);
+					//console.log(this.model_config);
                     this.model_config.fields = this.model_config.fields || {};
 					
                     ones.DEBUG  && console.debug('model_config: ', this.model_config);
@@ -111,13 +111,13 @@
                 this.load_edit_data = function() {
 					if(this.config.resource=='mock2'){
 						let data = shipAPI_data();
-						console.log(data);
+						//console.log(data);
 						self.scope.edit_data_source = data;
 						self.scope.$broadcast('form.dataLoaded', data);					
 						return;
 					}else if(this.config.resource=='mock_ship_category'){
 						let data = ship_category_data2();
-						console.log(data);
+						//console.log(data);
 						self.scope.edit_data_source = data;
 						self.scope.$broadcast('form.dataLoaded', data);	
 						return;
@@ -407,20 +407,16 @@
 
                         data = post_data_format(data, fields_define, $injector);
 						
-						console.log("提交不成功")
 						
                         if(self.parentScope.form_submit_action) {
                             var result = self.parentScope.form_submit_action(get_params, data);
                             if(result && typeof result.then === 'function') {
                                 result.then(callback)
                             }
-							console.log("？")
                         } else {
                             if(self.config.isEdit) {
-								console.log("？？")
                                 self.config.resource.update(get_params, data).$promise.then(callback);
                             } else {
-								console.log("？？？")
                                 self.config.resource.save(get_params, data).$promise.then(callback);
                             }
                         }
@@ -445,7 +441,7 @@
                     compile: function(element, attrs, transclude) {
                         return {
                             pre: function ($scope, iElement, iAttrs, controller) {
-								console.log($scope.config);
+
                                 form.init($scope, $scope.config).promise.then(function(html){
                                     angular.element(element).append($compile(html)($scope));
                                 });
