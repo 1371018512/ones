@@ -1,0 +1,74 @@
+order_check:
+    #subject:
+        #limit:20
+    type:
+        limit: 100
+    bill_no:
+        limit: 20
+    status:
+        type: integer
+        limit: 1
+    created:
+        type: datetime
+    estimated_time:
+        type: datetime
+    total_weight:
+        type: decimal
+        precision: 14
+        scale: 4
+    remark:
+        limit:50
+    #accounting_method:
+        #limit: 20
+        #blank: true
+    #ship_status:
+        #limit: 20
+    customer_id:
+    $meta:
+        indexes:
+        foreign:
+            ship:
+                restrict:
+                    delete: CASCADE
+            company:
+                restrict:
+                    delete: CASCADE
+            workflow:
+                options:
+                    blank: true
+                restrict:
+                    delete: SET_NULL
+        enable_trash: true
+
+order_check_detail:
+    quantity:
+        type: decimal
+        precision: 14
+        scale: 4
+    product_unique_id:
+        type: string
+        limit: 100
+    unit_price:
+        type: decimal
+        precision: 14
+        scale: 4
+    subtotal_amount:
+        type: decimal
+        precision: 14
+        scale: 4
+    remark:
+        blank: true
+    $meta:
+        indexes:
+            product_unique_id:
+        foreign:
+            product:
+                restrict:
+                    delete: CASCADE
+            order:
+                restrict:
+                    delete: CASCADE
+            company:
+                restrict:
+                    delete: CASCADE
+        enable_trash: true

@@ -1,0 +1,38 @@
+alias: order
+author: 'zl'
+link: ''
+requirements: 
+    - product
+    - bpm
+    - crm
+    - contactsCompany
+auth_nodes:
+
+load_modules:
+    - ones.gridViewModule
+    - ones.app.product.model
+
+include:
+    js:
+        - apps/order/main
+        - apps/order/model
+        - apps/product/model
+        - apps/order/check
+        - apps/order/all
+        - apps/contactsCompany/model
+        - apps/crm/model
+navs:
+    单据管理:
+        children:
+            订单管理:
+                app: order
+                icon: sitemap
+                children:
+                    核对:
+                        app: order
+                        icon: users
+                        link: order/check
+                    调度:
+                        app: order
+                        icon: users
+                        link: order/dispatch

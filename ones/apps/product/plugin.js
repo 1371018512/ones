@@ -12,11 +12,11 @@
      * 返回产品计量单位
      * */
     window.to_product_measure_unit = function(product_api, $q, item) {
-		console.log(item);
+		//console.log(item);
         if(!item || (!item.ship_id && !item.product_id && !item.measure_unit)) {
             return;
         }
-		console.log(item.measure_unit);
+		//console.log(item.measure_unit);
 		let id = item.ship_id||item.product_id;
         if(item.measure_unit) {
             return item.measure_unit;

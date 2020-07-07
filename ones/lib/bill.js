@@ -154,8 +154,8 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         id: $routeParams.id,
                         _ir: true // include_rows
                     };
-                    if(self.opts.model.resource == 'mock'){
-						let response_data = plans_detail_data();
+                    if(self.opts.model.resource == 'order_check_mock'){
+						let response_data = order_check_detail();
 						console.log(response_data);
 						angular.deep_extend(
 							self.parentScope.bill_meta_data,

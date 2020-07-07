@@ -1,0 +1,19 @@
+<?php
+
+/*
+ * @app Order
+ * @package Order.service.Order
+ * @author laofahai@TEam Swift
+ * @link http://ng-erp.com
+ * */
+namespace Order\Service;
+use Common\Model\CommonModel;
+
+class OrderService extends CommonModel {
+
+    protected $_auto = [
+        ["user_id", "get_current_user_id", 1, "function"],
+        ["company_id", "get_current_company_id", 1, "function"]
+    ];
+
+}

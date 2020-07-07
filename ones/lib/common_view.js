@@ -68,8 +68,8 @@
             "PageSelectedActions",
             function($scope, $location, dataAPI, $routeParams, $rootScope, PageSelectedActions) {
                 ones.DEBUG && console.debug('Common view detected: '+ $location.url());
-
-                var query_params = {};
+                
+				var query_params = {};
                 // 可返回
                 $scope.$parent.back_able = false;
 
@@ -86,7 +86,7 @@
                         query_params.action = $routeParams.action;
                         break;
                 }
-				//console.log($routeParams.app, $routeParams.module);
+				//console.log($routeParams.app, $routeParams.module)
                 dataAPI.init($routeParams.app, $routeParams.module);
                 $scope.gridConfig = {
                     resource: dataAPI.resource,

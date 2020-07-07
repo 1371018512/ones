@@ -9,7 +9,7 @@
 		'ones.app.shipment.model',
 		'ones.app.shipment.plans'
 	]);
-	console.log("shipment!")
+	//console.log("shipment!")
 		
     ;
 

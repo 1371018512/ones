@@ -10,7 +10,7 @@
 		'ones.gridViewModule',
 		'ones.app.ship.model'
 	])
-	console.log("ship!")
+	//console.log("ship!")
     ;
 
 })(window, window.angular, window.ones, window.io);

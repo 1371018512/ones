@@ -1,0 +1,54 @@
+<page-actions></page-actions>
+<div class="bill-container" ng-class="{'workflowing': workflowing}">
+    <div ng-include="'views/billHeader.html'"></div>
+    <div class="bill-body">
+        <bill config="bill_config"></bill>
+    </div>
+    <div class="bill-footer">
+        <div class="bill-footer-input row">
+			<div class="input-group bill-footer-input-item" style="width: auto">
+			    <span class="input-group-addon" ng-bind="'总重'"></span>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.total_weight" ng-readonly="bill_meta_data.locked">
+			</div>
+			<div class="input-group bill-footer-input-item" style="width: auto">
+			    <span class="input-group-addon" ng-bind="'订单类型'"></span>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.type" ng-readonly="bill_meta_data.locked">
+			</div>
+			<div class="input-group bill-footer-input-item" style="width: auto">
+			    <span class="input-group-addon" ng-bind="'万南当日出货量'"></span>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.shipment_Wannan" ng-readonly="bill_meta_data.locked">
+			</div>
+			<div class="input-group bill-footer-input-item" style="width: auto">
+			    <span class="input-group-addon" ng-bind="'万北当日出货量'"></span>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.shipment_Wanbei" ng-readonly="bill_meta_data.locked">
+			</div>
+			<div class="input-group bill-footer-input-item" style="width: auto">
+			    <span class="input-group-addon" ng-bind="'用户余额'"></span>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.balance" ng-readonly="bill_meta_data.locked">
+			</div>
+			<div class="input-group bill-footer-input-item">
+			    <span class="input-group-addon" ng-bind="'发货地点'"></span>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.delivery_place" ng-readonly="bill_meta_data.locked">
+			</div>
+			<div class="input-group bill-footer-input-item">
+			    <span class="input-group-addon" ng-bind="'核算方式'"></span>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.accounting_method" ng-readonly="bill_meta_data.locked">
+			</div>
+            <div class="bill-footer-input-item" ng-click="showDetail()">
+                <input-field config="ship_config" ng-readonly="bill_meta_data.locked"></input-field>
+            </div>
+            <div class="bill-footer-input-item">
+                <input-field config="customer_config" ng-readonly="bill_meta_data.locked"></input-field>
+            </div>
+			<div class="bill-footer-input-item">
+			    <input-field config="date_config" ng-readonly="bill_meta_data.locked"></input-field>
+			</div>
+			<div class="bill-footer-input-item">
+			    <input-field config="delivery_time_config" ng-readonly="bill_meta_data.locked"></input-field>
+			</div>
+        </div>
+
+        <div ng-include="'views/billFooter.html'"></div>
+
+    </div>
+</div>

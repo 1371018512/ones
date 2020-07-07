@@ -586,8 +586,8 @@
 
                         try {
 							//console.log(self.options.resource.query(p));
-							if(self.options.resource=='mock'){
-								let remoteData = plans_data();							
+							if(self.options.resource=='order_check_mock'){
+								let remoteData = order_check();							
 								self.setPagingData(remoteData, page, pageSize);
 								console.log(remoteData);
 								$('#grid-not-fixed-fields-container').css({

@@ -345,7 +345,7 @@ angular.module("ones.configModule", [
                 });
 
                 var resUri = sprintf("%s%s/:id", ones.remote_entry, opts.uri);
-				console.log(resUri);
+				//console.log(resUri);
                 return $resource(resUri, opts.opts||{}, extra_methods||{});
             };
             

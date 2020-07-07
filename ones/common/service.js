@@ -19,9 +19,9 @@
                         app: opts.app,
                         table: opts.table
                     };
-					console.log(queryParams);
+					
                     var schema = this.resource.api_get(queryParams).$promise;
-
+					console.log(schema);
                     if (typeof opts.callback === "function") {
                         ones.DEBUG && console.debug('loading schema');
                         return schema.then(opts.callback);

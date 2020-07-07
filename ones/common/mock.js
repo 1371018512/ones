@@ -203,3 +203,109 @@ function printer_data(){
 	]
 	return data;
 }
+
+function order_check(){
+	var data = [
+		{
+			count: "2", 
+			totalPages: 1,
+		},
+		{
+			0:{
+				bill_no: "A2F0894701 106",
+				company_id: 1,
+				created: "2020-06-08 13:38:21",
+				estimated_time: "2020-06-08 13:38:21",
+				id: 3,
+				type: '石料',
+				ship_id: 1,
+				ship_id__label__: '诺亚方舟',
+				total_weight: 20,
+				customer_id: 1,
+				customer_id__label__: "测试客户",
+				remark: "备注",
+				status: 0,
+				subject: "核对订单",
+				trashed: "0",
+				accounting_method: "",
+				ship_status: "未核对",
+				workflow_id: 99,
+				workflow_id__label__: "工作流a",
+				workflow_node_status_label: "未处理",
+				user_info_id: 1
+			},
+			1:{
+				bill_no: "A2F0894701 107",
+				company_id: 1,
+				created: "2020-06-08 13:38:21",
+				estimated_time: "2020-06-08 13:38:21",
+				id: 4,
+				type: '石料',
+				ship_id: 1,
+				ship_id__label__: '诺亚方舟',
+				total_weight: 20,
+				customer_id: 1,
+				customer_id__label__: "测试客户",
+				remark: "备注",
+				status: 1,
+				subject: "核对订单",
+				trashed: "0",
+				accounting_method: "",
+				ship_status: "未核对",
+				workflow_id: 99,
+				workflow_id__label__: "工作流a",
+				workflow_node_status_label: "已处理",
+				user_info_id: 1
+			}
+		}
+	];
+	return data;
+}
+
+function order_check_detail(){
+	var data = {
+		meta :{
+			bill_no: "A2F0894701 106",
+			company_id: 1,
+			created:  new Date("2020-06-08 13:38:21"),
+			estimated_time: new Date("2020-06-08 13:38:21"),
+			id: 3,
+			type: '石料',
+			//ship_name: '远程号',
+			ship_id: 1,
+			ship_id__label__: '诺亚方舟',
+			total_weight: 20,
+			customer_id: 1,
+			customer_id__label__: "测试客户",
+			remark: "备注",
+			status: 0,
+			subject: "核对订单",
+			trashed: "0",
+			accounting_method: "",
+			ship_status: "未核对",
+			workflow_id: 99,
+			workflow_id__label__: "工作流a",
+			workflow_node_status_label: "未处理",
+			user_info_id: 1
+		},
+		rows :[
+			{
+				already_in__after__: "t",
+				company_id: "1",
+				id: 10,
+				measure_unit: "t",
+				orders_id: "3",
+				product_id: "1",
+				product_id__label__: "瓜子",
+				product_unique_id: "1",
+				quantity: "20.0000",
+				quantity__after__: "t",
+				remark: null,
+				serial_number: "1",
+				subtotal_amount: "20.0000",
+				trashed: "0"
+			}
+		]
+	}
+	return data;
+}
