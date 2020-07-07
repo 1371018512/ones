@@ -589,7 +589,6 @@
 							if(self.options.resource=='order_check_mock'){
 								let remoteData = order_check();							
 								self.setPagingData(remoteData, page, pageSize);
-								console.log(remoteData);
 								$('#grid-not-fixed-fields-container').css({
 								    marginLeft: $('#grid-fixed-fields-container').width() - 1
 								});
@@ -612,7 +611,7 @@
 								return;
 							}
                             self.options.resource.query(p).$promise.then(function(remoteData) {
-								console.log(JSON.parse(JSON.stringify(remoteData)));
+								//console.log(JSON.parse(JSON.stringify(remoteData)));
                                 self.setPagingData(remoteData, page, pageSize);
                                 // 设置非固定列容器宽度
                                 $('#grid-not-fixed-fields-container').css({
@@ -909,7 +908,7 @@
                             pre: function($scope, iElement, iAttrs, controller) {
                                 var fetchData = function(){
                                     var gridOptions = $scope.$parent.$eval(iAttrs.config);
-									console.log(gridOptions)
+									//console.log(gridOptions)
                                     GridView.init($scope, gridOptions);
 
                                     angular.forEach(GridView.methodsList, function(method, k){
