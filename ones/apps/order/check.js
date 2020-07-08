@@ -130,6 +130,22 @@
                             },
                             editable_required: 'product_id'
                         }
+						, unit_price: {
+						    label: _('common.Unit Price'),
+						    widget: 'number'
+						    , get_display: function(value, item) {
+						        return to_decimal_display(value);
+						    },
+						    'ng-blur': '$parent.$parent.$parent.re_calculate_subtotal(bill_rows, $parent.$parent, $parent.$index)'
+						}
+						, subtotal_amount: {
+						    editable: false
+						    , label: _('common.Subtotal Amount')
+						    , get_display: function(value, item) {
+						        return to_decimal_display(value);
+						    }
+						    , total_able: true
+						}
                         , remark: {
                             label: _('common.Remark')
                             , blank: true
@@ -198,19 +214,32 @@
 				$scope.bill_meta_data.shipment_Wannan = 10000;
 				$scope.bill_meta_data.shipment_Wanbei = 10000;
 				$scope.bill_meta_data.balance = 9999999;
-				$timeout(function(){
-					$scope.bill_meta_data.ship = dataAPI.getResourceInstance({
-					    uri: 'ship/ship'
-					}).get({
-						id: $scope.bill_meta_data.ship_id
-					}).$promise.then(function(data){
-							//console.log(data);
-							$scope.bill_meta_data.ship = data;
-						});
-				},400);
+				
+				function getShipDetail(){
+					console.log('xxx')
+					$timeout(function(){
+						if($scope.bill_meta_data.ship_id){
+							$scope.bill_meta_data.ship = dataAPI.getResourceInstance({
+							    uri: 'ship/ship'
+							}).get({
+								id: $scope.bill_meta_data.ship_id
+							}).$promise.then(function(data){
+								//console.log(data);
+								$scope.bill_meta_data.ship = data;
+							});
+						}
+						else getShipDetail();
+					},100);
+				}
+				getShipDetail();
 				
 				$scope.showDetail = function(){
-					//console.log($scope.bill_meta_data.ship);
+					if(!$scope.bill_meta_data.ship)	return;
+					let str = '船只编号：' + $scope.bill_meta_data.ship.id + '\n' +
+						'船号：' + $scope.bill_meta_data.ship.name + '\n' +
+						'载重量：' + $scope.bill_meta_data.ship.carrying_capacity + $scope.bill_meta_data.ship.measure_unit;
+					console.log($scope.bill_meta_data.ship);
+					alert(str);
 				}
 				
 				/* $scope.bill_meta_data.ship = dataAPI.getResourceInstance({

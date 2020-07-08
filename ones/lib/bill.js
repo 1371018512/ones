@@ -120,11 +120,12 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                         if(!rows[row_index].quantity || !rows[row_index].unit_price) {
                             return;
                         }
+						
                         var sub_total_getter = $parse('bill_rows['+row_index+'].subtotal_amount');
                         var sub_total_label_getter = $parse('bill_rows['+row_index+'].subtotal_amount__label__');
                         var sub_total = to_decimal_display(rows[row_index].quantity) * to_decimal_display(rows[row_index].unit_price);
-                        sub_total_getter.assign(row_scope, to_decimal_display(sub_total));
-                        sub_total_label_getter.assign(row_scope, to_decimal_display(sub_total, false, true));
+						sub_total_getter.assign(row_scope, to_decimal_display(sub_total));
+						sub_total_label_getter.assign(row_scope, to_decimal_display(sub_total, false, true));
                     }
                 };
 
@@ -211,6 +212,13 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 						self.common_methods.re_calculate_total(self.parentScope, rows, self.total_able_fields, false);
 						
 						generate_bar_code();
+						
+						//立即计算小计
+						self.scope.$parent.re_calculate_subtotal(
+						    self.scope.bill_rows,
+						    self.scope.$parent,
+						    self.scope.bill_rows.length
+						);
 					}
 					else{
 						self.opts.model.resource.get(p).$promise.then(function(response_data){
@@ -269,6 +277,12 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 							self.common_methods.re_calculate_total(self.parentScope, rows, self.total_able_fields, false);
 						
 							generate_bar_code();
+							//立即计算小计
+							$timeout(function(){
+								for(let i=0;i<self.scope.bill_rows.length;i++){
+									self.scope.$parent.re_calculate_subtotal(self.scope.bill_rows,self.scope,i);
+								}
+							},100)
 						});
 					}
 
