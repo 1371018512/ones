@@ -5,14 +5,14 @@
      * @link http://ng-erp.com
      * */
     'use strict';
-	//console.log('its order')
+	console.log('its order')
     angular.module('ones.app.order.main', [
 		'ones.app.order.model',
 		'ones.billModule',
-		'ones.app.order.all',
+		//'ones.app.order.all',
 		'ones.app.order.check',
-		//'ones.app.order.dispatch'
-	])
+		'ones.app.order.dispatch'
+	]) 
 	.config(['$routeProvider', function($route) {
 
 		$route
@@ -34,7 +34,15 @@
 				controller : 'CheckBillEditCtrl',
 				templateUrl: appView('check_edit.html')
 			})
-			// dispatch
+			//dispatch
+			.when('/order/dispatch/:action/bill/:id', {
+				controller : 'DispatchBillEditCtrl',
+				templateUrl: appView('dispatch_edit.html')
+			})
+			.when('/order/dispatch/:action/bill/:id/node/:node_id', {
+				controller : 'DispatchBillEditCtrl',
+				templateUrl: appView('dispatch_edit.html')
+			})
 			/* .when('/order/check/dispatch/bill/:id/node/:node_id', {
 				controller : 'CheckBillEditCtrl',
 				templateUrl: appView('check_edit.html')

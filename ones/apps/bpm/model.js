@@ -190,6 +190,16 @@
 						self.parse_response(response);
 						return;
 					}
+					if(node_id==877){
+						//源id+下一个工作流节点id
+						let response = {
+							pause: "true",
+							type: "redirect",
+							url: "/order/dispatch/confirm/bill/3/node/877"
+						}
+						self.parse_response(response);
+						return;
+					}
                     this.resource.api_get(params).$promise.then(function(response) {
 						//返回↓
 						//pause: "true"

@@ -11,7 +11,7 @@
                     uri: 'order/check'
                 }); */
 				
-				this.resource = 'order_check_mock';
+				this.resource = 'order_check_mock'; 
 
                 this.config = {
                     app: 'order',
@@ -21,7 +21,7 @@
 					addable: false,
                     detail_able: true,
                     workflow: 'order.check',
-                    bill_row_model: 'Order.checkDetailAPI',
+                    bill_row_model: 'Order.CheckDetailAPI',
                     fields: {
                         bill_no: {
                             search_able: true,
@@ -54,6 +54,7 @@
                         },
 						estimated_time: {
 						    label: '预计到港',
+							widget: 'datetime',
 						},
                         total_weight: {
 							label: '总重',
@@ -93,7 +94,7 @@
             }
         ])
 
-        .service('Order.checkDetailAPI', [
+        .service('Order.CheckDetailAPI', [
             'ones.dataApiFactory',
             'Product.ProductAPI',
             '$q',
@@ -186,7 +187,7 @@
             '$scope',
             '$timeout',
             'Order.CheckAPI',
-            'Order.checkDetailAPI',
+            'Order.CheckDetailAPI',
             'Product.ProductAPI',
             'Bpm.WorkflowAPI',
             'BillModule',

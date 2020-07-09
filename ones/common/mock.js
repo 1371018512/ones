@@ -248,7 +248,7 @@ function order_check(){
 				customer_id__label__: "测试客户",
 				remark: "备注",
 				status: 1,
-				subject: "核对订单",
+				//subject: "核对订单",
 				trashed: "0",
 				accounting_method: "",
 				ship_status: "未核对",
@@ -279,7 +279,7 @@ function order_check_detail(){
 			customer_id__label__: "测试客户",
 			remark: "备注",
 			status: 0,
-			subject: "核对订单",
+			//subject: "核对订单",
 			trashed: "0",
 			accounting_method: "",
 			ship_status: "未核对",
@@ -292,7 +292,6 @@ function order_check_detail(){
 		},
 		rows :[
 			{
-				already_in__after__: "t",
 				company_id: "1",
 				id: 10,
 				measure_unit: "t",
@@ -335,11 +334,108 @@ function order_check_next(){
 	return data;
 }
 
+function order_dispatch_next(){
+	var data = [
+		//776，等待核对
+		{
+			id:877,
+			label:"码头装货",
+			workflow_id:199,
+		},
+		//之后一个状态叫完成发货
+	]
+	return data;
+}
+
 function order_check_redirect(){
 	var data = {
 		pause: "true",
 		type: "redirect",
 		url: "/storage/stockIn/confirm/bill/4/node/12"
+	}
+	return data;
+}
+
+function order_dispatch(){
+	var data = [
+		{
+			count: "2", 
+			totalPages: 1,
+		},
+		{
+			0:{
+				bill_no: "A2F0894701 106",
+				company_id: 1,
+				dispatch_time: "2020-06-08 13:38:21",
+				id: 3,
+				order_id: 3,
+				type: '石子混料',
+				delivery_place:'万南',
+				ship_id: 1,
+				ship_id__label__: '诺亚方舟',
+				total_weight: 20,
+				real_weight: 0,
+				customer_id: 1,
+				customer_id__label__: "测试客户",
+				remark: "备注",
+				status: 0,
+				//subject: "核对订单",
+				trashed: "0",
+				ship_status: "未核对",
+				workflow_id: 199,
+				workflow_id__label__: "工作流b",
+				workflow_node_status_label: "未完成",
+				user_info_id: 1
+			}
+		}
+	];
+	return data;
+}
+
+function order_dispatch_detail(){
+	var data = {
+		meta :{
+			bill_no: "A2F0894701 106",
+			company_id: 1,
+			dispatch_time: new Date("2020-06-08 13:38:21"),
+			id: 3,
+			order_id: 3,
+			type: '石子混料',
+			delivery_place:'万南',
+			ship_id: 1,
+			ship_id__label__: '诺亚方舟',
+			total_weight: 20,
+			real_weight: 0,
+			customer_id: 1,
+			customer_id__label__: "测试客户",
+			remark: "备注",
+			status: 0,
+			//subject: "核对订单",
+			trashed: "0",
+			ship_status: "未核对",
+			workflow_id: 199,
+			workflow_id__label__: "工作流b",
+			workflow_node_status_label: "未完成",
+			user_info_id: 1
+		},
+		rows :[
+			{
+				company_id: "1",
+				id: 11,
+				measure_unit: "t",
+				orders_id: 3,
+				product_id: "1",
+				product_id__label__: "瓜子",
+				product_unique_id: "1",
+				quantity: 21,
+				quantity__after__: "t",
+				real_quantity: 0,
+				real_quantity__after__: "t",
+				remark: null,
+				serial_number: "1",
+				trashed: "0",
+			}
+		]
 	}
 	return data;
 }

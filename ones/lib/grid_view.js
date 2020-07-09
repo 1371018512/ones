@@ -601,8 +601,8 @@
 								    marginLeft: $('#grid-fixed-fields-container').width() - 1
 								});
 								return;
-							} */else if(self.options.resource=='mock_ship_category'){
-								let remoteData = ship_category_data();
+							} */else if(self.options.resource=='order_dispatch_mock'){
+								let remoteData = order_dispatch();
 								self.setPagingData(remoteData, page, pageSize);
 								console.log(remoteData);
 								$('#grid-not-fixed-fields-container').css({
