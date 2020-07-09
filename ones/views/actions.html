@@ -70,11 +70,17 @@
                        ng-click="$root.bpm_start_workflow(aw.id, $root.current_item.id)"></a>
                 </li>
             </ul>
-            <button class="btn btn-sm btn-{{w.btn_class||'info'}}"
+            <!-- <button class="btn btn-sm btn-{{w.btn_class||'info'}}"
                     ng-repeat="w in workflow_node_in_bill track by $w.id"
                     ng-bind="w.label"
                     ng-click="execute_workflow_node(w.id, w.workflow_id, $root.current_item.id)"
-                    ></button>
+                    ></button> -->
+			<!-- 为了同时显示两个工作流先把根据id唯一去掉 -->
+			<button class="btn btn-sm btn-{{w.btn_class||'info'}}"
+			        ng-repeat="w in workflow_node_in_bill"
+			        ng-bind="w.label"
+			        ng-click="execute_workflow_node(w.id, w.workflow_id, $root.current_item.id)"
+			        ></button>
         </div>
     </div>
 

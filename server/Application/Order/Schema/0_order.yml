@@ -23,10 +23,12 @@ order_check:
         #blank: true
     #ship_status:
         #limit: 20
-    customer_id:
     $meta:
         indexes:
         foreign:
+            customer:
+                restrict:
+                    delete: CASCADE
             ship:
                 restrict:
                     delete: CASCADE
@@ -56,6 +58,10 @@ order_check_detail:
         type: decimal
         precision: 14
         scale: 4
+    already_deliver:
+        type: decimal
+        precision: 14
+        scale: 4
     remark:
         blank: true
     $meta:
@@ -66,6 +72,79 @@ order_check_detail:
                 restrict:
                     delete: CASCADE
             order:
+                restrict:
+                    delete: CASCADE
+            company:
+                restrict:
+                    delete: CASCADE
+        enable_trash: true
+
+order_dispatch:
+    #subject:
+        #limit:20
+    type:
+        limit: 100
+    bill_no:
+        limit: 20
+    status:
+        type: integer
+        limit: 1
+    dispatch_time:
+        type: datetime
+    delivery_place:
+        limit: 100
+    total_weight:
+        type: decimal
+        precision: 14
+        scale: 4
+    remark:
+        limit:50
+    $meta:
+        indexes:
+        foreign:
+            order:
+            #发货单所属的订单号
+                restrict:
+                    delete: CASCADE
+            customer:
+                restrict:
+                    delete: CASCADE
+            ship:
+                restrict:
+                    delete: CASCADE
+            company:
+                restrict:
+                    delete: CASCADE
+            workflow:
+                options:
+                    blank: true
+                restrict:
+                    delete: SET_NULL
+        enable_trash: true
+
+order_dispatch_detail:
+    quantity:
+        type: decimal
+        precision: 14
+        scale: 4
+    product_unique_id:
+        type: string
+        limit: 100
+    real_quantity:
+        type: decimal
+        precision: 14
+        scale: 4
+    remark:
+        blank: true
+    $meta:
+        indexes:
+            product_unique_id:
+        foreign:
+            product:
+                restrict:
+                    delete: CASCADE
+            order:
+                #发货单号
                 restrict:
                     delete: CASCADE
             company:

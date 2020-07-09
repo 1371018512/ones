@@ -267,7 +267,11 @@ var frame_init = function() {
                             /*
                             * 执行工作流进程
                             * */
-                            $scope.execute_workflow_node = function(node_id, workflow_id, source_id) {
+                            $scope.execute_workflow_node = function(node_id, workflow_id, source_id)
+							{
+								//1.工作流节点id 3.当前记录id 2.工作流类型id
+								//好像工作流类型id用不到...
+								
                                 var workflow_service = $injector.get('Bpm.WorkflowAPI');
                                 workflow_service.execute(node_id, source_id);
                             };

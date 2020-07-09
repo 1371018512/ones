@@ -190,14 +190,17 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 						
 						var workflow_api = $injector.get('Bpm.WorkflowAPI');
 						// 获取工作流按钮
+						//
 						if(self.opts.model.config.workflow) {
 							var _fd = [
 								'id', 'label'
 							];
-							workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
+							self.parentScope.$parent.workflow_node_in_bill = order_check_next();
+							/* workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
 								.then(function(next_nodes){
+									//返回下一个节点的label和工作节点的和工作流的类型id
 									self.parentScope.$parent.workflow_node_in_bill = next_nodes;
-								});
+								}); */
 						}
 						
 						// 未开始的工作流
@@ -214,20 +217,21 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 						generate_bar_code();
 						
 						//立即计算小计
-						self.scope.$parent.re_calculate_subtotal(
-						    self.scope.bill_rows,
-						    self.scope.$parent,
-						    self.scope.bill_rows.length
-						);
+						
+						$timeout(function(){
+							for(let i=0;i<self.scope.bill_rows.length;i++){
+								if(typeof self.scope.$parent.re_calculate_subtotal == 'function')
+								self.scope.$parent.re_calculate_subtotal(self.scope.bill_rows,self.scope,i);
+							}
+						},100)
 					}
 					else{
 						self.opts.model.resource.get(p).$promise.then(function(response_data){
-
 							angular.deep_extend(
 								self.parentScope.bill_meta_data,
 								format_rest_data(response_data.meta, self.opts.model.config.fields)
 							);
-						
+							console.log(self.parentScope.bill_meta_data)
 							var rows = response_data.rows;
 							if(response_data.meta.locked && $routeParams.action === 'edit') {
 								return RootFrameService.alert({
@@ -261,6 +265,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 								];
 								workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
 									.then(function(next_nodes){
+										console.log(next_nodes);
 										self.parentScope.$parent.workflow_node_in_bill = next_nodes;
 									});
 							}
@@ -280,6 +285,7 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 							//立即计算小计
 							$timeout(function(){
 								for(let i=0;i<self.scope.bill_rows.length;i++){
+									if(typeof self.scope.$parent.re_calculate_subtotal == 'function')
 									self.scope.$parent.re_calculate_subtotal(self.scope.bill_rows,self.scope,i);
 								}
 							},100)

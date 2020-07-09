@@ -19,7 +19,6 @@
             'RootFrameService',
             '$modal',
             function($scope, $timeout, $modal, plugin, workflow_api, $routeParams, RootFrameService) {
-
                 $scope.reloading = false;
 
                 $scope.back_able = true;

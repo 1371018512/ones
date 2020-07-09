@@ -170,7 +170,31 @@
                         node_id: node_id,
                         source_id: source_id
                     };
+					if(node_id==777){
+						//源id+下一个工作流节点id
+						let response = {
+							pause: "true",
+							type: "redirect",
+							url: "/order/check/confirm/bill/3/node/777"
+						}
+						self.parse_response(response);
+						return;
+					}
+					if(node_id==779){
+						//源id+下一个工作流节点id
+						let response = {
+							pause: "true",
+							type: "redirect",
+							url: "/order/check/dispatch/bill/3/node/779"
+						}
+						self.parse_response(response);
+						return;
+					}
                     this.resource.api_get(params).$promise.then(function(response) {
+						//返回↓
+						//pause: "true"
+						//type: "redirect"
+						//url: "/storage/stockIn/confirm/bill/4/node/12"
                         self.parse_response(response);
                     });
                 };

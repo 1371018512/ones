@@ -28,11 +28,11 @@ navs:
                 app: order
                 icon: sitemap
                 children:
-                    核对:
+                    核对与调度:
                         app: order
                         icon: users
                         link: order/check
-                    调度:
+                    发货单结算:
                         app: order
                         icon: users
                         link: order/dispatch

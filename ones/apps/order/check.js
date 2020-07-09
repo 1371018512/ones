@@ -119,7 +119,7 @@
                             }
                         }
                         , quantity: {
-                            label: _('common.Quantity')
+                            label: '总数量'
                             , widget: 'number'
                             , get_display: function(value, item) {
                                 return to_decimal_display(value);
@@ -131,12 +131,23 @@
                             editable_required: 'product_id'
                         }
 						, unit_price: {
-						    label: _('common.Unit Price'),
+						    label: _('common.Unit Price')+'(挂牌价)',
 						    widget: 'number'
 						    , get_display: function(value, item) {
 						        return to_decimal_display(value);
 						    },
 						    'ng-blur': '$parent.$parent.$parent.re_calculate_subtotal(bill_rows, $parent.$parent, $parent.$index)'
+						}
+						, already_deliver: {
+						    label: '已发货数量',
+						    widget: 'number'
+						    , get_display: function(value, item) {
+						        return to_decimal_display(value);
+						    },
+							// 单元格后置计量单位
+							get_bill_cell_after: function(value, item) {
+							    return to_product_measure_unit(product, $q, item);
+							},
 						}
 						, subtotal_amount: {
 						    editable: false
@@ -157,7 +168,10 @@
                     bill_fields: [
                         'product_id'
                         ,'quantity'
-                        ,'remark'
+						,'unit_price'
+						,'subtotal_amount'
+						,'already_deliver'
+						,'remark'
                     ],
 
                     bill_row_required: [
@@ -183,9 +197,9 @@
 			'ones.dataApiFactory',
             function($scope, $timeout, check_api, check_detail_api, product_api, workflow_api, bill, $routeParams, $q, $injector, RootFrameService, dataAPI) {
 
-                if(!$routeParams.id) {
+                if($routeParams.action == 'dispatch') {
                    $scope.bill_meta_data = {
-                        //created: new Date(moment().format()),
+                        delivery_time: new Date(moment().format())
                         //user_info_id: ones.user_info.id
                     };
                 } else {
@@ -210,13 +224,12 @@
                     } */
                 };
 				
-				//后期改成查询,用timeout
+				//后期改成查询,用timeout,或者用插件
 				$scope.bill_meta_data.shipment_Wannan = 10000;
 				$scope.bill_meta_data.shipment_Wanbei = 10000;
 				$scope.bill_meta_data.balance = 9999999;
 				
 				function getShipDetail(){
-					console.log('xxx')
 					$timeout(function(){
 						if($scope.bill_meta_data.ship_id){
 							$scope.bill_meta_data.ship = dataAPI.getResourceInstance({
@@ -234,13 +247,31 @@
 				getShipDetail();
 				
 				$scope.showDetail = function(){
+					console.log($scope.bill_meta_data)
 					if(!$scope.bill_meta_data.ship)	return;
-					let str = '船只编号：' + $scope.bill_meta_data.ship.id + '\n' +
-						'船号：' + $scope.bill_meta_data.ship.name + '\n' +
-						'载重量：' + $scope.bill_meta_data.ship.carrying_capacity + $scope.bill_meta_data.ship.measure_unit;
+					let str = '我是从后端获取的船只详细信息！'
 					console.log($scope.bill_meta_data.ship);
 					alert(str);
 				}
+				
+				var total_able_fields = [];
+				angular.forEach(check_detail_api.config.fields, function(config, field) {
+				    if(config.total_able) {
+				        total_able_fields.push(field);
+				    }
+				});
+				
+				// 计算小计
+				$scope.re_calculate_subtotal = function(rows, row_scope, row_index) {
+				    bill.common_methods.re_calculate_subtotal($scope, rows, row_scope, row_index);
+				    $scope.re_calculate_total(rows);
+				};
+				
+				// 计算合计
+				$scope.re_calculate_total = function(rows, update_net_receive) {
+				    bill.common_methods.re_calculate_total($scope, rows, total_able_fields,
+				        update_net_receive === false ? false : 'total_price');
+				};
 				
 				/* $scope.bill_meta_data.ship = dataAPI.getResourceInstance({
                     uri: 'ship/ship'
@@ -254,82 +285,119 @@
 				
                 switch($routeParams.action) {
                     case "view":
-                        $scope.is_view = true;
+                        $scope.bill_meta_data.is_view = true;
                         $scope.bill_meta_data.locked = true;
-                        /* if(stock_in_detail_api.config.bill_fields.indexOf('already_in') < 0) {
-                            stock_in_detail_api.config.fields.quantity.label = _('storage.Total Quantity');
-                            stock_in_detail_api.config.bill_fields.splice(
-                                stock_in_detail_api.config.bill_fields.indexOf('quantity')+1,
-                                0,
-                                'already_in'
-                            );
-                        }
-                        stock_in_detail_api.config.bill_fields.splice(stock_in_detail_api.config.bill_fields.indexOf('this_time_in_quantity'), 1); */
+						
+						if(check_detail_api.config.bill_fields.indexOf('this_time_in_quantity')>=0)
+							check_detail_api.config.bill_fields.splice(
+								check_detail_api.config.bill_fields.indexOf('this_time_in_quantity'),
+								1
+							);
+                        //check_detail_api.config.bill_fields.splice(check_detail_api.config.bill_fields.indexOf('this_time_in_quantity'), 1); 
                         break;
                     case "confirm":
+						$scope.bill_meta_data.confirm_editable = true;
                         $scope.back_able             = true;
                         $scope.is_view               = true;
                         $scope.bill_meta_data.locked = true;
                         $scope.workflowing           = true;
                         $scope.is_confirm            = true;
 						
-                        /* if(stock_in_detail_api.config.bill_fields.indexOf('this_time_in_quantity') < 0) {
-                            // 新增本次入库/已入库数量控件，及修改仓库控件可编辑
-                            stock_in_detail_api.config.fields.this_time_in_quantity = {
-                                label: _('storage.This time in quantity'),
-                                widget: 'number',
-                                force_editable: true,
-                                value: 0,
-                                get_display: function(value) {
-                                    return to_decimal_display(value);
-                                },
-                                get_bill_cell_after: function(value, item) {
-                                    return to_product_measure_unit(product_api, $q, item);
-                                }
-                            };
-
-                            stock_in_detail_api.config.fields.storage_id.force_editable = true;
-                            stock_in_detail_api.config.fields.quantity.label = _('storage.Total Quantity');
-                            stock_in_detail_api.config.fields.quantity.width = 180;
-                            stock_in_detail_api.config.bill_fields.splice(
-                                stock_in_detail_api.config.bill_fields.indexOf('quantity')+1,
-                                0,
-                                'this_time_in_quantity'
-                            );
-                        } */
-
-                        /* if(stock_in_detail_api.config.bill_fields.indexOf('already_in') < 0) {
-                            stock_in_detail_api.config.fields.quantity.label = _('storage.Total Quantity');
-                            stock_in_detail_api.config.bill_fields.splice(
-                                stock_in_detail_api.config.bill_fields.indexOf('quantity')+1,
-                                0,
-                                'already_in'
-                            );
-                        } */
-
-
-                        // 确认入库提交方法
+						if(check_detail_api.config.bill_fields.indexOf('this_time_in_quantity')>=0)
+							check_detail_api.config.bill_fields.splice(
+								check_detail_api.config.bill_fields.indexOf('this_time_in_quantity'),
+								1
+							);
+						
+                        // 核对提交方法
                         $scope.do_confirm = function() {
-                            /* var post_data = bill.format_bill_data();
+                            var post_data = bill.format_bill_data();
+							console.log(post_data)
                             var rows = [];
                             angular.forEach(post_data.rows, function(item) {
-                                if(!item.id || !item.storage_id || !item.this_time_in_quantity || !item.product_unique_id) {
+                                /* if(!item.id || !item.storage_id || !item.this_time_in_quantity || !item.product_unique_id) {
                                     return;
-                                }
+                                } */
                                 rows.push(item);
                             });
-
+                            
                             if(!rows) {
                                 RootFrameService.alert({
                                     type: 'danger',
                                     content: _('storage.Please fill this time in quantity')
                                 });
                             }
-
-                            workflow_api.post($routeParams.node_id, post_data.meta.id, {rows: rows});*/
+                            
+                            /* workflow_api.post($routeParams.node_id, post_data.meta.id, {rows: rows}); */
                         }; 
 
                         break;
+					
+					case "dispatch":
+						$scope.bill_meta_data.dispatch_editable = true;
+					    $scope.back_able             = true;
+					    $scope.is_view               = true;
+					    $scope.bill_meta_data.locked = true;
+					    $scope.workflowing           = true;
+					    $scope.is_confirm            = true;
+						
+						if(check_detail_api.config.bill_fields.indexOf('this_time_in_quantity') < 0) {
+						    // 新增本次入库/已入库数量控件，及修改仓库控件可编辑
+						    check_detail_api.config.fields.this_time_in_quantity = {
+						        label: '本次发货数量',
+						        widget: 'number',
+						        force_editable: true,
+						        value: 0,
+						        get_display: function(value) {
+						            return to_decimal_display(value);
+						        },
+						        get_bill_cell_after: function(value, item) {
+						            return to_product_measure_unit(product_api, $q, item);
+						        }
+						    };
+						
+						    //check_detail_api.config.fields.storage_id.force_editable = true;
+						    //check_detail_api.config.fields.quantity.label = '';
+						    //check_detail_api.config.fields.quantity.width = 180;
+						    check_detail_api.config.bill_fields.splice(
+						        check_detail_api.config.bill_fields.indexOf('subtotal_amount')+1,
+						        0,
+						        'this_time_in_quantity'
+						    );
+						}
+						
+						if(check_detail_api.config.bill_fields.indexOf('already_deliver') < 0) {
+						    check_detail_api.config.fields.quantity.label = '已发货数量';
+						    check_detail_api.config.bill_fields.splice(
+						        check_detail_api.config.bill_fields.indexOf('quantity')+1,
+						        0,
+						        'already_deliver'
+						    );
+						} 
+						
+					    // 核对提交方法
+					    $scope.do_confirm = function() {
+					        var post_data = bill.format_bill_data();
+							console.log(post_data)
+					        var rows = [];
+					        angular.forEach(post_data.rows, function(item) {
+					            /* if(!item.id || !item.storage_id || !item.this_time_in_quantity || !item.product_unique_id) {
+					                return;
+					            } */
+					            rows.push(item);
+					        });
+					        
+					        if(!rows) {
+					            RootFrameService.alert({
+					                type: 'danger',
+					                content: _('storage.Please fill this time in quantity')
+					            });
+					        }
+					        
+					        /* workflow_api.post($routeParams.node_id, post_data.meta.id, {rows: rows}); */
+					    }; 
+					
+					    break;
                 }
 
                 // 日期
@@ -340,7 +408,7 @@
                     'ng-model': 'bill_meta_data.estimated_time',
                     group_tpl: '<div class="input-group"><span class="input-group-addon">%(label)s</span>%(input)s</div>'
                 };
-				//
+				// 发货时间
 				$scope.delivery_time_config = {
 					label: '发货时间',
 				    field: 'delivery_time',
@@ -348,6 +416,14 @@
 				    'ng-model': 'bill_meta_data.delivery_time',
 				    group_tpl: '<div class="input-group"><span class="input-group-addon">%(label)s</span>%(input)s</div>'
 				};
+				//
+				/* $scope.delivery_time_config = {
+					label: '发货时间',
+				    field: 'delivery_time',
+				    widget: 'datetime',
+				    'ng-model': 'bill_meta_data.delivery_time',
+				    group_tpl: '<div class="input-group"><span class="input-group-addon">%(label)s</span>%(input)s</div>'
+				}; */
 				/* //船状态
 				$scope.ship_status_config = {
 					label: '船只状态',

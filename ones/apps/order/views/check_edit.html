@@ -11,6 +11,10 @@
 			    <input type="text" class="form-control" ng-model="bill_meta_data.total_weight" ng-readonly="bill_meta_data.locked">
 			</div>
 			<div class="input-group bill-footer-input-item" style="width: auto">
+			    <span class="input-group-addon" ng-bind="'总价'"></span>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.total_price" ng-readonly="bill_meta_data.locked">
+			</div>
+			<div class="input-group bill-footer-input-item" style="width: auto">
 			    <span class="input-group-addon" ng-bind="'订单类型'"></span>
 			    <input type="text" class="form-control" ng-model="bill_meta_data.type" ng-readonly="bill_meta_data.locked">
 			</div>
@@ -26,26 +30,29 @@
 			    <span class="input-group-addon" ng-bind="'用户余额'"></span>
 			    <input type="text" class="form-control" ng-model="bill_meta_data.balance" ng-readonly="bill_meta_data.locked">
 			</div>
-			<div class="input-group bill-footer-input-item">
-			    <span class="input-group-addon" ng-bind="'发货地点'"></span>
-			    <input type="text" class="form-control" ng-model="bill_meta_data.delivery_place" ng-readonly="bill_meta_data.locked">
+			<div class="bill-footer-input-item" ng-click="showDetail()">
+			    <input-field config="ship_config" ng-readonly="bill_meta_data.locked"></input-field>
+			</div>
+			<div class="bill-footer-input-item">
+			    <input-field config="customer_config" ng-readonly="bill_meta_data.locked"></input-field>
 			</div>
 			<div class="input-group bill-footer-input-item">
 			    <span class="input-group-addon" ng-bind="'核算方式'"></span>
-			    <input type="text" class="form-control" ng-model="bill_meta_data.accounting_method" ng-readonly="bill_meta_data.locked">
-			</div>
-            <div class="bill-footer-input-item" ng-click="showDetail()">
-                <input-field config="ship_config" ng-readonly="bill_meta_data.locked"></input-field>
-            </div>
-            <div class="bill-footer-input-item">
-                <input-field config="customer_config" ng-readonly="bill_meta_data.locked"></input-field>
-            </div>
-			<div class="bill-footer-input-item">
-			    <input-field config="date_config" ng-readonly="bill_meta_data.locked"></input-field>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.accounting_method" ng-readonly="bill_meta_data.locked&&!bill_meta_data.confirm_editable">
 			</div>
 			<div class="bill-footer-input-item">
+			    <input-field config="date_config" ng-readonly="bill_meta_data.locked&&!bill_meta_data.confirm_editable"></input-field>
+			</div>
+			<div class="input-group bill-footer-input-item" ng-if="bill_meta_data.dispatch_editable">
+			    <span class="input-group-addon" ng-bind="'发货地点'"></span>
+			    <input type="text" class="form-control" ng-model="bill_meta_data.delivery_place">
+			</div>
+			<div class="bill-footer-input-item" ng-if="bill_meta_data.dispatch_editable">
+			    <input-field config="delivery_time_config" ></input-field>
+			</div>
+			<!-- <div class="bill-footer-input-item">
 			    <input-field config="delivery_time_config" ng-readonly="bill_meta_data.locked"></input-field>
-			</div>
+			</div> -->
         </div>
 
         <div ng-include="'views/billFooter.html'"></div>

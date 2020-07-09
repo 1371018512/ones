@@ -283,7 +283,9 @@ function order_check_detail(){
 			trashed: "0",
 			accounting_method: "",
 			ship_status: "未核对",
-			workflow_id: 99,
+			source_id: 99,//这是工作流实例的id
+			source_model: null,//不知道是啥
+			workflow_id: 99,//这是工作流类型的id
 			workflow_id__label__: "工作流a",
 			workflow_node_status_label: "未处理",
 			user_info_id: 1
@@ -298,14 +300,46 @@ function order_check_detail(){
 				product_id: "1",
 				product_id__label__: "瓜子",
 				product_unique_id: "1",
-				quantity: "20.0000",
+				quantity: 20,
 				quantity__after__: "t",
+				already_deliver: 0,
+				already_deliver__after__: "t",
+				remainder: 20,
+				remainder__after__: "t",
 				remark: null,
 				serial_number: "1",
-				subtotal_amount: "20.0000",
-				trashed: "0"
+				subtotal_amount: 2000,
+				trashed: "0",
+				unit_price: 100,
 			}
 		]
+	}
+	return data;
+}
+
+function order_check_next(){
+	var data = [
+		//776，等待核对
+		{
+			id:777,
+			label:"\u6838\u5bf9\u64cd\u4f5c",
+			workflow_id:99,
+		},
+		//中间一个状态叫核对完成
+		{
+			id:779,
+			label:"调度操作",
+			workflow_id:99,
+		},
+	]
+	return data;
+}
+
+function order_check_redirect(){
+	var data = {
+		pause: "true",
+		type: "redirect",
+		url: "/storage/stockIn/confirm/bill/4/node/12"
 	}
 	return data;
 }
