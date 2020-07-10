@@ -46,3 +46,6 @@ navs:
                     Finance Streamline:
                         app: finance
                         link: finance/financeStreamline
+                    结算单:
+                        app: finance
+                        link: finance/statement

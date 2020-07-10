@@ -179,3 +179,39 @@ finance_streamline:
                 restrict:
                     delete: SET_NULL
         enable_trash: true
+
+finance_statement:
+    type:
+        limit:20
+    dispatch_weight:
+        precision: 14
+        scale: 4
+    final_weight:
+        precision: 14
+        scale: 4
+    unit_price:
+        blank: true
+    total_price:
+        precision: 14
+        scale: 4
+    remainder:
+        precision: 14
+        scale: 4
+    created:
+        type: datetime
+        default: CURRENT_TIMESTAMP
+    dispatch_place:
+    remark:
+        blank: true
+    $meta:
+        foreign:
+            order:
+                restrict:
+                    delete: CASCADE
+            ship:
+                restrict:
+                    delete: CASCADE
+            company:
+                restrict:
+                    delete: CASCADE
+        enable_trash: true

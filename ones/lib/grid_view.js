@@ -618,6 +618,14 @@
 								    marginLeft: $('#grid-fixed-fields-container').width() - 1
 								});
 								return;
+							}else if(self.options.resource=='finance_statement_mock'){
+								let remoteData = finance_statement();
+								self.setPagingData(remoteData, page, pageSize);
+								console.log(remoteData);
+								$('#grid-not-fixed-fields-container').css({
+								    marginLeft: $('#grid-fixed-fields-container').width() - 1
+								});
+								return;
 							}
                             self.options.resource.query(p).$promise.then(function(remoteData) {
 								//console.log(JSON.parse(JSON.stringify(remoteData)));

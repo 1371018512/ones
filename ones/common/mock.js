@@ -476,6 +476,7 @@ function transMeter_meterLog(){
 				created: "2020-06-08 13:38:21",
 				id: 3,
 				type: '宕渣',
+				car_id: 10,
 				order_id:3,
 				ship_id: 1,
 				order_id: 3,
@@ -493,7 +494,7 @@ function transMeter_meterLog_one(){
 			company_id: 1,
 			created: new Date(moment().format()),
 			id: 3,
-			car_id: 100,
+			car_id: null,
 			type: '宕渣',
 			order_id:3,
 			ship_id: 1,
@@ -502,5 +503,55 @@ function transMeter_meterLog_one(){
 			remark: '',
 			trashed: "0",
 		};
+	return data;
+}
+
+function finance_statement(){
+	var data = [
+		{
+			count: 2, 
+			totalPages: 1,
+		},
+		{
+			0:{
+				company_id: 1,
+				created: "2020-06-08 13:38:21",
+				id: 3,
+				ship_id: 1,
+				ship_id__label__: '诺亚方舟',
+				order_id: 3,
+				customer_id: 1,
+				customer_id__label__: '测试用户',
+				dispatch_weight: 20,
+				dispatch_place:'万南',
+				final_weight: 20,
+				unit_price: 77,
+				type: '246', 
+				total_price: 1540,
+				remainder: 100,
+				remark: 'hehehe',
+				trashed: "0",
+			},
+			1:{
+				company_id: 1,
+				created: "2020-06-08 13:38:21",
+				id: 4,
+				ship_id: 1,
+				ship_id__label__: '诺亚方舟',
+				order_id: 4,
+				customer_id: 1,
+				customer_id__label__: '测试用户',
+				dispatch_weight: 20,
+				dispatch_place:'万南',
+				final_weight: 20,
+				unit_price: null,
+				type: '石子混料', 
+				total_price: 1000,
+				remainder: 100,
+				remark: '20*30+20*50=1000',
+				trashed: "0",
+			}
+		}
+	];
 	return data;
 }

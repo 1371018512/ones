@@ -37,7 +37,7 @@
 						    widget: 'datetime',
 						},
 						total_weight: {
-							label: '总重',
+							label: '预计总重',
 						    get_display: function(value, item) {
 						        return value ? accounting.formatNumber(Number(value), ones.system_preference.decimal_scale) : value;
 						    }
