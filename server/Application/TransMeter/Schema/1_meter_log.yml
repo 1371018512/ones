@@ -1,0 +1,22 @@
+meter_log:
+    created:
+        type: datetime
+    weight:
+        type: decimal
+        precision: 14
+        scale: 4
+    remark:
+        blank: true
+    $meta:
+        indexes:
+        foreign:
+            car:
+                restrict:
+                    delete: CASCADE
+            order:
+                restrict:
+                    delete: CASCADE
+            company:
+                restrict:
+                    delete: CASCADE
+        enable_trash: true

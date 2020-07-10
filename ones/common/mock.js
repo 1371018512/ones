@@ -279,7 +279,7 @@ function order_check_detail(){
 			customer_id__label__: "测试客户",
 			remark: "备注",
 			status: 0,
-			//subject: "核对订单",
+			subject: "核对订单",
 			trashed: "0",
 			accounting_method: "",
 			ship_status: "未核对",
@@ -379,7 +379,7 @@ function order_dispatch(){
 				customer_id__label__: "测试客户",
 				remark: "备注",
 				status: 0,
-				//subject: "核对订单",
+				subject: "发货单",
 				trashed: "0",
 				ship_status: "未核对",
 				workflow_id: 199,
@@ -410,7 +410,7 @@ function order_dispatch_detail(){
 			customer_id__label__: "测试客户",
 			remark: "备注",
 			status: 0,
-			//subject: "核对订单",
+			subject: "发货单",
 			trashed: "0",
 			ship_status: "未核对",
 			workflow_id: 199,
@@ -437,5 +437,70 @@ function order_dispatch_detail(){
 			}
 		]
 	}
+	return data;
+}
+
+function transMeter_meter(){
+	var data = [
+		{
+			count: 1, 
+			totalPages: 1,
+		},
+		{
+			0:{
+				company_id: 1,
+				created: "2020-06-08 13:38:21",
+				id: 3,
+				type: '宕渣',
+				ship_id: 1,
+				ship_id__label__: '诺亚方舟',
+				order_id: 3,
+				total_weight: 20,
+				already_weight: 0,
+				remark: 'hehehe',
+				trashed: "0",
+			}
+		}
+	];
+	return data;
+}
+function transMeter_meterLog(){
+	var data = [
+		{
+			count: 1, 
+			totalPages: 1,
+		},
+		{
+			0:{
+				company_id: 1,
+				created: "2020-06-08 13:38:21",
+				id: 3,
+				type: '宕渣',
+				order_id:3,
+				ship_id: 1,
+				order_id: 3,
+				weight: 20,
+				remark: 'hehehe',
+				trashed: "0",
+			}
+		}
+	];
+	return data;
+}
+
+function transMeter_meterLog_one(){
+	var data = {
+			company_id: 1,
+			created: new Date(moment().format()),
+			id: 3,
+			car_id: 100,
+			type: '宕渣',
+			order_id:3,
+			ship_id: 1,
+			order_id: 3,
+			weight: 0,
+			remark: '',
+			trashed: "0",
+		};
 	return data;
 }

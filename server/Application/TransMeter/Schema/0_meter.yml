@@ -1,0 +1,29 @@
+meter:
+    type:
+        limit: 100
+    created:
+        type: datetime
+    total_weight:
+        type: decimal
+        precision: 14
+        scale: 4
+    already_weight:
+        type: decimal
+        precision: 14
+        scale: 4
+    remark:
+        limit:50
+    $meta:
+        indexes:
+        foreign:
+            order:
+                restrict:
+                    delete: CASCADE
+            ship:
+                restrict:
+                    delete: CASCADE
+            company:
+                restrict:
+                    delete: CASCADE
+        enable_trash: true
+

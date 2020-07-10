@@ -115,8 +115,8 @@
 						self.scope.edit_data_source = data;
 						self.scope.$broadcast('form.dataLoaded', data);					
 						return;
-					}else if(this.config.resource=='mock_ship_category'){
-						let data = ship_category_data2();
+					}else if(this.config.resource=='transMeter_meterLog_mock'){
+						let data = transMeter_meterLog_one();
 						//console.log(data);
 						self.scope.edit_data_source = data;
 						self.scope.$broadcast('form.dataLoaded', data);	
@@ -164,9 +164,10 @@
                             });
 
                             var fields_define = self.scope.$parent.form_fields_define = {};
-
+							
+							console.log(schema)
                             angular.forEach(schema, function(config, field) {
-
+								
                                 //console.log(field, config);
                                 if(field in self.model_config.fields) {
                                     config = angular.deep_extend(config, self.model_config.fields[field]);

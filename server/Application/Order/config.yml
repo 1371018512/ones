@@ -18,7 +18,7 @@ include:
         - apps/order/model
         - apps/product/model
         - apps/order/check
-        - apps/order/all
+        - apps/order/dispatch
         - apps/contactsCompany/model
         - apps/crm/model
 navs:

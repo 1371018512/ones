@@ -23,9 +23,13 @@
 			<div class="bill-footer-input-item">
 			    <input-field config="dispatch_time_config" ng-readonly="bill_meta_data.locked"></input-field>
 			</div>
-			<!-- <div class="bill-footer-input-item">
-			    <input-field config="delivery_time_config" ng-readonly="bill_meta_data.locked"></input-field>
-			</div> -->
+			<div class="bill-footer-input-item" ng-controller="UploaderController" ng-if="bill_meta_data.confirm_editable">
+			    <input type="file" file-model="myFile" />
+				<div>
+				    <!-- {{imageSrc}} -->
+					<img ng-src="{{imageSrc}}" mode="aspectFill" class="bill-upLoad"/>
+				</div>
+			</div>
         </div>
 
         <div ng-include="'views/billFooter.html'"></div>

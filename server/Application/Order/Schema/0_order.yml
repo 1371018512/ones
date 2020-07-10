@@ -97,6 +97,10 @@ order_dispatch:
         type: decimal
         precision: 14
         scale: 4
+    real_weight:
+        type: decimal
+        precision: 14
+        scale: 4
     remark:
         limit:50
     $meta:

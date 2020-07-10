@@ -212,13 +212,13 @@
                         exclude_meta: false,
                         callback: function (schema) {
                             self.schema = schema;
-							console.log(JSON.parse(JSON.stringify(schema)));
+							console.log(schema)
                             schema[self.model_config.table] = schema[self.model_config.table] || {};
 
                             self.parentScope.grid_trash_able = schema[self.model_config.table].enable_trash || false;
 
                             var structure = {};
-
+							console.log(JSON.parse(JSON.stringify(structure)));
                             angular.forEach(schema[self.model_config.table].structure, function(field) {
                                 structure[field.field] = field;
                             });
@@ -350,6 +350,7 @@
                 this.makeLinkActions = function() {
                     self.link_actions = [];
                     self.scope.$root.link_actions = self.scope.$root.link_actions || [];
+					console.log(self.model_config)
                     // 新增
                     var add_btn = {
                         label: _("common.Add New") + ' ' + _(self.model_config.app+'.'+camelCaseSpace(self.model_config.module||'')),
@@ -593,15 +594,23 @@
 								    marginLeft: $('#grid-fixed-fields-container').width() - 1
 								});
 								return;
-							}/* else if(self.options.resource=='mock2'){
-								let remoteData = ship_data();
+							}else if(self.options.resource=='transMeter_meter_mock'){
+								let remoteData = transMeter_meter();
 								self.setPagingData(remoteData, page, pageSize);
 								console.log(remoteData);
 								$('#grid-not-fixed-fields-container').css({
 								    marginLeft: $('#grid-fixed-fields-container').width() - 1
 								});
 								return;
-							} */else if(self.options.resource=='order_dispatch_mock'){
+							}else if(self.options.resource=='transMeter_meterLog_mock'){
+								let remoteData = transMeter_meterLog();
+								self.setPagingData(remoteData, page, pageSize);
+								console.log(remoteData);
+								$('#grid-not-fixed-fields-container').css({
+								    marginLeft: $('#grid-fixed-fields-container').width() - 1
+								});
+								return;
+							}else if(self.options.resource=='order_dispatch_mock'){
 								let remoteData = order_dispatch();
 								self.setPagingData(remoteData, page, pageSize);
 								console.log(remoteData);

@@ -38,8 +38,14 @@
                     controller : 'ComViewEditCtrl',
                     templateUrl: get_view_path('views/edit.html')
                 })
-
+				
+				// 计量
+				.when('/:app/:module/meter/:extra/:id', {
+				    controller : 'ComViewMeterCtrl',
+				    templateUrl: get_view_path('views/edit.html')
+				})
                 // 详情
+				
                 .when('/:app/:module/view/:id', {
                     controller: 'ComViewDetailCtrl',
                     templateUrl: get_view_path('views/detail.html')
@@ -86,7 +92,7 @@
                         query_params.action = $routeParams.action;
                         break;
                 }
-				//console.log($routeParams.app, $routeParams.module)
+				console.log($routeParams.app, $routeParams.module)
                 dataAPI.init($routeParams.app, $routeParams.module);
                 $scope.gridConfig = {
                     resource: dataAPI.resource,
@@ -111,8 +117,9 @@
                 if($routeParams.id) {
                     $scope.is_edit = true;
                 }
-
+				
                 var extra_params = parse_arguments($routeParams.extra);
+				//console.log(extra_params)
                 angular.forEach(extra_params, function(v, k) {
                     $routeParams[k] = v;
                 });
@@ -129,7 +136,43 @@
             }
 
         ])
-
+		
+		/**
+		 * 产生运输车计量
+		 * */
+		.controller('ComViewMeterCtrl', [
+		    "$scope",
+		    "$location",
+		    "ones.dataApiFactory",
+		    "$routeParams",
+		    "RootFrameService",
+		    function($scope, $location, dataAPI, $routeParams, RootFrameService) {
+		        ones.DEBUG && console.debug('Common view detected: '+ $location.url());
+		
+		        if($routeParams.id) {
+		            $scope.is_edit = true;
+		        }
+				
+		        var extra_params = parse_arguments($routeParams.extra);
+				//console.log(extra_params)
+		        angular.forEach(extra_params, function(v, k) {
+		            $routeParams[k] = v;
+		        });
+				//console.log('?????.')
+		        dataAPI.init($routeParams.app, 'meterLog');
+		        $scope.formConfig = {
+		            resource: dataAPI.resource,
+		            model   : dataAPI.model,
+		            id      : $routeParams.id,
+		            opts    : {
+		                extra_params: extra_params || {}
+		            }
+		        };
+				//console.log($scope.formConfig);
+		    }
+		
+		])
+		
         /**
          * 通用单据新增/编辑
          * */
@@ -143,6 +186,7 @@
                 ones.DEBUG && console.debug('Common view detected: '+ $location.url());
 
                 var extra_params = parse_arguments($routeParams.extra) || {};
+				
                 angular.forEach(extra_params, function(v, k) {
                     $routeParams[k] = v;
                 });

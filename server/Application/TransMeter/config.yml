@@ -1,0 +1,30 @@
+alias: transMeter
+author: 'zl'
+link: ''
+requirements: 
+
+auth_nodes:
+
+load_modules:
+    - ones.gridViewModule
+
+include:
+    js:
+        - apps/transMeter/main
+        - apps/transMeter/model
+
+navs:
+    车载计量:
+        children:
+            车载计量:
+                app: transMeter
+                icon: sitemap
+                children:
+                    传输车计量表:
+                        app: transMeter
+                        icon: users
+                        link: transMeter/meter
+                    计量日志:
+                        app: transMeter
+                        icon: users
+                        link: transMeter/meterLog
