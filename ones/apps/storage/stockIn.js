@@ -281,7 +281,6 @@
                                     content: _('storage.Please fill this time in quantity')
                                 });
                             }
-
                             workflow_api.post($routeParams.node_id, post_data.meta.id, {rows: rows});
                         };
 

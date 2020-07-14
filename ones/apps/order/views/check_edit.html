@@ -18,15 +18,15 @@
 			    <span class="input-group-addon" ng-bind="'订单类型'"></span>
 			    <input type="text" class="form-control" ng-model="bill_meta_data.type" ng-readonly="bill_meta_data.locked">
 			</div>
-			<div class="input-group bill-footer-input-item" style="width: auto">
+			<div class="input-group bill-footer-input-item" style="width: auto" ng-if="bill_meta_data.dispatch_editable">
 			    <span class="input-group-addon" ng-bind="'万南当日出货量'"></span>
 			    <input type="text" class="form-control" ng-model="bill_meta_data.shipment_Wannan" ng-readonly="bill_meta_data.locked">
 			</div>
-			<div class="input-group bill-footer-input-item" style="width: auto">
+			<div class="input-group bill-footer-input-item" style="width: auto" ng-if="bill_meta_data.dispatch_editable">
 			    <span class="input-group-addon" ng-bind="'万北当日出货量'"></span>
 			    <input type="text" class="form-control" ng-model="bill_meta_data.shipment_Wanbei" ng-readonly="bill_meta_data.locked">
 			</div>
-			<div class="input-group bill-footer-input-item" style="width: auto">
+			<div class="input-group bill-footer-input-item" style="width: auto" ng-if="bill_meta_data.confirm_editable">
 			    <span class="input-group-addon" ng-bind="'用户余额'"></span>
 			    <input type="text" class="form-control" ng-model="bill_meta_data.balance" ng-readonly="bill_meta_data.locked">
 			</div>

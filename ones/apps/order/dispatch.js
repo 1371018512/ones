@@ -4,7 +4,6 @@
             'ones.dataApiFactory',
             '$injector',
             function(dataAPI, $injector) {
-				console.log('its dispatch')
                 var self = this;
 				
                 /* this.resource = dataAPI.getResourceInstance({
@@ -71,7 +70,7 @@
 						
                     },
                     bill_meta_required: [
-                        'created'
+                        
                     ],
                     /* filters: {
                         workflow_id: {
@@ -231,7 +230,6 @@
 				
 				// 计算合计
 				$scope.re_calculate_total = function(rows, update_net_receive) {
-					console.log('xxxx')
 				    bill.common_methods.re_calculate_total($scope, rows, total_able_fields,
 				        update_net_receive === false ? false : 'real_weight');
 				};
@@ -283,7 +281,25 @@
 							
                         // 核对提交方法
                         $scope.do_confirm = function() {
-							
+                            var post_data = bill.format_bill_data();
+                            var rows = [];
+                            angular.forEach(post_data.rows, function(item) {
+                                /* if(!item.id || !item.storage_id || !item.this_time_in_quantity || !item.product_unique_id) {
+                                    return;
+                                } */
+                                rows.push(item);
+                            });
+                            
+                        	console.log({meta: post_data.meta,rows: rows})
+                        	
+                            if(!rows) {
+                                RootFrameService.alert({
+                                    type: 'danger',
+                                    content: _('storage.Please fill this time in quantity')
+                                });
+                            }
+                            
+                            /* workflow_api.post($routeParams.node_id, post_data.meta.id, {meta: post_data.meta,rows: rows}); */
                         }; 
 
                         break;

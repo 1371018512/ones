@@ -288,6 +288,21 @@ function order_check_detail(){
 			workflow_id: 99,//这是工作流类型的id
 			workflow_id__label__: "工作流a",
 			workflow_node_status_label: "未处理",
+			workflow_latest_progress:{
+				company_id: 1,
+				context: null,
+				created: "2020-06-17 14:51:06",
+				executor: "u:1,2|d:1",
+				id: "3",
+				node_label: "未处理",
+				node_status_label: null,
+				node_type: "start",
+				remark: "",
+				source_id: "3",
+				user_info_id: "1",
+				workflow_id: "5",
+				workflow_node_id: "11",
+			},
 			user_info_id: 1
 		},
 		rows :[
@@ -384,6 +399,21 @@ function order_dispatch(){
 				ship_status: "未核对",
 				workflow_id: 199,
 				workflow_id__label__: "工作流b",
+				workflow_latest_progress:{
+					company_id: 1,
+					context: null,
+					created: "2020-06-17 14:51:06",
+					executor: "u:1,2|d:1",
+					id: "3",
+					node_label: "未完成",
+					node_status_label: null,
+					node_type: "start",
+					remark: "",
+					source_id: "3",
+					user_info_id: "1",
+					workflow_id: "5",
+					workflow_node_id: "11",
+				},
 				workflow_node_status_label: "未完成",
 				user_info_id: 1
 			}
@@ -552,6 +582,28 @@ function finance_statement(){
 				trashed: "0",
 			}
 		}
+	];
+	return data;
+}
+
+function truck_truck(){
+	var data = [
+		{
+			count: "1", 
+			totalPages: 1,
+		},
+		{
+			0:{
+				company_id: 1,
+				id: 1,
+				name: "1号",
+				carrying_capacity: 10000,
+				tare:800,
+				measure_unit: "KG",
+				serial_number: "1",
+				trashed: "0"
+			}
+		} 
 	];
 	return data;
 }

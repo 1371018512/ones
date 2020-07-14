@@ -182,15 +182,19 @@ finance_streamline:
 
 finance_statement:
     type:
+    #结算单类型，详情见文档
         limit:20
     dispatch_weight:
+    #发货单预计的重量，来自调度	
         precision: 14
         scale: 4
     final_weight:
+    #最终的重量，是发货单完成后的真实重量在乘一个系数，一般为0.997，详情见Excel表格
         precision: 14
         scale: 4
     unit_price:
         blank: true
+    #单矿物有这个字段，混合的没有
     total_price:
         precision: 14
         scale: 4
@@ -206,6 +210,7 @@ finance_statement:
     $meta:
         foreign:
             order:
+            #一发货单对应一结算单
                 restrict:
                     delete: CASCADE
             ship:

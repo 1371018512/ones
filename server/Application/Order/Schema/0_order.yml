@@ -1,18 +1,20 @@
 order_check:
     #subject:
         #limit:20
-    type:
+    type:  #值为石料或者宕渣
         limit: 100
     bill_no:
         limit: 20
-    status:
+    status:  #工作流状态
         type: integer
         limit: 1
     created:
         type: datetime
-    estimated_time:
+    estimated_time: 
+    #客户预期的到港时间
         type: datetime
-    total_weight:
+    total_weight: 
+    #产品总重
         type: decimal
         precision: 14
         scale: 4
@@ -43,7 +45,7 @@ order_check:
         enable_trash: true
 
 order_check_detail:
-    quantity:
+    quantity: #单商品种类
         type: decimal
         precision: 14
         scale: 4
@@ -54,11 +56,11 @@ order_check_detail:
         type: decimal
         precision: 14
         scale: 4
-    subtotal_amount:
+    subtotal_amount: #价格小计
         type: decimal
         precision: 14
         scale: 4
-    already_deliver:
+    already_deliver: #已发货数量，这是在调度阶段用的字段
         type: decimal
         precision: 14
         scale: 4
@@ -71,7 +73,7 @@ order_check_detail:
             product:
                 restrict:
                     delete: CASCADE
-            order:
+            order: #detail对应的订单
                 restrict:
                     delete: CASCADE
             company:
@@ -82,22 +84,23 @@ order_check_detail:
 order_dispatch:
     #subject:
         #limit:20
-    type:
+    type: #发货单类型，值为宕渣、宕碴B、山皮泥、宕渣A，石料、246石子、瓜子片、石粉中的一种
+          #看起来很多，其实就是单一料或者混料，如果有多个石料类型的发货单就是石料类型，单一的就是仅有的那个类型
         limit: 100
     bill_no:
         limit: 20
     status:
         type: integer
         limit: 1
-    dispatch_time:
+    dispatch_time: #调度时选择的发货时间
         type: datetime
-    delivery_place:
+    delivery_place: #调度时选择的发货地点
         limit: 100
-    total_weight:
+    total_weight: #产品应当发货总重（来自调度
         type: decimal
         precision: 14
         scale: 4
-    real_weight:
+    real_weight: #产品实际重量（确认发货单时填写
         type: decimal
         precision: 14
         scale: 4
@@ -134,7 +137,7 @@ order_dispatch_detail:
     product_unique_id:
         type: string
         limit: 100
-    real_quantity:
+    real_quantity: #实际签收的重量
         type: decimal
         precision: 14
         scale: 4

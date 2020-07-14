@@ -4,7 +4,6 @@
             'ones.dataApiFactory',
             '$injector',
             function(dataAPI, $injector) {
-				console.log('its check')
                 var self = this;
 				//只查工作流进程为未处理和已核对的
                 /* this.resource = dataAPI.getResourceInstance({
@@ -238,7 +237,7 @@
 							}).get({
 								id: $scope.bill_meta_data.ship_id
 							}).$promise.then(function(data){
-								//console.log(data);
+								console.log(data);
 								$scope.bill_meta_data.ship = data;
 							});
 						}
@@ -248,10 +247,10 @@
 				getShipDetail();
 				
 				$scope.showDetail = function(){
-					console.log($scope.bill_meta_data)
+					//console.log($scope.bill_meta_data)
 					if(!$scope.bill_meta_data.ship)	return;
-					let str = '我是从后端获取的船只详细信息！'
-					console.log($scope.bill_meta_data.ship);
+					let str = '我是从后端获取的船只详细信息！\n'+$scope.bill_meta_data.ship;
+					//console.log($scope.bill_meta_data.ship);
 					alert(str);
 				}
 				
@@ -313,7 +312,6 @@
                         // 核对提交方法
                         $scope.do_confirm = function() {
                             var post_data = bill.format_bill_data();
-							console.log(post_data)
                             var rows = [];
                             angular.forEach(post_data.rows, function(item) {
                                 /* if(!item.id || !item.storage_id || !item.this_time_in_quantity || !item.product_unique_id) {
@@ -322,6 +320,8 @@
                                 rows.push(item);
                             });
                             
+                        	console.log({meta: post_data.meta,rows: rows})
+                        	
                             if(!rows) {
                                 RootFrameService.alert({
                                     type: 'danger',
@@ -329,7 +329,7 @@
                                 });
                             }
                             
-                            /* workflow_api.post($routeParams.node_id, post_data.meta.id, {rows: rows}); */
+                            /* workflow_api.post($routeParams.node_id, post_data.meta.id, {meta: post_data.meta,rows: rows}); */
                         }; 
 
                         break;
@@ -379,7 +379,6 @@
 					    // 核对提交方法
 					    $scope.do_confirm = function() {
 					        var post_data = bill.format_bill_data();
-							console.log(post_data)
 					        var rows = [];
 					        angular.forEach(post_data.rows, function(item) {
 					            /* if(!item.id || !item.storage_id || !item.this_time_in_quantity || !item.product_unique_id) {
@@ -388,6 +387,8 @@
 					            rows.push(item);
 					        });
 					        
+					    	console.log({meta: post_data.meta,rows: rows})
+					    	
 					        if(!rows) {
 					            RootFrameService.alert({
 					                type: 'danger',
@@ -395,7 +396,7 @@
 					            });
 					        }
 					        
-					        /* workflow_api.post($routeParams.node_id, post_data.meta.id, {rows: rows}); */
+					        /* workflow_api.post($routeParams.node_id, post_data.meta.id, {meta: post_data.meta,rows: rows}); */
 					    }; 
 					
 					    break;

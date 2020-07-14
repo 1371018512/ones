@@ -1,13 +1,16 @@
 meter:
+    #只有宕渣系列的发货单才同时产生计量表
     type:
         limit: 100
     created:
         type: datetime
     total_weight:
+        #预计总重，来自调度
         type: decimal
         precision: 14
         scale: 4
     already_weight:
+        #已经登记的重量
         type: decimal
         precision: 14
         scale: 4
@@ -26,4 +29,29 @@ meter:
                 restrict:
                     delete: CASCADE
         enable_trash: true
+meter_log:
+    created:
+        type: datetime
+    weight:
+        #每次登记的重量
+        type: decimal
+        precision: 14
+        scale: 4
+    remark:
+        blank: true
+    $meta:
+        indexes:
+        foreign:
+            car:
+                restrict:
+                    delete: CASCADE
+            order:
+                #对应的计量表号
+                restrict:
+                    delete: CASCADE
+            company:
+                restrict:
+                    delete: CASCADE
+        enable_trash: true
+
 

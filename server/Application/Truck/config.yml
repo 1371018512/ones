@@ -1,0 +1,22 @@
+alias: truck
+author: 'zl'
+link: ''
+requirements: 
+
+auth_nodes:
+
+include:
+    js:
+        - apps/truck/main
+        - apps/truck/model
+
+navs:
+    港口管理:
+        children:
+            卡车管理:
+                app: truck
+                icon: navicon
+                children:
+                    卡车管理:
+                        app: truck
+                        link: truck/truck

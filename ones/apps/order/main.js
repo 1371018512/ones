@@ -5,7 +5,6 @@
      * @link http://ng-erp.com
      * */
     'use strict';
-	console.log('its order')
     angular.module('ones.app.order.main', [
 		'ones.app.order.model',
 		'ones.billModule',

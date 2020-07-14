@@ -81,8 +81,6 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                     // 重新计算合计金额
                     re_calculate_total: function($runtime_scope, rows, total_able_fields, update_net) {
                         total_able_fields = total_able_fields || this.total_able_fields || [];
-						console.log(total_able_fields);
-						console.log(rows);
                         var totals = {};
                         angular.forEach(rows, function(row) {
                             angular.forEach(row, function(v, k) {
@@ -92,7 +90,6 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
                                 }
                             });
                         });
-						console.log(totals)
                         angular.forEach(totals, function(value, field) {
                             var getter = $parse('bill_meta_data.' + field + '__total__');
                             getter.assign($runtime_scope, value);
@@ -279,7 +276,6 @@ var BILL_META_INPUT_GROUP_TPL = '<div class="input-group"><span class="input-gro
 								];
 								workflow_api.get_next_nodes(response_data.meta.workflow_id, response_data.meta.id, _fd)
 									.then(function(next_nodes){
-										console.log(next_nodes);
 										self.parentScope.$parent.workflow_node_in_bill = next_nodes;
 									});
 							}

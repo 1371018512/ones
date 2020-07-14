@@ -218,7 +218,6 @@
                             self.parentScope.grid_trash_able = schema[self.model_config.table].enable_trash || false;
 
                             var structure = {};
-							console.log(JSON.parse(JSON.stringify(structure)));
                             angular.forEach(schema[self.model_config.table].structure, function(field) {
                                 structure[field.field] = field;
                             });
@@ -620,6 +619,14 @@
 								return;
 							}else if(self.options.resource=='finance_statement_mock'){
 								let remoteData = finance_statement();
+								self.setPagingData(remoteData, page, pageSize);
+								console.log(remoteData);
+								$('#grid-not-fixed-fields-container').css({
+								    marginLeft: $('#grid-fixed-fields-container').width() - 1
+								});
+								return;
+							}else if(self.options.resource=='truck_truck_mock'){
+								let remoteData = truck_truck();
 								self.setPagingData(remoteData, page, pageSize);
 								console.log(remoteData);
 								$('#grid-not-fixed-fields-container').css({

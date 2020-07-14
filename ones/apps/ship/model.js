@@ -24,6 +24,9 @@
                             grid_fixed: true
                             //search_able_fields: 'name,pinyin'
                         },
+						status: {
+						    label: '船只状态'
+						},
 						carrying_capacity: {
 							label: '核重',
 							get_display: function(value) {

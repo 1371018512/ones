@@ -23,6 +23,7 @@ ship_category:
 
 ship:
   name:
+  status:
   carrying_capacity:
     type: decimal
     default: 0.0000

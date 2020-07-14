@@ -1,0 +1,31 @@
+truck:
+  name:
+  tare:
+    #皮重
+    type: decimal
+    default: 0.0000
+    precision: 14
+    scale: 4
+  carrying_capacity:
+    #最大载重
+    type: decimal
+    default: 0.0000
+    precision: 14
+    scale: 4
+  measure_unit:
+    type: string
+    limit: 20
+    blank: true
+  $meta:
+    # 索引
+    indexes:
+      name:
+    # 外键
+    foreign:
+      company:
+        restrict:
+          delete: CASCADE
+    # 记录使用频率
+    record_rate: true
+    # 启用删除回收站
+    enable_trash: true
