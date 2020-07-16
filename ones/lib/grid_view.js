@@ -212,7 +212,7 @@
                         exclude_meta: false,
                         callback: function (schema) {
                             self.schema = schema;
-							console.log(schema)
+							//console.log(schema)
                             schema[self.model_config.table] = schema[self.model_config.table] || {};
 
                             self.parentScope.grid_trash_able = schema[self.model_config.table].enable_trash || false;
@@ -349,7 +349,7 @@
                 this.makeLinkActions = function() {
                     self.link_actions = [];
                     self.scope.$root.link_actions = self.scope.$root.link_actions || [];
-					console.log(self.model_config)
+					//console.log(self.model_config)
                     // 新增
                     var add_btn = {
                         label: _("common.Add New") + ' ' + _(self.model_config.app+'.'+camelCaseSpace(self.model_config.module||'')),

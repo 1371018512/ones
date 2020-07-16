@@ -347,5 +347,22 @@ aside.sidebar {
 
 .is_show_debugger {
   height: 300px !important; }
+  
+.rightMenu {	
+	border: #c6c7c8 solid 1px;
+	box-shadow: 5px 5px 3px #cfcfcf;
+	opacity: 80%;
+	padding: 0px 10px 5px 10px;
+	background: #fafdff;
+	position: fixed;
+	z-index: 9998;
+}
 
+.rightMenu li{	
+	margin-top: 10px;
+	cursor: pointer;
+	line-height: 1em;
+	list-style: none;
+	color:black;
+}
 /*# sourceMappingURL=main.css.map */

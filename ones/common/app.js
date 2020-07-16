@@ -244,7 +244,8 @@
     .controller('MainFramesCtrl', [
         '$scope',
         'ones.frames',
-        function($scope, frames) {
+		'$timeout',
+        function($scope, frames, $timeout) {
             $scope.$on('main_frames_changed', function(evt, data) {
                 $scope.frames = data.frames;
                 $scope.activeFrame = data.active;
@@ -259,7 +260,43 @@
             $scope.closeFrame = function(id) {
                 frames.closeFrame(id);
             };
+			//以下是自定义的右键菜单内容
+			
+			$scope.meau = function(index){
+				
+			    var e = window.event;
+				
+			    var menu=document.querySelector(".rightMenu");
+			    menu.style.left=e.pageX+"px";
+			    menu.style.top=e.pageY+"px";
+				$timeout(function(){
+					$scope.activeRightMenu = index;
+					$scope.rightMenu = !$scope.rightMenu;
+				})	
+			}
+			
+			$scope.closeAll = function(flag) {
+				var del = 1;
+			    for(let i=1,len=frames.frames.length;i<len;i++){
+					if(flag  == true && $scope.activeRightMenu == i)	del++;
+					else if(flag  == false && i <= $scope.activeRightMenu){
+						del++;
+						continue;
+					}
+					frames.closeFrame(del);
+				}
+				$scope.rightMenu = false;
+			};
         }
     ])
+	.directive('ngRightClick',function($parse){
+	    return function (scope,element,attrs){
+	        var fn = $parse(attrs.ngRightClick);
+	        element.bind('contextmenu',function(event){
+	            event.preventDefault();
+	            fn(scope,{$event:event});
+	        })
+	    }
+	})
     ;
 })(window, window.angular);

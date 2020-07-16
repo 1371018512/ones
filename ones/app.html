@@ -103,7 +103,7 @@
         <section id="frames_area" class="frames_area" ng-controller="MainFramesCtrl">
             <nav id="frames_nav" class="frames_nav">
                 <ul class="clearfix">
-                    <li 
+                    <li ng-right-click="meau($index)"
                         ng-repeat="f in frames track by f.id"
                         ng-click="switchFrame($index)"
                         ng-class="{'active': $index==activeFrame}"
@@ -118,6 +118,18 @@
                             <i class="fa fa-times"></i>
                         </a>
                     </li>
+					<div 
+						ng-class="'rightMenu'"
+						ng-show="rightMenu"
+						>
+						<ul>
+							<li ng-click="closeAll(true)">关闭其他选项卡</li>
+							<li ng-click="closeAll()">关闭所有选项卡</li>
+							<li ng-click="closeAll(false)">关闭右侧选项卡</li>
+							<hr style="margin: 10px 0px 0px 0px;"/>
+							<li ng-click="rightMenu=false">取消</li>
+						</ul>
+					</div>
                 </ul>
             </nav>
             <section id="frames_container" class="frames_container">
